@@ -36,10 +36,11 @@ enum ProgressionBrackets
     PROGRESSION_BRACKET_80_TIER_8               = 0x00800000,
     PROGRESSION_BRACKET_80_TIER_9               = 0x01000000,
     PROGRESSION_BRACKET_80_TIER_10_A            = 0x02000000,
-    PROGRESSION_BRACKET_80_TIER_10_B            = 0x04000000
+    PROGRESSION_BRACKET_80_TIER_10_B            = 0x04000000,
+    PROGRESSION_BRACKET_60_TIER3_C_NAXXRAMAS     = 0x08000000
 };
 
-#define PROGRESSION_BRACKET_MAX 27
+#define PROGRESSION_BRACKET_MAX 28
 char const* const ProgressionBracketsNames[PROGRESSION_BRACKET_MAX] =
 {
     "0",
@@ -68,7 +69,8 @@ char const* const ProgressionBracketsNames[PROGRESSION_BRACKET_MAX] =
     "80_8",
     "80_9",
     "80_10_1",
-    "80_10_2"
+    "80_10_2",
+    "60_3_3",
 };
 
 #endif // _PROGRESSION_SYSTEM_H_
