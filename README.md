@@ -378,6 +378,13 @@ item on use:
     https://github.com/azerothcore/mod-pocket-portal
     PROS: neat, more lore friendly
     CONS: more difficult to implement
+Set epic, itemlvl, turn off boa
+
+Orb that teles from Sapphiron to Naxx
+ID GUID
+202278 268048
+
+
 portal NPC in Lights Hope:
     https://github.com/Zoidwaffle/sql-npc-teleporter
     PRO: easy
