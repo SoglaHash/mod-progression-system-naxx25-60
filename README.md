@@ -272,10 +272,10 @@ Conclusion: No scaling needed for HP values after scaling to lvl60
 Issue: Spells need scaling
 
 ## Approach 2 Details
-Naxx25 scaling observed 
+Naxx25 scaling observed with linear scaling factor X
 
-| Creature |	Naxx40 (Brotalnia) |	AutoBalance |
-|--|--|--|--|
+| Creature |	Naxx40 (Brotalnia) |	AutoBalance (X=1.0) |
+|--|--|--|
 |Skitterer	|15720|15721|
 |Venom Stalker	|94320| 94321	|
 |Noth the Plaguebringer|	1665500| 1612000	|
