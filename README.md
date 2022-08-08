@@ -20,7 +20,7 @@ Progress:
 - [ ] Add frost resistance recipes
 - [ ] Add frost resistance anvil (gobject)
 - [ ] Add Attunement quest requirement
-- [ ] Add enter spell (ID: 29296) when entering Naxx (AreaTrigger: 5194)
+- [ ] Add enter spell (ID: 29296) when entering Naxx (need to overwrite instance OnPlayerEntered)
 Skipping (for now):
 - [ ] Scourge event
 - [ ] Accurate Naxx40 mechanics
@@ -423,6 +423,21 @@ item on use:
     CONS: more difficult to implement
 Set epic, itemlvl, turn off boa
 
+portal NPC in Lights Hope:
+    https://github.com/Zoidwaffle/sql-npc-teleporter
+    PRO: easy
+    CONS: boring
+
+Orb that teles from Sapphiron to Naxx
+ID GUID
+202278 268048
+
+29295 Tele DND -> does nothing
+72613 -> teles to Sapphiron (exit) 
+72617 Spphiron Entry: Teles to naxxramas
+
+just add the gameobject to EPL
+
 .gobject add 181599 blue rune // purple 181600
 icy rune
 186747
@@ -435,22 +450,13 @@ rune
 188695
 Scourge transporter rune
 
-
-Orb that teles from Sapphiron to Naxx
-ID GUID
-202278 268048
-
-29295 Tele DND -> does nothing
-72613 -> teles to Sapphiron (exit) 
-72617 Spphiron Entry: Teles to naxxramas
- 
-?just add the gameobject to EPL
-
-
-portal NPC in Lights Hope:
-    https://github.com/Zoidwaffle/sql-npc-teleporter
-    PRO: easy
-    CONS: boring
+Overwrite Instance Naxx somehow
+```
+void OnPlayerEnter(Player* player) override
+{
+    player->CastSpell(player, 29296, true);
+}
+```
 
 ## Some commands
 
