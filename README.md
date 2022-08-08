@@ -6,7 +6,7 @@ Progress:
 - [x] Allow lvl 60 to enter
 - [x] Add floating Naxx (need to move away outside Plaguewood for it to load)
 - [x] Exit portals TP to EPL
-- [x] Scale instance with autobalancer (may require more tuning)
+- [x] Scale instance with autobalancer (can be tuned easily)
 - [x] Naxx25 mechanics
 - [x] Change graveyard to EPL
 - [x] Add summoning stone to EPL
@@ -24,6 +24,7 @@ Progress:
 Skipping (for now):
 - [ ] Scourge event
 - [ ] Accurate Naxx40 mechanics
+
 
 25man mechanics (using 25man map)
 ![raz](razuvious_25man_mechanics.png)
@@ -56,7 +57,14 @@ PROS: Scales all damage and can be tuned with global modifiers
 CONS: Hooks apply to all maps and creatures.
 Applies scaling of 1.0f to 99.99% of all combat interactions.
 
-
+EZ to tune with config
+```
+AutoBalance.rate.global = 1.0
+AutoBalance.rate.health = 1.0
+AutoBalance.rate.mana   = 1.0
+AutoBalance.rate.armor  = 1.0
+AutoBalance.rate.damage = 1.0
+```
 ## 3 Dump and Scale  ❔
 
 Use data from autobalancer to scale only Naxx25 mobs.
@@ -265,26 +273,17 @@ Conclusion: No scaling needed for HP values after scaling to lvl60
 Issue: Spells need scaling
 
 ## Approach 2 Details
-Naxx25 scaling observed with playerCount X and mapLevel 60
+Naxx25 scaling observed 
 
-```
-3a12bd2d1565bde7a84c1f9d87d859775863e01f
-AutoBalance.cpp +132
-uint32 playerCount = 25;
-uint8 mapLevel = 60;
-```
-
-Autobalancer set to level 60 with playerCount X
-
-| Creature |	Naxx40 (Brotalnia) |	25|	10|
+| Creature |	Naxx40 (Brotalnia) |	AutoBalance |
 |--|--|--|--|
-|Skitterer	|15720|15721| 5334 |
-|Venom Stalker	|94320| 94321	| 31998 	|
-|Noth the Plaguebringer|	1665500| 1612000	| 546000	|
-|Frenzied Bat|	10682| 9157	| 3107 	|
-|Patchwork Golem|	88032| 94321	| 31998	|
-|Embalming Slime|	12208| 12209	| 4142	|
-|Patchwork|	3997200| 3114000 	| 1056000	|
+|Skitterer	|15720|15721|
+|Venom Stalker	|94320| 94321	|
+|Noth the Plaguebringer|	1665500| 1612000	|
+|Frenzied Bat|	10682| 9157	|
+|Patchwork Golem|	88032| 94321	| 
+|Embalming Slime|	12208| 12209	|
+|Patchwork|	3997200| 3114000 	|
 
 ## Approach 3 Details
 Armor, hp, mana can be set with select/update statements as in Approach 1
