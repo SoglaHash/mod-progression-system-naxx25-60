@@ -2,6 +2,11 @@
 
 Also see AutoBalance fork https://github.com/SoglaHash/mod-autobalance-naxx25-60/tree/naxx
 
+A video (WIP). Scaling is set to `0.1` to show scaling (hp,armor,mana,dmg) works. See more details below
+
+https://user-images.githubusercontent.com/74299960/183506631-5616d2bf-056a-40f3-aaa0-6f16976e2eb4.mp4
+
+
 Progress:
 - [x] Allow lvl 60 to enter
 - [x] Add floating Naxx (need to move away outside Plaguewood for it to load)
