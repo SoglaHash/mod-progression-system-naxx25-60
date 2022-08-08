@@ -11,8 +11,8 @@ Progress:
 - [x] Change graveyard to EPL
 - [x] Add summoning stone to EPL
 - [x] Add Teleport gameobject in EPL
-- [ ] Integrate scaling script in this repo
-- [ ] Update Boss Loot to lvl60 (WIP)
+- [x] Integrate scaling script in this repo (v1.2.2-clean-up-old-code from [mod-autobalance-naxx25-60](https://github.com/SoglaHash/mod-autobalance-naxx25-60/tree/naxx)
+- [ ] Update Boss Loot to lvl60 (WIP: Thaddius, 4H, Patchwerk complete)
 - [ ] Update Trash Loot to lvl60
 - [ ] Add quests to turn in tokens
 - [ ] Add Frozen Rune game objects
