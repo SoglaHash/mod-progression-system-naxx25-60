@@ -4,7 +4,8 @@ Also see AutoBalance fork https://github.com/SoglaHash/mod-autobalance-naxx25-60
 
 A video (WIP). Scaling is set to `0.1` to show scaling (hp,armor,mana,dmg) works. See more details below
 
-https://user-images.githubusercontent.com/74299960/183506631-5616d2bf-056a-40f3-aaa0-6f16976e2eb4.mp4
+
+https://user-images.githubusercontent.com/74299960/183510861-a5181061-39a0-4e08-b11d-d13bed7a5486.mp4
 
 
 Progress:
@@ -51,6 +52,7 @@ Scale level and hp to appropriate level with SELECT
 and UPDATE statements
 
 PROS: EZ
+
 CONS: Data value of spells is not changed
 
 ## 2 Autobalancer  ✅ ❔
@@ -77,10 +79,13 @@ Use data from autobalancer to scale only Naxx25 mobs.
 2. apply scaling script only to creatures in Naxx.
 
 PROS: Accurate scaling with low overhead
+
 CONS: more work
 
 ## 4 Custom Map
+
 PROS: Allows lvl 80 Naxx AND lvl 60 Naxx to co-exist
+
 CONS: even more work
 
 # Data
@@ -324,27 +329,42 @@ custom map area
 # Loot
 Trash loot:
 LootID in Creature_Template
+
 100003
 
 4H Chest
+
 Deathknight Wing Eye Portal Boss
+
 GUID 65854
+
 ID 181230
+
 Damnation 
+
 40348
 
 gameobject_loot_template 
+
 Entry=25193
 
 reference_loot_template
+
 Reference 34382
+
 Reference 34146
 
+
 brotalnia chest gameobject_loot_template
+
 entry=181366
+
 reference 12002 for tokens
+
 reference_loot_template
+
 token 22349
+
 
 Thaddius loot example found in brotalnia
 
