@@ -74,3 +74,38 @@ ProgressionSystem.60.MoltenCore.AqualEssenceCooldownReduction = 0
 
 ProgressionSystem.60.WorldBosses.KazzakPhasing = 1
 
+#
+#     ProgressionSystem.60.MinHPModifier
+#        Minimum Modifier setting for Health Modification
+#        Default:     0.01
+
+ProgressionSystem.60.MinHPModifier=0.01
+
+#
+#     ProgressionSystem.60.MinManaModifier
+#        Minimum Modifier setting for Mana Modification
+#        Default:     0.01
+
+ProgressionSystem.60.MinManaModifier=0.01
+
+#
+#     ProgressionSystem.60.MinDamageModifier
+#        Minimum Modifier setting for Damage Modification
+#        Default:     0.01
+
+ProgressionSystem.60.MinDamageModifier=0.01
+
+#
+#     ProgressionSystem.60.rate.*
+#        You can tune all rates increasing/decreasing difficulty in a linear way
+#        Note that global rate will increase all other rates. For example:
+#        global = 2.0 , damage = 1.5  -> it means that damage will be 3.0
+#        Default:     1.0
+
+ProgressionSystem.60.rate.global = 1.0
+ProgressionSystem.60.rate.health = 1.0
+ProgressionSystem.60.rate.mana   = 1.0
+ProgressionSystem.60.rate.armor  = 1.0
+ProgressionSystem.60.rate.damage = 1.0
+
+
