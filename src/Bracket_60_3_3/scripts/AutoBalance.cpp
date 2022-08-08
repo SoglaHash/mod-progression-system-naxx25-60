@@ -86,14 +86,14 @@ class AutoBalance_WorldScript : public WorldScript
 
     void SetInitialWorldSettings()
     {
-        globalRate = sConfigMgr->GetOption<float>("ProgressionSytem.60.rate.global", 1.0f);
-        healthMultiplier = sConfigMgr->GetOption<float>("ProgressionSytem.60.rate.health", 1.0f);
-        manaMultiplier = sConfigMgr->GetOption<float>("ProgressionSytem.60.rate.mana", 1.0f);
-        armorMultiplier = sConfigMgr->GetOption<float>("ProgressionSytem.60.rate.armor", 1.0f);
-        damageMultiplier = sConfigMgr->GetOption<float>("ProgressionSytem.60.rate.damage", 1.0f);
-        MinHPModifier = sConfigMgr->GetOption<float>("ProgressionSytem.60.MinHPModifier", 0.1f);
-        MinManaModifier = sConfigMgr->GetOption<float>("ProgressionSytem.60.MinManaModifier", 0.1f);
-        MinDamageModifier = sConfigMgr->GetOption<float>("ProgressionSytem.60.MinDamageModifier", 0.1f);
+        globalRate = sConfigMgr->GetOption<float>("ProgressionSystem.60.Naxxramas.rate.global", 1.0f);
+        healthMultiplier = sConfigMgr->GetOption<float>("ProgressionSystem.60.Naxxramas.rate.health", 1.0f);
+        manaMultiplier = sConfigMgr->GetOption<float>("ProgressionSystem.60.Naxxramas.rate.mana", 1.0f);
+        armorMultiplier = sConfigMgr->GetOption<float>("ProgressionSystem.60.Naxxramas.rate.armor", 1.0f);
+        damageMultiplier = sConfigMgr->GetOption<float>("ProgressionSystem.60.Naxxramas.rate.damage", 1.0f);
+        MinHPModifier = sConfigMgr->GetOption<float>("ProgressionSystem.60.Naxxramas.MinHPModifier", 0.1f);
+        MinManaModifier = sConfigMgr->GetOption<float>("ProgressionSystem.60.Naxxramas.MinManaModifier", 0.1f);
+        MinDamageModifier = sConfigMgr->GetOption<float>("ProgressionSystem.60.Naxxramas.MinDamageModifier", 0.1f);
     }
 };
 
