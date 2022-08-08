@@ -2,10 +2,12 @@
 
 Also see AutoBalance fork https://github.com/SoglaHash/mod-autobalance-naxx25-60/tree/naxx
 
-A video (WIP). Scaling is set to `0.1` to show scaling (hp,armor,mana,dmg) works. See more details below
+A video (WIP). See more details below
 
 
-https://user-images.githubusercontent.com/74299960/183510861-a5181061-39a0-4e08-b11d-d13bed7a5486.mp4
+
+https://user-images.githubusercontent.com/74299960/183513127-17bd96f6-fac9-44a2-be0c-d2eacf6ec15e.mp4
+
 
 
 Progress:
