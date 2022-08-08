@@ -10,7 +10,6 @@ Progress:
 - [x] Naxx25 mechanics
 - [x] Change graveyard to EPL
 - [x] Add summoning stone to EPL
-- [x] Add floating Naxx to EPL
 - [x] Add Teleport gameobject in EPL
 - [ ] Integrate scaling script in this repo
 - [ ] Update Boss Loot to lvl60 (WIP)
