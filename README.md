@@ -12,6 +12,7 @@ Progress:
 - [x] Add summoning stone to EPL
 - [x] Add Teleport gameobject in EPL
 - [x] Integrate scaling script in this repo (v1.2.2-clean-up-old-code from [mod-autobalance-naxx25-60](https://github.com/SoglaHash/mod-autobalance-naxx25-60/tree/naxx)
+- [x] Add enter spell (ID: 29296) when entering Naxx (need to overwrite instance OnPlayerEntered)
 - [ ] Update Boss Loot to lvl60 (WIP: Thaddius, 4H, Patchwerk complete)
 - [ ] Update Trash Loot to lvl60
 - [ ] Add quests to turn in tokens
@@ -19,7 +20,6 @@ Progress:
 - [ ] Add frost resistance recipes
 - [ ] Add frost resistance anvil (gobject)
 - [ ] Add Attunement quest requirement
-- [ ] Add enter spell (ID: 29296) when entering Naxx (need to overwrite instance OnPlayerEntered)
 Skipping (for now):
 - [ ] Scourge event
 - [ ] Accurate Naxx40 mechanics

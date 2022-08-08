@@ -93,7 +93,7 @@ class AutoBalance_WorldScript : public WorldScript
         damageMultiplier = sConfigMgr->GetOption<float>("ProgressionSystem.60.Naxxramas.rate.damage", 1.0f);
         MinHPModifier = sConfigMgr->GetOption<float>("ProgressionSystem.60.Naxxramas.MinHPModifier", 0.1f);
         MinManaModifier = sConfigMgr->GetOption<float>("ProgressionSystem.60.Naxxramas.MinManaModifier", 0.1f);
-        MinDamageModifier = sConfigMgr->GetOption<float>("ProgressionSystem.60.Naxxramas.MinDamageModifier", 0.1f);
+        MinDamageModifier = sConfigMgr->GetOption<float>("ProgressionSyst tem.60.Naxxramas.MinDamageModifier", 0.1f);
     }
 };
 
@@ -164,6 +164,9 @@ class AutoBalance_AllMapScript : public AllMapScript
             // Check if mapId equals to Naxxramas (mapId: 533)
             if (map->GetId() != 533)
                 return;
+
+            // Cast on player Naxxramas Entry Flag Trigger DND - Classic (spellID: 29296)
+            player->CastSpell(player, 29296, true);
         }
 };
 
