@@ -31,7 +31,6 @@
 #include "Unit.h"
 #include "Creature.h"
 #include "Player.h"
-#include "MapMgr.h"
 #include "World.h"
 #include "Map.h"
 #include "ScriptMgr.h"
@@ -145,29 +144,6 @@ class AutoBalance_UnitScript : public UnitScript
 
         return damage * damageMultiplier;
     }
-};
-
-
-class AutoBalance_AllMapScript : public AllMapScript
-{
-    public:
-    AutoBalance_AllMapScript()
-        : AllMapScript("AutoBalance_AllMapScript")
-        {
-        }
-
-        void OnPlayerEnterAll(Map* map, Player* player)
-        {
-            if (player->IsGameMaster())
-                return;
-
-            // Check if mapId equals to Naxxramas (mapId: 533)
-            if (map->GetId() != 533)
-                return;
-
-            // Cast on player Naxxramas Entry Flag Trigger DND - Classic (spellID: 29296)
-            player->CastSpell(player, 29296, true);
-        }
 };
 
 class AutoBalance_AllCreatureScript : public AllCreatureScript
@@ -369,5 +345,4 @@ void AddSC_auto_balance_60_3_C()
     new AutoBalance_WorldScript();
     new AutoBalance_UnitScript();
     new AutoBalance_AllCreatureScript();
-    // new AutoBalance_AllMapScript();
 }
