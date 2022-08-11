@@ -35,6 +35,7 @@ VALUES
 (909, 3456, 0, 'Naxxramas, Eastern Plaguelands - Blackwood Lake');
 
 -- Add Entrance transporter object. Necromantic Runestone (id: 189314, displayID: 7786)
+SET @DEATH_KNIGHT_PORTAL_EFFECT:= 28444;
 SET @TRANSPORTER_ENTRY:=9000;
 SET @TRANSPORTER_COOLDOWN:=5;
 DELETE FROM `gameobject_template` WHERE (`entry` = @TRANSPORTER_ENTRY);
@@ -46,7 +47,7 @@ INSERT INTO `gameobject_template` (`entry`, `type`, `displayId`, `name`,
 `VerifiedBuild`)
 VALUES
 (@TRANSPORTER_ENTRY, 10, 7786, 'Teleport To Naxxramas', '', '', '', 1, 0, 0, 0,
-0, @TRANSPORTER_COOLDOWN, 0, 0, 0, 0, 0, 72617, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, @TRANSPORTER_COOLDOWN, 0, 0, 0, 0, 0, @DEATH_KNIGHT_PORTAL_EFFECT, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 0, 0, '', '', 12340);
 DELETE FROM `gameobject` WHERE `id`=@TRANSPORTER_ENTRY AND `map`=0 AND `zoneId`=0 AND `areaID`=0;
 INSERT INTO `gameobject`
