@@ -18,14 +18,14 @@ Progress:
 - [x] Add summoning stone to EPL
 - [x] Add Teleport gameobject in EPL
 - [x] Integrate scaling script in this repo (v1.2.2-clean-up-old-code from [mod-autobalance-naxx25-60](https://github.com/SoglaHash/mod-autobalance-naxx25-60/tree/naxx)
-- [x] Add enter spell (ID: 29296) when entering Naxx (need to overwrite instance OnPlayerEntered)
+- [x] Add enter spell (ID: 29296) when entering Naxx (improve: need to overwrite instance OnPlayerEntered)
 - [x] Update Boss Loot to lvl60
 - [ ] Update Trash Loot to lvl60
-- [ ] Add quests to turn in tokens
+- [x] Add quests to turn in T3 tokens
 - [ ] Add Frozen Rune game objects
 - [ ] Add frost resistance recipes
 - [ ] Add frost resistance anvil (gobject)
-- [ ] Add Attunement quest requirement 
+- [ ] Add Attunement quest requirement
 Skipping (for now):
 - [ ] Scourge event
 - [ ] Accurate Naxx40 mechanics
@@ -406,7 +406,7 @@ creature_loot_template
     30450 ref
        reference_loot_template 
        22353
-       22360
+       22361
        22367
     30451 ref
        22353
@@ -479,6 +479,15 @@ portal NPC in Lights Hope:
     PRO: easy
     CONS: boring
 
+Object that auto teleports nearby players
+```
+UPDATE `gameobject_template` SET `AIName` = 'SmartGameObjectAI' WHERE `entry` = 9000;
+
+DELETE FROM `smart_scripts` WHERE (`entryorguid` = 9000) AND (`source_type` = 1) AND (`id` IN (0));
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(9000, 1, 0, 0, 1, 0, 100, 0, 0, 0, 5000, 5000, 0, 11, 28444, 0, 0, 0, 0, 0, 17, 0, 5, 99, 0, 0, 0, 0, 0, '');
+```
+
 Orb that teles from Sapphiron to Naxx
 ID GUID
 202278 268048
@@ -488,6 +497,8 @@ ID GUID
 72617 Spphiron Entry: Teles to naxxramas
 
 just add the gameobject to EPL
+
+Add transporter that you need to click like BWL orb
 
 .gobject add 181599 blue rune // purple 181600
 icy rune
@@ -509,6 +520,8 @@ void OnPlayerEnter(Player* player) override
 }
 ```
 
+custom game object "attacks" nearby players with teleport spell
+
 ## Attunement 
 dungeon ids
 naxx25 ID 31
@@ -525,34 +538,50 @@ DELETE FROM `dungeon_access_requirements` WHERE `dungeon_access_id` = 30;
 INSERT INTO `dungeon_access_requirements`
 (`dungeon_access_id`, `requirement_type`, `requirement_id`, `requirement_note`, `faction`, `priority`, `leader_only`, `comment`)
 VALUES
-(31, 1, 16309, 'You must have the Drakefire Amulet in your inventory before entering Onyxia\'s Lair.', 2, NULL, 0, '');
+(31, 1, 16309, 'Must have completed attunement', 2, NULL, 0, '');
 
-requirement_type set to 2 for quest requirement is of AND type. Not possible to set global requirement for entry...
-Without global requirement, players can be summoned inside the instance.
-However, quest must be completed to enable the turn in of scraps for T3 tokens.
+requirement_type set to 2 for quest requirement is of AND type.
 
-Additionaly we can set a requirement to use the teleporter.
-Either condition of either of 3 quests OR arcane cloaking learned. 
+Not possible to set requirement of any attument quest complete (19121 || 19122 || 19123)
 
-## Quetss
-attunement quest available once honored
+Without dungeon_access_requirement, players can be summoned inside the instance without completeing the quest.
 
+However! The quest must be completed to pickup Echoes of War. Which is a raid
+kill quest where you must kill trash inside Naxx. It is requirement to enable
+the turn in of tokens and scraps for T3 tokens.
+
+Additionaly we can set a requirement to use the teleporter. So some of the raid must complete the quest to use the teleporter.
+
+arcane cloaking
+28006
+
+Either condition of either of 3 quests OR arcane cloaking learned. Arcane cloak requirement seems dodgy. 
+
+Test attunement
+lvl 60 char 
+```
+.tele lightshope
 .mod reputation 529 10000
-
-attunement honored
 .quest complete 9121
+```
 
-echoes of war
+Check loot quests after echoes of war
+```
 .quest complete 9033
-
+```
+## T3 loot quests
 
 loot quests wrong allowable classes
 also 
 missing quest starter and quest ender
 
 hunter character
+.quest add 9059
 .quest complete 9059
 
+Also T3 Paladin helm quest is not disable. The only one out of all the T3 quests.
+
+Check AllowableClasses flag
 ```
 SELECT * FROM `quest_template_addon` WHERE `ID` IN
 (9034, 9036, 9037, 9038,
@@ -571,8 +600,6 @@ SELECT * FROM `quest_template_addon` WHERE `ID` IN
 9103, 9104, 9105, 9106, 9107, 9108, 9109, 9110, 9111, 9112, 9113, 9114, 9115,
 9116, 9117, 9118)
 ```
-
-
 
 ## Some commands
 
