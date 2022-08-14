@@ -22,6 +22,7 @@ Progress:
 - [x] Add quests to turn in T3 tokens
 - [x] Update Echoes of War (adjust kill count)
 - [x] Update Boss Loot to lvl60
+- [x] Make Phylactery quest completable
 - [ ] Update Trash Loot to lvl60
 - [ ] Add Frozen Rune game objects
 - [ ] Add frost resistance recipes
@@ -29,10 +30,6 @@ Progress:
 Skipping (for now):
 - [ ] Scourge event
 - [ ] Accurate Naxx40 mechanics
-
-Needs testing:
-  KTZ Boss loot, atiesh staff + philactery
-
 
 25man mechanics (using 25man map)
 ![raz](razuvious_25man_mechanics.png)
