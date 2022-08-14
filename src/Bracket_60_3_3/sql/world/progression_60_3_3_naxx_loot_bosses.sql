@@ -143,7 +143,7 @@ INSERT INTO `creature_loot_template`
 `MinCount`, `MaxCount`, `Comment`)
 VALUES
 (@Noth, 34042, 34042, 100.0, 0, 1, 0, 1, 1, 'Noth the Plaguebringer (1) - (ReferenceTable)'),
-(@Noth, 34147, 34147, 100.0, 0, 1, 0, 1, 1, 'Noth the Plaguebringer (1) - (ReferenceTable)');
+(@Noth, 34147, 34147, 100.0, 0, 1, 0, 1, 1, 'Noth the Plaguebringer (1) - (ReferenceTable)'),
 (@Noth, 22726,     0,  30, 0, 1, 0, 1, 1, 'Noth the Plaguebringer (1) - Atiesh Splinter');
 DELETE FROM `reference_loot_template` WHERE `Entry` IN (34042, 34147);
 INSERT INTO `reference_loot_template` (`Entry`, `Item`, `Reference`, `Chance`,
