@@ -136,6 +136,10 @@ VALUES
 (193166, 23, 5492, 'Meeting Stone', '', '', '', 0.75, @MINLEVEL, 255, 3456, 0,
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', 12340);
 
+-- Update Echoes of War (QuestID: 9003)
+-- Lower amount of Living Monstrosity from 5 to 3 as there are only 3
+UPDATE `quest_template` SET `RequiredNpcOrGoCount3` = 3 WHERE (`ID` = 9033);
+
 -- Enable T3 turn in Quests
 DELETE FROM disables WHERE sourceType=1 AND entry IN(9034, 9036, 9037, 9038,
 9039, 9040, 9041, 9042, 9043, 9044, 9045, 9046, 9047, 9048, 9049, 9050, 9054,

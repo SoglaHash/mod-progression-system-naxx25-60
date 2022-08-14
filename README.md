@@ -20,10 +20,10 @@ Progress:
 - [x] Add enter spell (ID: 29296) when entering Naxx (improve: need to overwrite instance OnPlayerEntered)
 - [x] Add Attunement quest requirement (only to TP orb and boss->start tp)
 - [x] Add quests to turn in T3 tokens
+- [x] Update Echoes of War (adjust kill count)
 - [x] Update Boss Loot to lvl60
 - [ ] Update Trash Loot to lvl60
 - [ ] Add Frozen Rune game objects
-- [ ] Update Echoes of War kill quest to naxx25 NPCs
 - [ ] Add frost resistance recipes
 - [ ] Add frost resistance anvil (gobject)
 Skipping (for now):
