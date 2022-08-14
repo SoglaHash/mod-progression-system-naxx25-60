@@ -310,8 +310,8 @@ INSERT INTO `creature_loot_template`
 `MinCount`, `MaxCount`, `Comment`)
 VALUES
 (@Sapphiron, 34043, 34043, 100, 0, 1, 0, 1, 2, 'Sapphiron (1) - (ReferenceTable)'),
-(@Sapphiron, 34101, 34101, 100, 0, 1, 0, 1, 2, 'Sapphiron (1) - (ReferenceTable)'),
-(@Sapphiron, 34135, 34135, 100, 0, 1, 0, 1, 2, 'Sapphiron (1) - (ReferenceTable)');
+(@Sapphiron, 34101, 34101, 100, 0, 1, 0, 1, 1, 'Sapphiron (1) - (ReferenceTable)'),
+(@Sapphiron, 34135, 34135, 100, 0, 1, 0, 1, 1, 'Sapphiron (1) - (ReferenceTable)');
 DELETE FROM `reference_loot_template` WHERE `Entry` IN (34043, 34101, 34135);
 INSERT INTO `reference_loot_template` (`Entry`, `Item`, `Reference`, `Chance`,
 `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`)
