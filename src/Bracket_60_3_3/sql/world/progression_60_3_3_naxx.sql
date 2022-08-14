@@ -126,3 +126,8 @@ DELETE FROM disables WHERE sourceType=1 AND entry IN(9034, 9036, 9037, 9038,
 9089, 9090, 9091, 9092, 9093, 9095, 9096, 9097, 9098, 9099, 9100, 9101, 9102,
 9103, 9104, 9105, 9106, 9107, 9108, 9109, 9110, 9111, 9112, 9113, 9114, 9115,
 9116, 9117, 9118);
+
+-- Add condition Attunement to spell TP
+DELETE FROM `conditions` WHERE (`SourceTypeOrReferenceId` = 15) AND (`SourceGroup` = 10389) AND (`SourceEntry` = 2) AND (`SourceId` = 0) AND (`ElseGroup` = 0) AND (`ConditionTypeOrReference` = 13) AND (`ConditionTarget` = 1) AND (`ConditionValue1` = 0) AND (`ConditionValue2` = 3) AND (`ConditionValue3` = 0);
+INSERT INTO `conditions` (`SourceTypeOrReferenceId`, `SourceGroup`, `SourceEntry`, `SourceId`, `ElseGroup`, `ConditionTypeOrReference`, `ConditionTarget`, `ConditionValue1`, `ConditionValue2`, `ConditionValue3`, `NegativeCondition`, `ErrorType`, `ErrorTextId`, `ScriptName`, `Comment`) VALUES
+(17, 0, 28444, 0, 0, 8, 1, 9123, 0, 0, 0, 0, 0, '', 'Naxxramas Teleporter Attunement 9123');

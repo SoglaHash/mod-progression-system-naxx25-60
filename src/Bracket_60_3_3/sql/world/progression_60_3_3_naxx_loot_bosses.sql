@@ -1,7 +1,3 @@
--- Bosses
--- Horsemen
--- DELETE FROM `creature_loot_template` WHERE `Entry` IN (30603, 30601, 30600, 30602);
-
 SET @4HChest    := 25193;
 SET @Anubrekhan := 29249;
 SET @Faerlina   := 29268;
@@ -82,6 +78,7 @@ VALUES
 (34141, 22967, 0, 0, 0, 1, 1, 1, 1, 'Icy Scale Spaulders'),
 (34141, 22968, 0, 0, 0, 1, 1, 1, 1, 'Glacial Mantle'),
 (34141, 22988, 0, 0, 0, 1, 1, 1, 1, 'The End of Dreams');
+
 
 -- Gluth
 DELETE FROM `creature_loot_template` WHERE `Entry` = @Gluth;
@@ -199,7 +196,7 @@ VALUES
 (34381, 23037, 0, 0, 0, 1, 1, 1, 1, 'Ring of Spiritual Fervor'),
 (34381, 23038, 0, 0, 0, 1, 1, 1, 1, 'Band of Unnatural Forces'),
 (34381, 23039, 0, 0, 0, 1, 1, 1, 1, 'The Eye of Nerub'),
-(34381, 23042, 0, 0, 0, 1, 1, 1, 1, 'Loatheb's Reflection'),
+(34381, 23042, 0, 0, 0, 1, 1, 1, 1, 'Loatheb\'s Reflection');
 
 -- Anub'Rekhan
 DELETE FROM `creature_loot_template` WHERE `Entry` = @Anubrekhan;
@@ -239,7 +236,7 @@ VALUES
 (34138, 22806, 0, 0, 0, 1, 1, 1, 1, 'Widow\'s Remose'),
 (34138, 22940, 0, 0, 0, 1, 1, 1, 1, 'Icebane Pauldrons'),
 (34138, 22941, 0, 0, 0, 1, 1, 1, 1, 'Polar Shoulder Pads'),
-(34138, 22942, 0, 0, 0, 1, 1, 1, 1, 'The Widow's Embrace'),
+(34138, 22942, 0, 0, 0, 1, 1, 1, 1, 'The Widow\'s Embrace'),
 (34138, 22943, 0, 0, 0, 1, 1, 1, 1, 'Malice Stone Pendant');
 
 -- Maexxna
@@ -320,7 +317,7 @@ INSERT INTO `reference_loot_template` (`Entry`, `Item`, `Reference`, `Chance`,
 `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`)
 VALUES
 (34043, 23040, 0, 0, 0, 1, 1, 1, 1, 'Glyph of Deflection'),
-(34043, 23041, 0, 0, 0, 1, 1, 1, 1, 'Slayer\'s Crest''),
+(34043, 23041, 0, 0, 0, 1, 1, 1, 1, 'Slayer\'s Crest'),
 (34043, 23043, 0, 0, 0, 1, 1, 1, 1, 'The Face of Death'),
 (34043, 23045, 0, 0, 0, 1, 1, 1, 1, 'Shroud of Dominion'),
 (34043, 23046, 0, 0, 0, 1, 1, 1, 1, 'The Restrained Essence of Sapphiron'),
