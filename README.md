@@ -7,7 +7,6 @@ A video (WIP). See more details below
 
 https://user-images.githubusercontent.com/74299960/183513127-17bd96f6-fac9-44a2-be0c-d2eacf6ec15e.mp4
 
-
 Progress:
 - [x] Allow lvl 60 to enter
 - [x] Add floating Naxx (need to move away outside Plaguewood for it to load)
@@ -19,16 +18,20 @@ Progress:
 - [x] Add Teleport gameobject in EPL
 - [x] Integrate scaling script in this repo (v1.2.2-clean-up-old-code from [mod-autobalance-naxx25-60](https://github.com/SoglaHash/mod-autobalance-naxx25-60/tree/naxx)
 - [x] Add enter spell (ID: 29296) when entering Naxx (improve: need to overwrite instance OnPlayerEntered)
+- [x] Add Attunement quest requirement (only to TP orb and boss->start tp)
+- [x] Add quests to turn in T3 tokens
 - [x] Update Boss Loot to lvl60
 - [ ] Update Trash Loot to lvl60
-- [x] Add quests to turn in T3 tokens
 - [ ] Add Frozen Rune game objects
+- [ ] Update Echoes of War kill quest to naxx25 NPCs
 - [ ] Add frost resistance recipes
 - [ ] Add frost resistance anvil (gobject)
-- [ ] Add Attunement quest requirement
 Skipping (for now):
 - [ ] Scourge event
 - [ ] Accurate Naxx40 mechanics
+
+Needs testing:
+  KTZ Boss loot, atiesh staff + philactery
 
 
 25man mechanics (using 25man map)
@@ -542,6 +545,7 @@ VALUES
 
 requirement_type set to 2 for quest requirement is of AND type.
 
+Known Issue:
 Not possible to set requirement of any attument quest complete (19121 || 19122 || 19123)
 
 Without dungeon_access_requirement, players can be summoned inside the instance without completeing the quest.
@@ -550,20 +554,43 @@ However! The quest must be completed to pickup Echoes of War. Which is a raid
 kill quest where you must kill trash inside Naxx. It is requirement to enable
 the turn in of tokens and scraps for T3 tokens.
 
-Additionaly we can set a requirement to use the teleporter. So some of the raid must complete the quest to use the teleporter.
+The teleporter outside is disabled and teleporter (wing->start) inside do not work without attunement
 
 arcane cloaking
 28006
 
-Either condition of either of 3 quests OR arcane cloaking learned. Arcane cloak requirement seems dodgy. 
+Either condition of either of 3 quests OR arcane cloaking learned
+
 
 Test attunement
+make fresh lvl 60 char 
+try without attunement and try with attunement
+attunement spells are `9121, 9122, 9123`
+the attunement has an OR condition.
+
+It is not possible to complete multiple attunements as a player so only test 1
+quest for 1 character.
+```
+.tele lightshope
+.quest add 9121
+.quest complete 9121
+.quest reward 9121
+```
+
+Test T3
 lvl 60 char 
 ```
 .tele lightshope
 .mod reputation 529 10000
 .quest complete 9121
 ```
+
+
+```
+-- Add condition Attunement to teleport spell
+-- Shows when not attuned Error Message 107: That spell is not available to you
+```
+
 
 Check loot quests after echoes of war
 ```

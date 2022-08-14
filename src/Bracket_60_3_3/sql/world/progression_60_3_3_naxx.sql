@@ -60,6 +60,23 @@ VALUES
 @TRANSPORTER_Z, @TRANSPORTER_O, 0, 0,
 -0.063658, -1, 1, 0, 1, '', 0);
 
+-- Add condition Attunement to teleport spell
+-- Shows when not attuned Error Message 107: That spell is not available to you
+DELETE FROM `conditions` WHERE (`SourceTypeOrReferenceId` = 17) AND
+(`SourceGroup` = 0) AND (`SourceEntry` = @DEATH_KNIGHT_PORTAL_EFFECT) AND
+(`SourceId` = 0) AND (`ElseGroup` IN (0,1,2)) AND (`ConditionTypeOrReference` =
+8) AND (`ConditionTarget` = 1) AND (`ConditionValue1` IN (9121, 9122, 9123)) AND
+(`ConditionValue2` = 0) AND (`ConditionValue3` = 0);
+INSERT INTO `conditions`
+(`SourceTypeOrReferenceId`, `SourceGroup`, `SourceEntry`, `SourceId`,
+`ElseGroup`, `ConditionTypeOrReference`, `ConditionTarget`, `ConditionValue1`,
+`ConditionValue2`, `ConditionValue3`, `NegativeCondition`, `ErrorType`,
+`ErrorTextId`, `ScriptName`, `Comment`)
+ VALUES
+(17, 0, @DEATH_KNIGHT_PORTAL_EFFECT, 0, 0, 8, 1, 9121, 0, 0, 0, 107, 0, '', 'Naxxramas Teleporter Attunement Honored'),
+(17, 0, @DEATH_KNIGHT_PORTAL_EFFECT, 0, 1, 8, 1, 9122, 0, 0, 0, 107, 0, '', 'Naxxramas Teleporter Attunement Revered'),
+(17, 0, @DEATH_KNIGHT_PORTAL_EFFECT, 0, 2, 8, 1, 9123, 0, 0, 0, 107, 0, '', 'Naxxramas Teleporter Attunement Exalted');
+
 -- Add Floating Naxx Object (id: 181056)
 -- TODO: Fix visibility. Not always visible
 DELETE FROM `gameobject` WHERE `id`=181056;
@@ -76,6 +93,7 @@ DELETE FROM `areatrigger` WHERE `entry` in (5196, 5197, 5198,  5199);
 DELETE FROM `areatrigger_teleport` WHERE `ID` in (5196, 5197, 5198, 5199);
 
 -- If DISALBE exit EPL then comment out the following
+-- The green portals can not be removed without map editing
 -- Add triggers to Naxx exits (mapID: 533)
 INSERT INTO `areatrigger`
 (`entry`, `map`, `x`, `y`, `z`, `radius`, `length`, `width`, `height`, `orientation`)
@@ -126,13 +144,3 @@ DELETE FROM disables WHERE sourceType=1 AND entry IN(9034, 9036, 9037, 9038,
 9089, 9090, 9091, 9092, 9093, 9095, 9096, 9097, 9098, 9099, 9100, 9101, 9102,
 9103, 9104, 9105, 9106, 9107, 9108, 9109, 9110, 9111, 9112, 9113, 9114, 9115,
 9116, 9117, 9118);
-
--- Add condition Attunement to spell TP
-DELETE FROM `conditions` WHERE (`SourceTypeOrReferenceId` = 15) AND (`SourceGroup` = 10389) AND (`SourceEntry` = 2) AND (`SourceId` = 0) AND (`ElseGroup` = 0) AND (`ConditionTypeOrReference` = 13) AND (`ConditionTarget` = 1) AND (`ConditionValue1` = 0) AND (`ConditionValue2` = 3) AND (`ConditionValue3` = 0);
-INSERT INTO `conditions` (`SourceTypeOrReferenceId`, `SourceGroup`, `SourceEntry`, `SourceId`, `ElseGroup`, `ConditionTypeOrReference`, `ConditionTarget`, `ConditionValue1`, `ConditionValue2`, `ConditionValue3`, `NegativeCondition`, `ErrorType`, `ErrorTextId`, `ScriptName`, `Comment`) VALUES
-(17, 0, 28444, 0, 0, 8, 1, 9123, 0, 0, 0, 0, 0, '', 'Naxxramas Teleporter Attunement 9123');
-
--- Can't use that item error instead of "invalid target"
-DELETE FROM `conditions` WHERE (`SourceTypeOrReferenceId` = 17) AND (`SourceGroup` = 0) AND (`SourceEntry` = 28444) AND (`SourceId` = 0) AND (`ElseGroup` = 0) AND (`ConditionTypeOrReference` = 8) AND (`ConditionTarget` = 1) AND (`ConditionValue1` = 9123) AND (`ConditionValue2` = 0) AND (`ConditionValue3` = 0);
-INSERT INTO `conditions` (`SourceTypeOrReferenceId`, `SourceGroup`, `SourceEntry`, `SourceId`, `ElseGroup`, `ConditionTypeOrReference`, `ConditionTarget`, `ConditionValue1`, `ConditionValue2`, `ConditionValue3`, `NegativeCondition`, `ErrorType`, `ErrorTextId`, `ScriptName`, `Comment`) VALUES
-(17, 0, 28444, 0, 0, 8, 1, 9123, 0, 0, 0, 56, 0, '', 'Naxxramas Teleporter Attunement 9123');
