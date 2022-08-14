@@ -25,7 +25,7 @@ Progress:
 - [ ] Add Frozen Rune game objects
 - [ ] Add frost resistance recipes
 - [ ] Add frost resistance anvil (gobject)
-- [ ] Add Attunement quest requirement
+- [ ] Add Attunement quest requirement 
 Skipping (for now):
 - [ ] Scourge event
 - [ ] Accurate Naxx40 mechanics
@@ -501,13 +501,78 @@ rune
 188695
 Scourge transporter rune
 
-Overwrite Instance Naxx somehow
+Entrance flag
 ```
 void OnPlayerEnter(Player* player) override
 {
     player->CastSpell(player, 29296, true);
 }
 ```
+
+## Attunement 
+dungeon ids
+naxx25 ID 31
+naxx10 ID 30
+Attunement quests
+9121
+9122
+9123
+reward learn spell 
+arcane cloaking
+280006
+
+DELETE FROM `dungeon_access_requirements` WHERE `dungeon_access_id` = 30;
+INSERT INTO `dungeon_access_requirements`
+(`dungeon_access_id`, `requirement_type`, `requirement_id`, `requirement_note`, `faction`, `priority`, `leader_only`, `comment`)
+VALUES
+(31, 1, 16309, 'You must have the Drakefire Amulet in your inventory before entering Onyxia\'s Lair.', 2, NULL, 0, '');
+
+requirement_type set to 2 for quest requirement is of AND type. Not possible to set global requirement for entry...
+Without global requirement, players can be summoned inside the instance.
+However, quest must be completed to enable the turn in of scraps for T3 tokens.
+
+Additionaly we can set a requirement to use the teleporter.
+Either condition of either of 3 quests OR arcane cloaking learned. 
+
+## Quetss
+attunement quest available once honored
+
+.mod reputation 529 10000
+
+attunement honored
+.quest complete 9121
+
+echoes of war
+.quest complete 9033
+
+
+loot quests wrong allowable classes
+also 
+missing quest starter and quest ender
+
+hunter character
+.quest complete 9059
+
+```
+SELECT * FROM `quest_template_addon` WHERE `ID` IN
+(9034, 9036, 9037, 9038,
+9039, 9040, 9041, 9042, 9043, 9044, 9045, 9046, 9047, 9048, 9049, 9050, 9054,
+9055, 9056, 9057, 9058, 9059, 9060, 9061, 9068, 9069, 9070, 9071, 9072, 9073,
+9074, 9075, 9077, 9078, 9079, 9080, 9081, 9082, 9083, 9084, 9086, 9087, 9088,
+9089, 9090, 9091, 9092, 9093, 9095, 9096, 9097, 9098, 9099, 9100, 9101, 9102,
+9103, 9104, 9105, 9106, 9107, 9108, 9109, 9110, 9111, 9112, 9113, 9114, 9115,
+9116, 9117, 9118);
+```
+(9034, 9036, 9037, 9038,
+9039, 9040, 9041, 9042, 9043, 9044, 9045, 9046, 9047, 9048, 9049, 9050, 9054,
+9055, 9056, 9057, 9058, 9059, 9060, 9061, 9068, 9069, 9070, 9071, 9072, 9073,
+9074, 9075, 9077, 9078, 9079, 9080, 9081, 9082, 9083, 9084, 9086, 9087, 9088,
+9089, 9090, 9091, 9092, 9093, 9095, 9096, 9097, 9098, 9099, 9100, 9101, 9102,
+9103, 9104, 9105, 9106, 9107, 9108, 9109, 9110, 9111, 9112, 9113, 9114, 9115,
+9116, 9117, 9118)
+```
+
+
 
 ## Some commands
 

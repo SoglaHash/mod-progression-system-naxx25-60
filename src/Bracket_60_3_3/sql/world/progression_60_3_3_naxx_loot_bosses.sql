@@ -335,7 +335,6 @@ VALUES
 (34135, 23549, 0, 0, 0, 1, 1, 1, 1, 'Fortitude of the Scourge');
 
 -- Kel'Thuzad
--- Atiesh, the Befouled Greatstaff questID: 9251
 DELETE FROM `creature_loot_template` WHERE `Entry` = @Kelthuzad;
 INSERT INTO `creature_loot_template`
 (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`,
