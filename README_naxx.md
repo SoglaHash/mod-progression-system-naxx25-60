@@ -226,6 +226,158 @@ SELECT DISTINCT creature_template.entry, creature_template.difficulty_entry_1, c
 (30047, 30049, 30016, 29279, 29632, 29633, 29635, 29634, 29941, 29267, 29256, 29274, 29273, 30057, 30303, 29388, 30068, 29988, 29989, 29990, 30264, 29986, 29985, 29987)
 ```
 
+NPC Missing 16381
+Archmage Tarsis Kir-Moldir
+dialogue
+sitting position
+
+NPC Missing 16365
+Master Craftsman Omarion <Brotherhood of the Light>
+Inside cage in DK wing
+level 300 BS and revered AD
+levle 300 Tailor
+levle 300 leatherworking
+```
+Omarion will teach players crafting recipes, depending on their crafting profession and reputation with Argent Down:
+Tailoring Revered:
+- Glacial Wrists
+- Glacial Gloves
+Tailoring Exalted:
+- Glacial Vest
+- Glacial Cloak
+Leatherworking Revered
+- Polar Bracers
+- Polar Gloves
+- Icy Scale Bracers
+- Icy Scale Gauntlets
+Leatherworking Exalted
+- Polar Tunic
+- Icy Scale Breastplate
+Blacksmithing Revered
+- Icebane Bracers
+- Icebane Gauntlets
+Blacksmithing Exalted
+- Icebane Breastplate
+```
+Omarion's Handbook, Craftsman Wilhelm craft
+quest 9233
+craft items + 200-300g
+
+## Trash Loot
+Mobs found in Naxx40 by ID according to classic.wowhead
+--loot
+16025
+16451
+16021
+16452
+16368
+16018
+16167
+16156
+16158
+16145
+16163
+16157
+16244
+16020
+15981
+16506
+16165
+16448
+16446
+16447
+16154
+16164
+16193
+16067
+16449
+16168
+16194
+16215
+16216
+15980
+16505
+16017
+16022
+16803
+
+--loot and spider
+15974
+16453
+15979
+15976
+15975
+15978
+
+--loot only scraps
+16243
+16034
+
+--noloot
+16982
+14881
+16030
+16068
+16998
+16486
+16124
+16286
+17055
+16698
+16360
+16428
+16429
+16427
+16375
+16057
+16441
+16037
+16036
+16290
+16024
+16056
+15977
+16125
+16390
+16981
+16984
+16983
+16297
+16236
+16146
+16861
+16573
+16148
+16149
+16150
+16127
+16029
+16126
+16142
+
+
+Mobs that should not drop loot
+```
+(16982, 14881, 16030, 16068, 16998, 16486, 16124, 16286, 17055, 16698, 16360, 16428, 16429, 16427, 16375, 16057, 16441, 16037, 16036, 16290, 16024, 16056, 15977, 16125, 16390, 16981, 16984, 16983, 16297, 16236, 16146, 16861, 16573, 16148, 16149, 16150, 16127, 16029, 16126, 16142)
+```
+
+Mobs that drop loot
+```
+(16025, 16451, 16021, 16452, 16368, 16018, 16167, 16156, 16158, 16145, 16163, 16157, 16244, 16020, 15981, 16506, 16165, 16448, 16446, 16447, 16154, 16164, 16193, 16067, 16449, 16168, 16194, 16215, 16216, 15980, 16505, 16017, 16022, 16803)
+```
+
+
+Mobs drop loot and spider loot
+```
+(15974, 16453, 15979, 15976, 15975, 15978)
+```
+
+Only drop scraps
+```
+(16243, 16034)
+```
+
+
 ## Select bosses
 ```
 SELECT DISTINCT creature_template.entry, creature_template.difficulty_entry_1, creature_template.name FROM creature_template, creature WHERE creature_template.rank = 3 AND creature.map = 533 AND creature_template.entry = acore_world.creature.id1 AND creature_template.minlevel > 21;
