@@ -83,13 +83,13 @@ PROS: EZ
 
 CONS: Data value of spells is not changed
 
-## 2 Autobalancer  ✅ ❔
+## 2 Autobalancer  ✅ 
 Set scaling with autobalancer script.
 Only autobalance creatures in Naxxramas (mapID: 533)
 
-PROS: Scales all damage and can be tuned with global modifiers
-CONS: Hooks apply to all maps and creatures.
-Applies scaling of 1.0f to 99.99% of all combat interactions.
+PROS:
+
+Scales all damage and can be tuned with global modifiers
 
 EZ to tune with config
 ```
@@ -99,6 +99,13 @@ AutoBalance.rate.mana   = 1.0
 AutoBalance.rate.armor  = 1.0
 AutoBalance.rate.damage = 1.0
 ```
+
+CONS:
+
+ Hooks apply to all maps and creatures.
+Applies scaling of 1.0f to 99.99% of all combat interactions.
+Not 100% blizzlike, No updated EPL map to allow teleporting and ghost running. No naxx40 mechanics
+
 ## 3 Dump and Scale  ❔
 
 Use data from autobalancer to scale only Naxx25 mobs.
@@ -478,18 +485,24 @@ Need to run `/script SetRaidDifficulty(2)` ingame to set difficulty to 25m
 ## How to teleport to naxx?
 No teleporter in EPL. So we must add something "custom". If we want blizzlike the teleporter is present under the map, requires map editing. Is the area trigger still there? If not, can use an invisibile trigger with smartAI to TP.
 
-item on use:
+item in bags on use:
     https://github.com/azerothcore/mod-pocket-portal
-    PROS: neat, more lore friendly
+    PROS: not blizzlike
     CONS: more difficult to implement
 Set epic, itemlvl, turn off boa
 
-portal NPC in Lights Hope:
+portal NPC: 
     https://github.com/Zoidwaffle/sql-npc-teleporter
     PRO: easy
-    CONS: boring
+    CONS: boring, not blizzlike
 
-Object that auto teleports nearby players
+Custom game portal object "attacks" nearby players with teleport spell:
+PRO: blizzlike
+CONS: where to put it to make it blizzlikes as the naxx portal is under the map
+
+Object that teleports on click
+PRO: easy, more lore-friendly
+CONS: not blizzlike
 ```
 UPDATE `gameobject_template` SET `AIName` = 'SmartGameObjectAI' WHERE `entry` = 9000;
 
@@ -530,12 +543,10 @@ void OnPlayerEnter(Player* player) override
 }
 ```
 
-custom game object "attacks" nearby players with teleport spell
-
 ## Attunement 
 Requires in acore is either quest completed, achievement or item in bags.
 
-Blizzlike Naxx attunement is OR of 3 quests. 
+Blizzlike Naxx attunement is OR of 3 quests. Not possible to add Blizzlike by only updating dungeon_access_requirements
 
 Can choose to add custom item that needs to be in bags, like "arcane cloak".. Not blizzlike. I added a condition requirement instead to the spell that TPs you to naxx. So you can be summoned into Naxx, however you still need to complete attunement to access echoes of war which needs to be completed to unlock the T3 loot quests.
 
