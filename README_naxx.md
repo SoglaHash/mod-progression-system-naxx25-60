@@ -31,6 +31,17 @@ Skipping (for now):
 - [ ] Scourge event
 - [ ] Accurate Naxx40 mechanics
 
+floating naxx 25 pathing plaguewood
+
+
+
+https://user-images.githubusercontent.com/74299960/184688910-a65da21f-cd03-4e46-b22e-7021fc1deb48.mp4
+
+
+
+https://user-images.githubusercontent.com/74299960/184688921-0f3c694e-2826-48ce-9e57-9519405a0ad2.mp4
+
+
 25man mechanics (using 25man map)
 ![raz](razuvious_25man_mechanics.png)
 Exit portal to EPl
