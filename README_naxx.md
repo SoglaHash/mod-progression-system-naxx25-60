@@ -24,7 +24,8 @@ Progress:
 - [x] Update Boss Loot to lvl60 (+verify with CMangos)
 - [x] Make Phylactery quest completable
 - [x] Add frost resistance quests from Crafsman Wilhelm
-- [ ] Update Trash Loot to lvl60
+- [x] Update Trash Loot to lvl60
+- [ ] Update Trash gold drops to lvl60
 - [ ] Add Frozen Rune game objects
 - [ ] Add profession frost resistance recipes learned from Omarion
 - [ ] Add frost resistance anvil (gobject)
