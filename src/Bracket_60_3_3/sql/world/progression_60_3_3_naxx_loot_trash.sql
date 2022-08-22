@@ -1,392 +1,172 @@
--- -- Translated ids
--- -- TODO Check creature_loot_template with fresh DB
--- -- 30707, 30107
--- SET @GREENS_REF_1:= 24018;
--- -- 24016, 30061
--- SET @GREENS_REF_2:= 24020;
--- -- 24024
--- SET @GREENS_REF_3:= 24024;
--- -- 30081
--- SET @GREENS_REF_4:= 24023;
--- 
--- -- Mobs that drop loot
--- -- loot
--- -- ```
--- -- (16157, 16158, 16368, 16446, 16448, 16449, 16451, 16452,
--- -- 29247, 29248,
--- 
--- -- 29347,
--- -- 29353, 29362, 29359, 29363, 29371, 29852, 29824, 29831, 29833, 29842, 29825,
--- -- 29828, 29835, 29576, 29837, 29898, 29899, 29900, 29574, 30097, 29273, 29274,
--- -- 29941, 30075, 30424, 30087)
--- 
--- -- Template reference loot
--- -- INSERT INTO `reference_loot_template` (`Entry`, `Item`, `Reference`, `Chance`,
--- -- `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`)
--- -- VALUES
--- -- (34140, 22815, 0, 0, 0, 1, 1, 1, 1, 'Severance'),
--- -- (34140, 22818, 0, 0, 0, 1, 1, 1, 1, 'The The Plague Bearer'),
--- -- (34140, 22820, 0, 0, 0, 1, 1, 1, 1, 'Wand of Fates'),
--- -- (34140, 22960, 0, 0, 0, 1, 1, 1, 1, 'Cloak of Suturing'),
--- -- (34140, 22961, 0, 0, 0, 1, 1, 1, 1, 'Band of Reanimation'),
--- -- (34100, 22354, 0, 0, 0, 1, 1, 1, 1, 'Desecrated Pauldrons'),
--- -- (34100, 22361, 0, 0, 0, 1, 1, 1, 1, 'Desecrated Spaulders'),
--- -- (34100, 22368, 0, 0, 0, 1, 1, 1, 1, 'Desecrated Shoulderpads');
--- 
--- -- Disable loot 
--- UPDATE `creature_template` SET `mingold` = 0, `maxgold` = 0, `lootid` = 0,
--- `skinloot` = 0 WHERE `Entry` IN
--- (14881, 16030, 16068, 16453, 16861, 16998, 29229, 29355, 29356, 29608, 29603,
--- 29612, 31542, 29987, 29985, 29986, 30264, 29357, 29823, 29990, 29989, 29988,
--- 29613, 30068, 29388, 29601, 30303, 29354, 29901, 30015, 30048, 30018, 30057,
--- 30183, 29256, 29267, 29634, 29635, 29633, 29632, 29279);
--- 
--- -- scraps should not be equal
--- SET @SCRAP_REF:= 34117;
--- DELETE FROM `reference_loot_template` WHERE `Entry` = @SCRAP_REF;
--- INSERT INTO `reference_loot_template` (`Entry`, `Item`, `Reference`, `Chance`,
--- `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`)
--- VALUES
--- (@SCRAP_REF, 22373, 0, 0, 0, 1, 1, 1, 1, 'Wartorn Leather Scrap'),
--- (@SCRAP_REF, 22374, 0, 0, 0, 1, 1, 1, 1, 'Wartorn Chain Scrap'),
--- (@SCRAP_REF, 22375, 0, 0, 0, 1, 1, 1, 1, 'Wartorn Plate Scrap'),
--- (@SCRAP_REF, 22376, 0, 0, 0, 1, 1, 1, 1, 'Wartorn Cloth Scrap');
--- 
--- -- Only drop scraps
--- -- (29609, 29575)
--- DELETE FROM `creature_loot_template` WHERE `Entry` IN (29609, 29575);
--- UPDATE `creature_template` SET `lootid` = 29609 WHERE `Entry` = 29609; 
--- UPDATE `creature_template` SET `lootid` = 29575 WHERE `Entry` = 29575; 
--- INSERT INTO `creature_loot_template`
--- (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`,
--- `MinCount`, `MaxCount`, `Comment`)
--- VALUES
--- (29609, @SCRAP_REF, @SCRAP_REF, 20, 0, 1, 0, 1, 1, 'Naxxramas Trash (1) - (ReferenceTable)'),
--- (29575, @SCRAP_REF, @SCRAP_REF, 20, 0, 1, 0, 1, 1, 'Naxxramas Trash (1) - (ReferenceTable)');
--- 
--- -- Necro Knight Guardian
--- SET @NPC:= 16157;
--- UPDATE `creature_template` SET `lootid` = @NPC WHERE `Entry` = @NPC; 
--- DELETE FROM `creature_loot_template` WHERE `Entry` = @NPC;
--- INSERT INTO `creature_loot_template`
--- (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`,
--- `MinCount`, `MaxCount`, `Comment`)
--- VALUES
--- (@NPC, 7910, 0, 0.98, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 14047, 0, 30.88, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22373, 0, 10.29, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22375, 0, 13.24, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22376, 0, 8.82, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23044, 0, 1.47, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23055, 0, 3.92, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, @GREENS_REF_1, 0, 1.0, 0, 1, 0, 1, 1, 'comment');
--- 
--- -- Necro Knight Guardian
--- SET @NPC:= 16158;
--- 
--- DELETE FROM `creature_loot_template` WHERE `Entry` = @NPC;
--- INSERT INTO `creature_loot_template`
--- (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`,
--- `MinCount`, `MaxCount`, `Comment`)
--- VALUES
--- (@NPC, 7909, 0, 1.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 14047, 0, 27.93, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 15746, 0, 0.47, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22373, 0, 13.68, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22374, 0, 6.21, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22375, 0, 9.31, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22376, 0, 13.68, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23055, 0, 1.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23069, 0, 1.38, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23226, 0, 2.07, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23238, 0, 0.34, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, @GREENS_REF_2, @GREENS_REF_2, 1.0, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, @GREENS_REF_1, @GREENS_REF_1, 1.0, 0, 1, 2, 1, 1, 'comment');
--- 
--- -- Necropolis Acolyte
--- SET @NPC:= 16368;
--- DELETE FROM `creature_loot_template` WHERE `Entry` = @NPC;
--- INSERT INTO `creature_loot_template`
--- (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`,
--- `MinCount`, `MaxCount`, `Comment`)
--- VALUES
--- (@NPC, 5760, 0, 0.56, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 7909, 0, 0.2, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 7910, 0, 0.3851, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 12713, 0, 0.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 12728, 0, 0.08, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 14047, 0, 22.208, 0, 1, 0, 2, 5, 'comment'),
--- (@NPC, 14492, 0, 0.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 14497, 0, 0.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 14504, 0, 0.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 14506, 0, 0.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 15765, 0, 0.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 16251, 0, 0.08, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 17683, 0, 0.06, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 18335, 0, 0.1284, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 18600, 0, 0.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 19263, 0, 0.2567, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 19265, 0, 0.1284, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 19283, 0, 0.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22373, 0, 16.8164, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22374, 0, 10.1412, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22375, 0, 16.8164, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22376, 0, 19.7689, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22708, 0, -1.0, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22890, 0, 0.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22891, 0, 0.06, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23044, 0, 0.17, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23055, 0, 5.1348, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23069, 0, 0.56, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23221, 0, 0.2, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23226, 0, 0.14, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23237, 0, 0.5135, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23238, 0, 0.17, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23665, 0, 0.3851, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23666, 0, 0.1284, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23667, 0, 0.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, @GREENS_REF_2, @GREENS_REF_2, 1.0, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, @GREENS_REF_1, @GREENS_REF_1, 1.0, 0, 0, 2, 1, 1, 'comment');
--- 
--- 
--- -- Plagued Gargoyle
--- SET @NPC:= 16446;
--- DELETE FROM `creature_loot_template` WHERE `Entry` = @NPC;
--- INSERT INTO `creature_loot_template`
--- (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`,
--- `MinCount`, `MaxCount`, `Comment`)
--- VALUES
--- (@NPC, 5760, 0, 0.1802, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 7909, 0, 0.1802, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 7910, 0, 0.3604, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 12808, 0, 1.0811, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 14504, 0, 0.04, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 14508, 0, 0.2, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 17414, 0, 0.04, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 17683, 0, 0.04, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22373, 0, 15.3153, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22374, 0, 10.0901, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22375, 0, 16.3964, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22376, 0, 17.8378, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22393, 0, 0.04, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22708, 0, -1.0, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22890, 0, 0.08, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23044, 0, 0.24, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23055, 0, 4.1441, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23069, 0, 7.46, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23221, 0, 0.16, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23226, 0, 0.32, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23237, 0, 0.1802, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23238, 0, 0.2, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23666, 0, 0.1802, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, @GREENS_REF_2, @GREENS_REF_2, 1.0, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, @GREENS_REF_4, @GREENS_REF_4, 1.0, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, @GREENS_REF_1, @GREENS_REF_1, 1.0, 0, 1, 2, 1, 1, 'comment');
--- 
--- -- Plagued Deathhound
--- SET @NPC:= 16448;
--- DELETE FROM `creature_loot_template` WHERE `Entry` = @NPC;
--- INSERT INTO `creature_loot_template`
--- (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`,
--- `MinCount`, `MaxCount`, `Comment`)
--- VALUES
--- (@NPC, 4583, 0, 46.8085, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 4584, 0, 19.1489, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 5760, 0, 2.1277, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 7910, 0, 2.1277, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 18600, 0, 0.31, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22373, 0, 4.2553, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22374, 0, 8.5106, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22375, 0, 21.2766, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22376, 0, 21.2766, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23055, 0, 2.1277, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23221, 0, 1.23, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23237, 0, 0.93, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, @GREENS_REF_2, @GREENS_REF_2, 1.0, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, @GREENS_REF_1, @GREENS_REF_1, 1.0, 0, 1, 2, 1, 1, 'comment');
--- 
--- -- Spirit of Naxxramas
--- SET @NPC:= 16449;
--- DELETE FROM `creature_loot_template` WHERE `Entry` = @NPC;
--- INSERT INTO `creature_loot_template`
--- (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`,
--- `MinCount`, `MaxCount`, `Comment`)
--- VALUES
--- (@NPC, 5760, 0, 0.4292, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 7909, 0, 0.4292, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 7910, 0, 0.18, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 12713, 0, 0.09, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 12808, 0, 0.4292, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 14508, 0, 0.45, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 15765, 0, 0.09, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22373, 0, 18.4549, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22374, 0, 13.3047, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22375, 0, 16.7382, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22376, 0, 12.4464, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22708, 0, -1.0, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23044, 0, 0.45, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23055, 0, 4.721, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23069, 0, 0.18, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23221, 0, 3.23, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23226, 0, 0.27, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23237, 0, 1.2876, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23238, 0, 0.09, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23664, 0, 0.8584, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23667, 0, 0.09, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23668, 0, 0.09, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, @GREENS_REF_2, @GREENS_REF_2, 1.0, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, @GREENS_REF_1, @GREENS_REF_1, 1.0, 0, 1, 2, 1, 1, 'comment');
--- 
--- -- Deathknight Vindicator
--- SET @NPC:= 16451;
--- DELETE FROM `creature_loot_template` WHERE `Entry` = @NPC;
--- INSERT INTO `creature_loot_template`
--- (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`,
--- `MinCount`, `MaxCount`, `Comment`)
--- VALUES
--- (@NPC, 7909, 0, 0.34, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 14047, 0, 31.7757, 0, 1, 0, 2, 5, 'comment'),
--- (@NPC, 16251, 0, 0.34, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 19236, 0, 0.34, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22373, 0, 23.3645, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22374, 0, 12.1495, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22375, 0, 8.4112, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22376, 0, 21.4953, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23055, 0, 0.9346, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23069, 0, 0.68, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23226, 0, 0.68, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23238, 0, 1.01, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, @GREENS_REF_2, @GREENS_REF_2, 1.0, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, @GREENS_REF_1, @GREENS_REF_1, 1.0, 0, 1, 2, 1, 1, 'comment');
--- 
--- -- Necro Knight Guardian
--- SET @NPC:= 16452;
--- DELETE FROM `creature_loot_template` WHERE `Entry` = @NPC;
--- INSERT INTO `creature_loot_template`
--- (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`,
--- `MinCount`, `MaxCount`, `Comment`)
--- VALUES
--- (@NPC, 12808, 0, 1.4493, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 16251, 0, 0.24, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22373, 0, 26.087, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22374, 0, 10.8696, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22375, 0, 18.1159, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22376, 0, 14.4928, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23044, 0, 0.48, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23055, 0, 9.4203, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23226, 0, 0.24, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23237, 0, 0.72, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23238, 0, 0.24, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23668, 0, 0.7246, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, @GREENS_REF_2, @GREENS_REF_2, 1.0, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, @GREENS_REF_1, @GREENS_REF_1, 1.0, 0, 1, 2, 1, 1, 'comment');
--- 
--- -- Naxxramas Cultist
--- SET @NPC:= 29247;
--- DELETE FROM `creature_loot_template` WHERE `Entry` = @NPC;
--- INSERT INTO `creature_loot_template`
--- (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`,
--- `MinCount`, `MaxCount`, `Comment`)
--- VALUES
--- (@NPC, 5760, 0, 0.2514, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 7909, 0, 0.1886, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 7910, 0, 0.1886, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 12697, 0, 0.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 12713, 0, 0.05, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 14047, 0, 23.8843, 0, 1, 0, 2, 5, 'comment'),
--- (@NPC, 14504, 0, 0.02, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 14506, 0, 0.07, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 14508, 0, 0.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 15743, 0, 0.02, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 15765, 0, 0.02, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 16251, 0, 0.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 17414, 0, 0.02, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 17683, 0, 0.12, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 18335, 0, 0.1886, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 18600, 0, 0.02, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 19234, 0, 0.0629, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 19235, 0, 0.0629, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 19236, 0, 0.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 19265, 0, 0.07, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 19272, 0, 0.27, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 19275, 0, 0.02, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 19282, 0, 0.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22373, 0, 14.8963, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22374, 0, 8.0453, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22375, 0, 13.6392, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22376, 0, 18.1647, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22393, 0, 0.05, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22708, 0, -1.0, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22890, 0, 0.08, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22891, 0, 0.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23044, 0, 1.36, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23055, 0, 4.4626, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23069, 0, 0.5, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23221, 0, 0.28, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23226, 0, 0.35, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23237, 0, 0.1257, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23238, 0, 1.36, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23663, 0, 0.1257, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23665, 0, 0.0629, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23666, 0, 0.2514, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23667, 0, 0.08, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23668, 0, 0.2, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, @GREENS_REF_2, @GREENS_REF_2, 1.0, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, @GREENS_REF_4, @GREENS_REF_4, 1.0, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, @GREENS_REF_1, @GREENS_REF_1, 1.0, 0, 1, 2, 1, 1, 'comment');
--- 
--- -- Naxxramas Acolyte
--- SET @NPC:= 29248;
--- DELETE FROM `creature_loot_template` WHERE `Entry` = @NPC;
--- INSERT INTO `creature_loot_template`
--- (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`,
--- `MinCount`, `MaxCount`, `Comment`)
--- VALUES
--- (@NPC, 5760, 0, 0.7268, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 7909, 0, 0.1817, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 7910, 0, 0.23, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 12694, 0, 0.02, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 12704, 0, 0.02, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 14047, 0, 25.2574, 0, 1, 0, 1, 5, 'comment'),
--- (@NPC, 14494, 0, 0.04, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 14498, 0, 0.02, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 14499, 0, 0.02, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 14504, 0, 0.08, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 14506, 0, 0.04, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 14508, 0, 0.23, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 15765, 0, 0.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 16251, 0, 0.05, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 17414, 0, 0.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 17683, 0, 0.23, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 18335, 0, 0.1211, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 18600, 0, 0.08, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 19233, 0, 0.02, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 19235, 0, 0.69, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 19264, 0, 0.23, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 19265, 0, 0.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 19272, 0, 0.02, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 19275, 0, 0.02, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 19282, 0, 0.2423, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 19284, 0, 0.0606, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22373, 0, 14.9606, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22374, 0, 7.874, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22375, 0, 13.9915, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22376, 0, 17.9285, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22393, 0, 0.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22708, 0, -1.0, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22890, 0, 0.02, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 22891, 0, 0.03, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23044, 0, 0.35, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23055, 0, 4.0581, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23069, 0, 0.61, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23221, 0, 0.69, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23226, 0, 0.69, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23237, 0, 0.848, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23238, 0, 0.5, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23664, 0, 0.04, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23665, 0, 0.1817, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23666, 0, 0.05, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23667, 0, 0.3028, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, 23668, 0, 0.26, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, @GREENS_REF_2, @GREENS_REF_2, 1.0, 0, 1, 0, 1, 1, 'comment'),
--- (@NPC, @GREENS_REF_1, @GREENS_REF_1, 1.0, 0, 1, 2, 1, 1, 'comment');
+-- ga * ,
+-- No loot
+UPDATE `creature_template` SET `mingold` = 0, `maxgold` = 0, `lootid` = 0
+WHERE `Entry` IN (29356, 29608, 29603, 29823, 29601);
+
+-- Spider loot
+DELETE FROM `creature_loot_template` WHERE `Entry` IN (29242, 29241, 29243, 30389, 29286);
+INSERT INTO `creature_loot_template`
+(`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`,
+`MinCount`, `MaxCount`, `Comment`)
+VALUES
+(29242, 1074,  0,     18.9548, 0, 1, 0, 1, 1, 'Dread Creeper (1) - Hard Spider Leg Tip'),
+(29242, 4585,  0,     43.0469, 0, 1, 0, 1, 1, 'Dread Creeper (1) - Dripping Spider Mandible'),
+(29242, 5760,  0,     0.0886,  0, 1, 0, 1, 1, 'Dread Creeper (1) - Eternium Lockbox'),
+(29242, 7909,  0,     0.0886,  0, 1, 0, 1, 1, 'Dread Creeper (1) - Aquamarine'),
+(29242, 7910,  0,     0.0886,  0, 1, 0, 1, 1, 'Dread Creeper (1) - Star Ruby'),
+(29242, 12713, 0,     0.02,    0, 1, 0, 1, 1, 'Dread Creeper (1) - Plans: Radiant Leggings'),
+(29242, 13492, 0,     0.02,    0, 1, 0, 1, 1, 'Dread Creeper (1) - Recipe: Purification Potion'),
+(29242, 14227, 0,     9.2117,  0, 1, 0, 1, 2, 'Dread Creeper (1) - Ironweb Spider Silk'),
+(29242, 14504, 0,     0.05,    0, 1, 0, 1, 1, 'Dread Creeper (1) - Pattern: Runecloth Shoulders'),
+(29242, 14506, 0,     0.07,    0, 1, 0, 1, 1, 'Dread Creeper (1) - Pattern: Felcloth Robe'),
+(29242, 14508, 0,     0.16,    0, 1, 0, 1, 1, 'Dread Creeper (1) - Pattern: Felcloth Shoulders'),
+(29242, 15746, 0,     0.16,    0, 1, 0, 1, 1, 'Dread Creeper (1) - Pattern: Chimeric Leggings'),
+(29242, 16251, 0,     0.02,    0, 1, 0, 1, 1, 'Dread Creeper (1) - Formula: Enchant Bracer - Superior Stamina'),
+(29242, 16253, 0,     0.05,    0, 1, 0, 1, 1, 'Dread Creeper (1) - Formula: Enchant Chest - Greater Stats'),
+(29242, 17414, 0,     0.05,    0, 1, 0, 1, 1, 'Dread Creeper (1) - Codex: Prayer of Fortitude II'),
+(29242, 17683, 0,     0.02,    0, 1, 0, 1, 1, 'Dread Creeper (1) - Book: Gift of the Wild II'),
+(29242, 18600, 0,     0.05,    0, 1, 0, 1, 1, 'Dread Creeper (1) - Tome of Arcane Brilliance'),
+(29242, 19441, 0,     3.0115,  0, 1, 0, 1, 1, 'Dread Creeper (1) - Huge Venom Sac'),
+(29242, 22373, 0,     13.6404, 0, 1, 0, 1, 1, 'Dread Creeper (1) - Wartorn Leather Scrap'),
+(29242, 22374, 0,     7.3516,  0, 1, 0, 1, 1, 'Dread Creeper (1) - Wartorn Chain Scrap'),
+(29242, 22375, 0,     12.0461, 0, 1, 0, 1, 1, 'Dread Creeper (1) - Wartorn Plate Scrap'),
+(29242, 22376, 0,     16.3862, 0, 1, 0, 1, 1, 'Dread Creeper (1) - Wartorn Cloth Scrap'),
+(29242, 22393, 0,     0.02,    0, 1, 0, 1, 1, 'Dread Creeper (1) - Codex: Prayer of Shadow Protection'),
+(29242, 22708, 0,     -100.0,  0, 1, 0, 1, 1, 'Dread Creeper (1) - Fate of Ramaladni'),
+(29242, 22891, 0,     0.03,    0, 1, 0, 1, 1, 'Dread Creeper (1) - Grimoire of Shadow Ward IV'),
+(29242, 23044, 0,     0.16,    0, 1, 0, 1, 1, 'Dread Creeper (1) - Harbinger of Doom'),
+(29242, 23055, 0,     1.8601,  0, 1, 0, 1, 1, 'Dread Creeper (1) - Word of Thawing'),
+(29242, 23069, 0,     0.3,     0, 1, 0, 1, 1, 'Dread Creeper (1) - Necro-Knight\'s Garb'),
+(29242, 23221, 0,     0.48,    0, 1, 0, 1, 1, 'Dread Creeper (1) - Misplaced Servo Arm'),
+(29242, 23226, 0,     0.32,    0, 1, 0, 1, 1, 'Dread Creeper (1) - Ghoul Skin Tunic'),
+(29242, 23237, 0,     0.0886,  0, 1, 0, 1, 1, 'Dread Creeper (1) - Ring of the Eternal Flame'),
+(29242, 23238, 0,     0.33,    0, 1, 0, 1, 1, 'Dread Creeper (1) - Stygian Buckler'),
+(29242, 23665, 0,     0.0886,  0, 1, 0, 1, 1, 'Dread Creeper (1) - Leggings of Elemental Fury'),
+(29242, 23666, 0,     0.03,    0, 1, 0, 1, 1, 'Dread Creeper (1) - Belt of the Grand Crusader'),
+(29242, 23667, 0,     0.1,     0, 1, 0, 1, 1, 'Dread Creeper (1) - Spaulders of the Grand Crusader'),
+(29242, 23668, 0,     0.32,    0, 1, 0, 1, 1, 'Dread Creeper (1) - Leggings of the Grand Crusader'),
+(29242, 24016, 24016, 1.0,     0, 1, 1, 1, 1, 'Dread Creeper (1) - (ReferenceTable)'),
+(29242, 24018, 24018, 1.0,     0, 1, 1, 1, 1, 'Dread Creeper (1) - (ReferenceTable)'),
+(29242, 24020, 24020, 1.0,     0, 1, 1, 1, 1, 'Dread Creeper (1) - (ReferenceTable)'),
+(29242, 24033, 24033, 1.0,     0, 1, 1, 1, 1, 'Dread Creeper (1) - (ReferenceTable)'),
+(29241, 1074,  0,     16.1976, 0, 1, 0, 1, 1, 'Carrion Spinner (1) - Hard Spider Leg Tip'),
+(29241, 4585,  0,     49.1097, 0, 1, 0, 1, 1, 'Carrion Spinner (1) - Dripping Spider Mandible'),
+(29241, 5760,  0,     0.1149,  0, 1, 0, 1, 1, 'Carrion Spinner (1) - Eternium Lockbox'),
+(29241, 7909,  0,     0.1149,  0, 1, 0, 1, 1, 'Carrion Spinner (1) - Aquamarine'),
+(29241, 7910,  0,     0.0574,  0, 1, 0, 1, 1, 'Carrion Spinner (1) - Star Ruby'),
+(29241, 12693, 0,     0.02,    0, 1, 0, 1, 1, 'Carrion Spinner (1) - Plans: Thorium Boots'),
+(29241, 12713, 0,     0.07,    0, 1, 0, 1, 1, 'Carrion Spinner (1) - Plans: Radiant Leggings'),
+(29241, 12728, 0,     0.02,    0, 1, 0, 1, 1, 'Carrion Spinner (1) - Plans: Invulnerable Mail'),
+(29241, 14227, 0,     9.1327,  0, 1, 0, 1, 2, 'Carrion Spinner (1) - Ironweb Spider Silk'),
+(29241, 14504, 0,     0.06,    0, 1, 0, 1, 1, 'Carrion Spinner (1) - Pattern: Runecloth Shoulders'),
+(29241, 14506, 0,     0.02,    0, 1, 0, 1, 1, 'Carrion Spinner (1) - Pattern: Felcloth Robe'),
+(29241, 14508, 0,     0.15,    0, 1, 0, 1, 1, 'Carrion Spinner (1) - Pattern: Felcloth Shoulders'),
+(29241, 15757, 0,     0.02,    0, 1, 0, 1, 1, 'Carrion Spinner (1) - Pattern: Wicked Leather Pants'),
+(29241, 15765, 0,     0.02,    0, 1, 0, 1, 1, 'Carrion Spinner (1) - Pattern: Runic Leather Pants'),
+(29241, 16251, 0,     0.02,    0, 1, 0, 1, 1, 'Carrion Spinner (1) - Formula: Enchant Bracer - Superior Stamina'),
+(29241, 17414, 0,     0.02,    0, 1, 0, 1, 1, 'Carrion Spinner (1) - Codex: Prayer of Fortitude II'),
+(29241, 17683, 0,     0.02,    0, 1, 0, 1, 1, 'Carrion Spinner (1) - Book: Gift of the Wild II'),
+(29241, 18600, 0,     0.02,    0, 1, 0, 1, 1, 'Carrion Spinner (1) - Tome of Arcane Brilliance'),
+(29241, 19441, 0,     2.8719,  0, 1, 0, 1, 1, 'Carrion Spinner (1) - Huge Venom Sac'),
+(29241, 22373, 0,     12.6364, 0, 1, 0, 1, 1, 'Carrion Spinner (1) - Wartorn Leather Scrap'),
+(29241, 22374, 0,     6.4905,  0, 1, 0, 1, 1, 'Carrion Spinner (1) - Wartorn Chain Scrap'),
+(29241, 22375, 0,     10.7984, 0, 1, 0, 1, 1, 'Carrion Spinner (1) - Wartorn Plate Scrap'),
+(29241, 22376, 0,     15.336,  0, 1, 0, 1, 1, 'Carrion Spinner (1) - Wartorn Cloth Scrap'),
+(29241, 22390, 0,     0.02,    0, 1, 0, 1, 1, 'Carrion Spinner (1) - Plans: Persuader'),
+(29241, 22393, 0,     0.02,    0, 1, 0, 1, 1, 'Carrion Spinner (1) - Codex: Prayer of Shadow Protection'),
+(29241, 22708, 0,     -100.0,  0, 1, 0, 1, 1, 'Carrion Spinner (1) - Fate of Ramaladni'),
+(29241, 22891, 0,     0.02,    0, 1, 0, 1, 1, 'Carrion Spinner (1) - Grimoire of Shadow Ward IV'),
+(29241, 23044, 0,     0.15,    0, 1, 0, 1, 1, 'Carrion Spinner (1) - Harbinger of Doom'),
+(29241, 23055, 0,     3.7335,  0, 1, 0, 1, 1, 'Carrion Spinner (1) - Word of Thawing'),
+(29241, 23069, 0,     0.28,    0, 1, 0, 1, 1, 'Carrion Spinner (1) - Necro-Knight\'s Garb'),
+(29241, 23221, 0,     0.25,    0, 1, 0, 1, 1, 'Carrion Spinner (1) - Misplaced Servo Arm'),
+(29241, 23226, 0,     0.25,    0, 1, 0, 1, 1, 'Carrion Spinner (1) - Ghoul Skin Tunic'),
+(29241, 23237, 0,     0.2872,  0, 1, 0, 1, 1, 'Carrion Spinner (1) - Ring of the Eternal Flame'),
+(29241, 23238, 0,     0.44,    0, 1, 0, 1, 1, 'Carrion Spinner (1) - Stygian Buckler'),
+(29241, 23664, 0,     0.0574,  0, 1, 0, 1, 1, 'Carrion Spinner (1) - Pauldrons of Elemental Fury'),
+(29241, 23665, 0,     0.0574,  0, 1, 0, 1, 1, 'Carrion Spinner (1) - Leggings of Elemental Fury'),
+(29241, 23666, 0,     0.02,    0, 1, 0, 1, 1, 'Carrion Spinner (1) - Belt of the Grand Crusader'),
+(29241, 23667, 0,     0.0574,  0, 1, 0, 1, 1, 'Carrion Spinner (1) - Spaulders of the Grand Crusader'),
+(29241, 23668, 0,     0.0574,  0, 1, 0, 1, 1, 'Carrion Spinner (1) - Leggings of the Grand Crusader'),
+(29241, 24016, 24016, 1.0,     0, 1, 1, 1, 1, 'Carrion Spinner (1) - (ReferenceTable)'),
+(29241, 24018, 24018, 1.0,     0, 1, 1, 1, 1, 'Carrion Spinner (1) - (ReferenceTable)'),
+(29241, 24020, 24020, 1.0,     0, 1, 1, 1, 1, 'Carrion Spinner (1) - (ReferenceTable)'),
+(29241, 24033, 24033, 1.0,     0, 1, 1, 1, 1, 'Carrion Spinner (1) - (ReferenceTable)'),
+(29243, 1074,  0,     15.4394, 0, 1, 0, 1, 1, 'Venom Stalker (1) - Hard Spider Leg Tip'),
+(29243, 4585,  0,     51.0689, 0, 1, 0, 1, 1, 'Venom Stalker (1) - Dripping Spider Mandible'),
+(29243, 5760,  0,     0.7126,  0, 1, 0, 1, 1, 'Venom Stalker (1) - Eternium Lockbox'),
+(29243, 7909,  0,     0.24,    0, 1, 0, 1, 1, 'Venom Stalker (1) - Aquamarine'),
+(29243, 7910,  0,     0.2375,  0, 1, 0, 1, 1, 'Venom Stalker (1) - Star Ruby'),
+(29243, 14227, 0,     9.0261,  0, 1, 0, 1, 2, 'Venom Stalker (1) - Ironweb Spider Silk'),
+(29243, 14506, 0,     0.1,     0, 1, 0, 1, 1, 'Venom Stalker (1) - Pattern: Felcloth Robe'),
+(29243, 16251, 0,     0.03,    0, 1, 0, 1, 1, 'Venom Stalker (1) - Formula: Enchant Bracer - Superior Stamina'),
+(29243, 17414, 0,     0.21,    0, 1, 0, 1, 1, 'Venom Stalker (1) - Codex: Prayer of Fortitude II'),
+(29243, 18600, 0,     0.21,    0, 1, 0, 1, 1, 'Venom Stalker (1) - Tome of Arcane Brilliance'),
+(29243, 19441, 0,     4.038,   0, 1, 0, 1, 1, 'Venom Stalker (1) - Huge Venom Sac'),
+(29243, 22373, 0,     12.5891, 0, 1, 0, 1, 1, 'Venom Stalker (1) - Wartorn Leather Scrap'),
+(29243, 22374, 0,     6.8884,  0, 1, 0, 1, 1, 'Venom Stalker (1) - Wartorn Chain Scrap'),
+(29243, 22375, 0,     9.2637,  0, 1, 0, 1, 1, 'Venom Stalker (1) - Wartorn Plate Scrap'),
+(29243, 22376, 0,     13.3017, 0, 1, 0, 1, 1, 'Venom Stalker (1) - Wartorn Cloth Scrap'),
+(29243, 22393, 0,     0.21,    0, 1, 0, 1, 1, 'Venom Stalker (1) - Codex: Prayer of Shadow Protection'),
+(29243, 22708, 0,     -100.0,  0, 1, 0, 1, 1, 'Venom Stalker (1) - Fate of Ramaladni'),
+(29243, 22891, 0,     0.03,    0, 1, 0, 1, 1, 'Venom Stalker (1) - Grimoire of Shadow Ward IV'),
+(29243, 23044, 0,     0.13,    0, 1, 0, 1, 1, 'Venom Stalker (1) - Harbinger of Doom'),
+(29243, 23055, 0,     1.9002,  0, 1, 0, 1, 1, 'Venom Stalker (1) - Word of Thawing'),
+(29243, 23069, 0,     0.07,    0, 1, 0, 1, 1, 'Venom Stalker (1) - Necro-Knight\'s Garb'),
+(29243, 23221, 0,     0.03,    0, 1, 0, 1, 1, 'Venom Stalker (1) - Misplaced Servo Arm'),
+(29243, 23226, 0,     0.24,    0, 1, 0, 1, 1, 'Venom Stalker (1) - Ghoul Skin Tunic'),
+(29243, 23237, 0,     0.4751,  0, 1, 0, 1, 1, 'Venom Stalker (1) - Ring of the Eternal Flame'),
+(29243, 23238, 0,     0.07,    0, 1, 0, 1, 1, 'Venom Stalker (1) - Stygian Buckler'),
+(29243, 23666, 0,     0.2375,  0, 1, 0, 1, 1, 'Venom Stalker (1) - Belt of the Grand Crusader'),
+(29243, 23667, 0,     0.13,    0, 1, 0, 1, 1, 'Venom Stalker (1) - Spaulders of the Grand Crusader'),
+(29243, 23668, 0,     0.4751,  0, 1, 0, 1, 1, 'Venom Stalker (1) - Leggings of the Grand Crusader'),
+(29243, 24016, 24016, 1.0,     0, 1, 1, 1, 1, 'Venom Stalker (1) - (ReferenceTable)'),
+(29243, 24018, 24018, 1.0,     0, 1, 1, 1, 1, 'Venom Stalker (1) - (ReferenceTable)'),
+(29243, 24020, 24020, 1.0,     0, 1, 1, 1, 1, 'Venom Stalker (1) - (ReferenceTable)'),
+(30389, 1074,  0,     18.2692, 0, 1, 0, 1, 1, 'Crypt Reaver (1) - Hard Spider Leg Tip'),
+(30389, 4585,  0,     47.1154, 0, 1, 0, 1, 1, 'Crypt Reaver (1) - Dripping Spider Mandible'),
+(30389, 5760,  0,     0.09,    0, 1, 0, 1, 1, 'Crypt Reaver (1) - Eternium Lockbox'),
+(30389, 7909,  0,     0.27,    0, 1, 0, 1, 1, 'Crypt Reaver (1) - Aquamarine'),
+(30389, 7910,  0,     0.18,    0, 1, 0, 1, 1, 'Crypt Reaver (1) - Star Ruby'),
+(30389, 14227, 0,     7.2115,  0, 1, 0, 1, 2, 'Crypt Reaver (1) - Ironweb Spider Silk'),
+(30389, 14504, 0,     0.09,    0, 1, 0, 1, 1, 'Crypt Reaver (1) - Pattern: Runecloth Shoulders'),
+(30389, 14506, 0,     0.09,    0, 1, 0, 1, 1, 'Crypt Reaver (1) - Pattern: Felcloth Robe'),
+(30389, 17683, 0,     0.18,    0, 1, 0, 1, 1, 'Crypt Reaver (1) - Book: Gift of the Wild II'),
+(30389, 19441, 0,     1.9231,  0, 1, 0, 1, 1, 'Crypt Reaver (1) - Huge Venom Sac'),
+(30389, 22373, 0,     14.9038, 0, 1, 0, 1, 1, 'Crypt Reaver (1) - Wartorn Leather Scrap'),
+(30389, 22374, 0,     3.3654,  0, 1, 0, 1, 1, 'Crypt Reaver (1) - Wartorn Chain Scrap'),
+(30389, 22375, 0,     13.4615, 0, 1, 0, 1, 1, 'Crypt Reaver (1) - Wartorn Plate Scrap'),
+(30389, 22376, 0,     11.0577, 0, 1, 0, 1, 1, 'Crypt Reaver (1) - Wartorn Cloth Scrap'),
+(30389, 22708, 0,     -100.0,  0, 1, 0, 1, 1, 'Crypt Reaver (1) - Fate of Ramaladni'),
+(30389, 23055, 0,     1.4423,  0, 1, 0, 1, 1, 'Crypt Reaver (1) - Word of Thawing'),
+(30389, 23069, 0,     1.33,    0, 1, 0, 1, 1, 'Crypt Reaver (1) - Necro-Knight\'s Garb'),
+(30389, 23226, 0,     0.18,    0, 1, 0, 1, 1, 'Crypt Reaver (1) - Ghoul Skin Tunic'),
+(30389, 23237, 0,     0.36,    0, 1, 0, 1, 1, 'Crypt Reaver (1) - Ring of the Eternal Flame'),
+(30389, 23665, 0,     0.4808,  0, 1, 0, 1, 1, 'Crypt Reaver (1) - Leggings of Elemental Fury'),
+(30389, 23666, 0,     0.45,    0, 1, 0, 1, 1, 'Crypt Reaver (1) - Belt of the Grand Crusader'),
+(30389, 23667, 0,     0.18,    0, 1, 0, 1, 1, 'Crypt Reaver (1) - Spaulders of the Grand Crusader'),
+(30389, 24016, 24016, 1.0,     0, 1, 1, 1, 1, 'Crypt Reaver (1) - (ReferenceTable)'),
+(30389, 24018, 24018, 1.0,     0, 1, 1, 1, 1, 'Crypt Reaver (1) - (ReferenceTable)'),
+(29286, 1074,  0,     23.1527, 0, 1, 0, 1, 1, 'Tomb Horror (1) - Hard Spider Leg Tip'),
+(29286, 4585,  0,     39.9015, 0, 1, 0, 1, 1, 'Tomb Horror (1) - Dripping Spider Mandible'),
+(29286, 5760,  0,     0.13,    0, 1, 0, 1, 1, 'Tomb Horror (1) - Eternium Lockbox'),
+(29286, 7909,  0,     0.13,    0, 1, 0, 1, 1, 'Tomb Horror (1) - Aquamarine'),
+(29286, 7910,  0,     0.4926,  0, 1, 0, 1, 1, 'Tomb Horror (1) - Star Ruby'),
+(29286, 14227, 0,     10.3448, 0, 1, 0, 1, 2, 'Tomb Horror (1) - Ironweb Spider Silk'),
+(29286, 14511, 0,     0.25,    0, 1, 0, 1, 1, 'Tomb Horror (1) - Pattern: Gloves of Spell Mastery'),
+(29286, 16245, 0,     0.13,    0, 1, 0, 1, 1, 'Tomb Horror (1) - Formula: Enchant Boots - Greater Agility'),
+(29286, 16251, 0,     0.25,    0, 1, 0, 1, 1, 'Tomb Horror (1) - Formula: Enchant Bracer - Superior Stamina'),
+(29286, 19441, 0,     1.4778,  0, 1, 0, 1, 1, 'Tomb Horror (1) - Huge Venom Sac'),
+(29286, 22373, 0,     13.3005, 0, 1, 0, 1, 1, 'Tomb Horror (1) - Wartorn Leather Scrap'),
+(29286, 22374, 0,     5.9113,  0, 1, 0, 1, 1, 'Tomb Horror (1) - Wartorn Chain Scrap'),
+(29286, 22375, 0,     14.7783, 0, 1, 0, 1, 1, 'Tomb Horror (1) - Wartorn Plate Scrap'),
+(29286, 22376, 0,     11.8227, 0, 1, 0, 1, 1, 'Tomb Horror (1) - Wartorn Cloth Scrap'),
+(29286, 22708, 0,     -1.0,    0, 1, 0, 1, 1, 'Tomb Horror (1) - Fate of Ramaladni'),
+(29286, 23055, 0,     3.4483,  0, 1, 0, 1, 1, 'Tomb Horror (1) - Word of Thawing'),
+(29286, 23069, 0,     0.38,    0, 1, 0, 1, 1, 'Tomb Horror (1) - Necro-Knight\'s Garb'),
+(29286, 23221, 0,     0.25,    0, 1, 0, 1, 1, 'Tomb Horror (1) - Misplaced Servo Arm'),
+(29286, 23237, 0,     0.9852,  0, 1, 0, 1, 1, 'Tomb Horror (1) - Ring of the Eternal Flame'),
+(29286, 23238, 0,     0.38,    0, 1, 0, 1, 1, 'Tomb Horror (1) - Stygian Buckler'),
+(29286, 23664, 0,     0.4926,  0, 1, 0, 1, 1, 'Tomb Horror (1) - Pauldrons of Elemental Fury'),
+(29286, 23665, 0,     0.13,    0, 1, 0, 1, 1, 'Tomb Horror (1) - Leggings of Elemental Fury'),
+(29286, 23666, 0,     0.13,    0, 1, 0, 1, 1, 'Tomb Horror (1) - Belt of the Grand Crusader');
