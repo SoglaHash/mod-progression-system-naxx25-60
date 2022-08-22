@@ -117,7 +117,7 @@ INSERT INTO `creature_loot_template`
 (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`,
 `MinCount`, `MaxCount`, `Comment`)
 VALUES
-(@Thaddius, 34143, 34143, 100, 0, 1, 0, 1, 2, 'Thaddius (1) - (ReferenceTable)'),
+(@Thaddius, 34143, 34143, 100, 0, 1, 0, 1, 1, 'Thaddius (1) - (ReferenceTable)'),
 (@Thaddius, 34380, 34380, 100, 0, 1, 0, 1, 2, 'Thaddius (1) - (ReferenceTable)'),
 (@Thaddius, 22726,     0,  30, 0, 1, 0, 1, 1, 'Thaddius (1) - Atiesh Splinter');
 DELETE FROM `reference_loot_template` WHERE `Entry` IN (34143, 34380);
@@ -139,8 +139,8 @@ INSERT INTO `creature_loot_template`
 (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`,
 `MinCount`, `MaxCount`, `Comment`)
 VALUES
-(@Noth, 34042, 34042, 100.0, 0, 1, 0, 1, 1, 'Noth the Plaguebringer (1) - (ReferenceTable)'),
-(@Noth, 34147, 34147, 100.0, 0, 1, 0, 1, 1, 'Noth the Plaguebringer (1) - (ReferenceTable)'),
+(@Noth, 34042, 34042, 100, 0, 1, 0, 1, 1, 'Noth the Plaguebringer (1) - (ReferenceTable)'),
+(@Noth, 34147, 34147, 100, 0, 1, 0, 1, 1, 'Noth the Plaguebringer (1) - (ReferenceTable)'),
 (@Noth, 22726,     0,  30, 0, 1, 0, 1, 1, 'Noth the Plaguebringer (1) - Atiesh Splinter');
 DELETE FROM `reference_loot_template` WHERE `Entry` IN (34042, 34147);
 INSERT INTO `reference_loot_template` (`Entry`, `Item`, `Reference`, `Chance`,
@@ -309,23 +309,22 @@ INSERT INTO `creature_loot_template`
 (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`,
 `MinCount`, `MaxCount`, `Comment`)
 VALUES
-(@Sapphiron, 34043, 34043, 100, 0, 1, 0, 1, 2, 'Sapphiron (1) - (ReferenceTable)'),
-(@Sapphiron, 34101, 34101, 100, 0, 1, 0, 1, 1, 'Sapphiron (1) - (ReferenceTable)'),
-(@Sapphiron, 34135, 34135, 100, 0, 1, 0, 1, 1, 'Sapphiron (1) - (ReferenceTable)');
-DELETE FROM `reference_loot_template` WHERE `Entry` IN (34043, 34101, 34135);
+(@Sapphiron, 34101, 34101, 100, 0, 1, 1, 1, 1, 'Sapphiron (1) - (ReferenceTable)'),
+(@Sapphiron, 34135, 34135, 100, 0, 1, 2, 1, 1, 'Sapphiron (1) - (ReferenceTable)'),
+(@Sapphiron, 23040,     0,   0, 1, 0, 3, 1, 1, 'Sapphiron (1) - Glyph of Deflection'),
+(@Sapphiron, 23041,     0,   0, 1, 0, 3, 1, 1, 'Sapphiron (1) - Slayer\'s Crest'),
+(@Sapphiron, 23043,     0,   0, 1, 0, 3, 1, 1, 'Sapphiron (1) - The Face of Death'),
+(@Sapphiron, 23045,     0,   0, 1, 0, 3, 1, 1, 'Sapphiron (1) - Shroud of Dominion'),
+(@Sapphiron, 23242,     0,   0, 1, 0, 3, 1, 1, 'Sapphiron (1) - Claw of the Frost Wyrm'),
+(@Sapphiron, 23046,     0,   0, 1, 0, 4, 1, 1, 'Sapphiron (1) - The Restrained Essence of Sapphiron'),
+(@Sapphiron, 23047,     0,   0, 1, 0, 4, 1, 1, 'Sapphiron (1) - Eye of the Dead'),
+(@Sapphiron, 23048,     0,   0, 1, 0, 4, 1, 1, 'Sapphiron (1) - Sapphiron\'s Right Eye'),
+(@Sapphiron, 23049,     0,   0, 1, 0, 4, 1, 1, 'Sapphiron (1) - Sapphiron\'s Left Eye'),
+(@Sapphiron, 23050,     0,   0, 1, 0, 4, 1, 1, 'Sapphiron (1) - Cloak of the Necropolis');
+DELETE FROM `reference_loot_template` WHERE `Entry` IN (34101, 34135);
 INSERT INTO `reference_loot_template` (`Entry`, `Item`, `Reference`, `Chance`,
 `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`)
 VALUES
-(34043, 23040, 0, 0, 0, 1, 1, 1, 1, 'Glyph of Deflection'),
-(34043, 23041, 0, 0, 0, 1, 1, 1, 1, 'Slayer\'s Crest'),
-(34043, 23043, 0, 0, 0, 1, 1, 1, 1, 'The Face of Death'),
-(34043, 23045, 0, 0, 0, 1, 1, 1, 1, 'Shroud of Dominion'),
-(34043, 23046, 0, 0, 0, 1, 1, 1, 1, 'The Restrained Essence of Sapphiron'),
-(34043, 23047, 0, 0, 0, 1, 1, 1, 1, 'Eye of Dead'),
-(34043, 23048, 0, 0, 0, 1, 1, 1, 1, 'Sapphiron\'s Right Eye'),
-(34043, 23049, 0, 0, 0, 1, 1, 1, 1, 'Sapphiron\'s Left Eye'),
-(34043, 23050, 0, 0, 0, 1, 1, 1, 1, 'Cloak of the Necropolis'),
-(34043, 23242, 0, 0, 0, 1, 1, 1, 1, 'Claw of the Frost Wyrm'),
 (34101, 23545, 0, 0, 0, 1, 1, 1, 1, 'Power of the Scourge'),
 (34101, 23547, 0, 0, 0, 1, 1, 1, 1, 'Resilience of the Scourge'),
 (34135, 23548, 0, 0, 0, 1, 1, 1, 1, 'Might of the Scourge'),
@@ -337,25 +336,24 @@ INSERT INTO `creature_loot_template`
 (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`,
 `MinCount`, `MaxCount`, `Comment`)
 VALUES
-(@Kelthuzad, 22520,     0,  100, 0, 1, 0, 1, 1, 'Kel\'Thuzad (1) - The Phylactery of Kel\'Thuzad'),
-(@Kelthuzad, 22733,     0,  100, 1, 1, 0, 1, 1, 'Kel\'Thuzad (1) - Staff Head of Atiesh'),
-(@Kelthuzad, 34136, 34136, 100, 0, 1, 0, 1, 2, 'Kel\'Thuzad (1) - (ReferenceTable)'),
-(@Kelthuzad, 34133, 34133, 100, 0, 1, 0, 1, 2, 'Kel\'Thuzad (1) - (ReferenceTable)');
+(@Kelthuzad, 22520,     0, 100, 0, 1, 0, 1, 1, 'Kel\'Thuzad (1) - The Phylactery of Kel\'Thuzad'),
+(@Kelthuzad, 22733,     0, 100, 1, 1, 0, 1, 1, 'Kel\'Thuzad (1) - Staff Head of Atiesh'),
+(@Kelthuzad, 34136,     0, 100, 0, 1, 0, 1, 2, 'Kel\'Thuzad (1) - (ReferenceTable)'),
+(@Kelthuzad, 22798,     0,   0, 0, 1, 1, 1, 1, 'Kel\'Thuzad (1) - Might of Menethil'),
+(@Kelthuzad, 22802,     0,   0, 0, 1, 1, 1, 1, 'Kel\'Thuzad (1) - Kingsfall'),
+(@Kelthuzad, 22812,     0,   0, 0, 1, 1, 1, 1, 'Kel\'Thuzad (1) - Nerubian Slavemaker'),
+(@Kelthuzad, 23053,     0,   0, 0, 1, 1, 1, 1, 'Kel\'Thuzad (1) - Stormrage\'s Talisman of Seething'),
+(@Kelthuzad, 23054,     0,   0, 0, 1, 1, 1, 1, 'Kel\'Thuzad (1) - Gressil, Dawn of Ruin'),
+(@Kelthuzad, 23577,     0,   0, 0, 1, 1, 1, 1, 'Kel\'Thuzad (1) - The Hungering Cold'),
+(@Kelthuzad, 22819,     0,   0, 0, 1, 2, 1, 1, 'Kel\'Thuzad (1) - Shield of Condemnation'),
+(@Kelthuzad, 22821,     0,   0, 0, 1, 2, 1, 1, 'Kel\'Thuzad (1) - Doomfinger'),
+(@Kelthuzad, 22799,     0,   0, 0, 1, 2, 1, 1, 'Kel\'Thuzad (1) - Soulseeker'),
+(@Kelthuzad, 23056,     0,   0, 0, 1, 2, 1, 1, 'Kel\'Thuzad (1) - Hammer of the Twisting Nether'),
+(@Kelthuzad, 23057,     0,   0, 0, 1, 2, 1, 1, 'Kel\'Thuzad (1) - Gem of Trapped Innocents');
 DELETE FROM `reference_loot_template` WHERE `Entry` IN (34133, 34136);
 INSERT INTO `reference_loot_template` (`Entry`, `Item`, `Reference`, `Chance`,
 `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`)
 VALUES
-(34133, 22798, 0, 0, 0, 1, 1, 1, 1, 'Might of Menethil'),
-(34133, 22799, 0, 0, 0, 1, 1, 1, 1, 'Soulseeker'),
-(34133, 22802, 0, 0, 0, 1, 1, 1, 1, 'Kingsfall'),
-(34133, 22812, 0, 0, 0, 1, 1, 1, 1, 'Nerubian Slavemaker'),
-(34133, 22819, 0, 0, 0, 1, 1, 1, 1, 'Shield of Condemnation'),
-(34133, 22821, 0, 0, 0, 1, 1, 1, 1, 'Doomfinger'),
-(34133, 23053, 0, 0, 0, 1, 1, 1, 1, 'Stormrage\'s Talisman of Seething'),
-(34133, 23054, 0, 0, 0, 1, 1, 1, 1, 'Gressil, Dawn of Ruin'),
-(34133, 23056, 0, 0, 0, 1, 1, 1, 1, 'Hammer of the Twisting Nether'),
-(34133, 23057, 0, 0, 0, 1, 1, 1, 1, 'Gem of Trapped Innocents'),
-(34133, 23577, 0, 0, 0, 1, 1, 1, 1, 'The Hungering Cold'),
 (34136, 23059, 0, 0, 0, 1, 1, 1, 1, 'Ring of the Dreadnaught'),
 (34136, 23060, 0, 0, 0, 1, 1, 1, 1, 'Bonescythe Ring'),
 (34136, 23061, 0, 0, 0, 1, 1, 1, 1, 'Ring of Faith'),

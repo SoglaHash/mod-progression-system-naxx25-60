@@ -21,7 +21,7 @@ Progress:
 - [x] Add Attunement quest requirement (only to TP orb and boss->start tp)
 - [x] Add quests to turn in T3 tokens
 - [x] Update Echoes of War (adjust kill count)
-- [x] Update Boss Loot to lvl60
+- [x] Update Boss Loot to lvl60 (+verify with CMangos)
 - [x] Make Phylactery quest completable
 - [x] Add frost resistance quests from Crafsman Wilhelm
 - [ ] Update Trash Loot to lvl60
@@ -798,6 +798,9 @@ creature_loot_template
        23001
        23070
 ```
+
+Loot CMangos
+
 
 
 ## Brotalnia data
