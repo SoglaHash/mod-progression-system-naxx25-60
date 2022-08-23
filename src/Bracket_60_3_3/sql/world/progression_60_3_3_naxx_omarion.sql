@@ -88,3 +88,31 @@ VALUES
 -- 
 -- 
 -- 
+
+UPDATE `creature_template` SET `AIName` = 'SmartAI' WHERE `entry` = 16365;
+
+DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 16365);
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(16365, 0, 0, 5, 62, 0, 100, 0, 24400, 1, 0, 0, 0, 72, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Master Craftsman Omarion - On Gossip Option 1 Selected - Close Gossip'),
+(16365, 0, 1, 0, 62, 0, 100, 0, 24401, 5, 0, 0, 0, 72, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Master Craftsman Omarion - On Gossip Option 5 Selected - Close Gossip'),
+(16365, 0, 2, 0, 62, 0, 100, 0, 24402, 4, 0, 0, 0, 72, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Master Craftsman Omarion - On Gossip Option 4 Selected - Close Gossip'),
+(16365, 0, 3, 0, 62, 0, 100, 0, 24403, 7, 0, 0, 0, 72, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Master Craftsman Omarion - On Gossip Option 7 Selected - Close Gossip'),
+(16365, 0, 4, 0, 62, 0, 100, 0, 24404, 4, 0, 0, 0, 72, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Master Craftsman Omarion - On Gossip Option 4 Selected - Close Gossip'),
+(16365, 0, 5, 0, 61, 0, 100, 0, 0, 0, 0, 0, 0, 56, 22719, 1, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Master Craftsman Omarion - On Gossip Option 1 Selected - Add Item \'Omarion\'s Handbook\' 1 Time');
+
+-- Condition Craftsman
+-- .setskill 164 225 225
+-- .setskill 165 225 225
+-- .setskill 197 225 225
+DELETE FROM `conditions` WHERE (`SourceTypeOrReferenceId` = 15) AND (`SourceGroup` = 24404) AND (`SourceEntry` IN (1,2,3,4)) AND (`SourceId` = 0);
+INSERT INTO `conditions` (`SourceTypeOrReferenceId`, `SourceGroup`, `SourceEntry`, `SourceId`, `ElseGroup`, `ConditionTypeOrReference`, `ConditionTarget`, `ConditionValue1`, `ConditionValue2`, `ConditionValue3`, `NegativeCondition`, `ErrorType`, `ErrorTextId`, `ScriptName`, `Comment`)
+VALUES
+(15, 24404, 1, 0, 0, 7, 0, 165, 225, 0, 0, 0, 0, '', 'Master Leatherworking'),
+(15, 24404, 3, 0, 0, 7, 0, 197, 225, 0, 0, 0, 0, '', 'Master Tailoring'),
+(15, 24404, 2, 0, 0, 7, 0, 164, 225, 0, 0, 0, 0, '', 'Master Blacksmithing'),
+(15, 24404, 4, 0, 0, 7, 0, 165, 225, 0, 1, 0, 0, '', 'Not Master Leatherworking'),
+(15, 24404, 4, 0, 0, 7, 0, 197, 225, 0, 1, 0, 0, '', 'Not Master Tailoring'),
+(15, 24404, 4, 0, 0, 7, 0, 164, 225, 0, 1, 0, 0, '', 'Not Master Blacksmithing');
+
+
+
