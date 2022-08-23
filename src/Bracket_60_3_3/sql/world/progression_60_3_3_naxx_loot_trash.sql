@@ -1,3 +1,5 @@
+-- Not used and thus useless
+DELETE FROM `creature_loot_template` WHERE `Entry` IN (100005, 100006);
 -- No loot
 UPDATE `creature_template` SET `mingold` = 0, `maxgold` = 0, `lootid` = 0
 WHERE `Entry` IN (29356, 29608, 29603, 29823, 29601, 30085);
@@ -194,15 +196,14 @@ WHERE `Entry` IN (29575, 29609);
 -- Loot
 -- Reference loot table
 UPDATE `creature_template` SET `lootid` = `entry` WHERE `entry` IN
- (16157, 16158, 16368, 16446, 16448, 16449, 16451, 16452, 29247, 29248, 29273, 29274, 29347, 29353, 29359, 29362, 29363, 29371, 29574, 29576, 29824, 29825, 29828, 29831, 29833, 29835, 29837, 29842, 29852, 29898, 29899, 29900, 29941, 30075, 30087, 30097, 30424);
+(16157, 16158, 16368, 16446, 16448, 16449, 16451, 16452, 29247, 29248, 29347, 29353, 29359, 29362, 29363, 29371, 29574, 29576, 29824, 29825, 29828, 29831, 29833, 29835, 29837, 29842, 29852, 29898, 29899, 29900, 30075, 30087, 30097);
 -- New naxx25 mobs that should drop loot
 UPDATE `creature_template` SET `lootid` = 16449 WHERE `entry` = 30075;
 UPDATE `creature_template` SET `lootid` = 16448 WHERE `entry` = 30087;
 DELETE FROM `creature_loot_template` WHERE `Entry` IN
 (16157, 16158, 16368, 16446, 16448, 16449, 16451, 16452, 29247, 29248, 29347,
 29353, 29362, 29359, 29363, 29371, 29852, 29824, 29831, 29833, 29842, 29825,
-29828, 29835, 29576, 29837, 29898, 29899, 29900, 29574, 30097, 29273, 29274,
-29941, 30075, 30424, 30087);
+29828, 29835, 29576, 29837, 29898, 29899, 29900, 29574, 30097, 30075);
 INSERT INTO `creature_loot_template`
 (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`,
 `MinCount`, `MaxCount`, `Comment`)
@@ -1077,34 +1078,34 @@ VALUES
 
 -- Update gold values
 -- Loot
-UPDATE `creature_template` SET `MinLootGold`=1206,  `MaxLootGold`=1579   WHERE `Entry`=29247;
-UPDATE `creature_template` SET `MinLootGold`=1248,  `MaxLootGold`=1635   WHERE `Entry`=29248;
-UPDATE `creature_template` SET `MinLootGold`=3798,  `MaxLootGold`=4965   WHERE `Entry`=29347;
-UPDATE `creature_template` SET `MinLootGold`=4776,  `MaxLootGold`=6241   WHERE `Entry`=29353;
-UPDATE `creature_template` SET `MinLootGold`=2226,  `MaxLootGold`=2911   WHERE `Entry`=29362;
-UPDATE `creature_template` SET `MinLootGold`=2015,  `MaxLootGold`=2636   WHERE `Entry`=29359;
-UPDATE `creature_template` SET `MinLootGold`=1842,  `MaxLootGold`=2410   WHERE `Entry`=29363;
-UPDATE `creature_template` SET `MinLootGold`=6479,  `MaxLootGold`=8466   WHERE `Entry`=29371;
-UPDATE `creature_template` SET `MinLootGold`=0,     `MaxLootGold`=0      WHERE `Entry`=29852;
-UPDATE `creature_template` SET `MinLootGold`=4138,  `MaxLootGold`=5409   WHERE `Entry`=29824;
-UPDATE `creature_template` SET `MinLootGold`=1163,  `MaxLootGold`=1524   WHERE `Entry`=29831;
-UPDATE `creature_template` SET `MinLootGold`=0,     `MaxLootGold`=0      WHERE `Entry`=29833;
-UPDATE `creature_template` SET `MinLootGold`=0,     `MaxLootGold`=0      WHERE `Entry`=16157;
-UPDATE `creature_template` SET `MinLootGold`=0,     `MaxLootGold`=0      WHERE `Entry`=16158;
-UPDATE `creature_template` SET `MinLootGold`=4776,  `MaxLootGold`=6241   WHERE `Entry`=29842;
-UPDATE `creature_template` SET `MinLootGold`=2481,  `MaxLootGold`=3244   WHERE `Entry`=29825;
-UPDATE `creature_template` SET `MinLootGold`=1801,  `MaxLootGold`=2356   WHERE `Entry`=29828;
-UPDATE `creature_template` SET `MinLootGold`=1673,  `MaxLootGold`=2190   WHERE `Entry`=29835;
-UPDATE `creature_template` SET `MinLootGold`=11151, `MaxLootGold`=14566  WHERE `Entry`=29576;
-UPDATE `creature_template` SET `MinLootGold`=2226,  `MaxLootGold`=2911   WHERE `Entry`=29837;
-UPDATE `creature_template` SET `MinLootGold`=1,     `MaxLootGold`=0      WHERE `Entry`=29898;
-UPDATE `creature_template` SET `MinLootGold`=1,     `MaxLootGold`=0      WHERE `Entry`=29899;
-UPDATE `creature_template` SET `MinLootGold`=1,     `MaxLootGold`=0      WHERE `Entry`=29900;
-UPDATE `creature_template` SET `MinLootGold`=0,     `MaxLootGold`=0      WHERE `Entry`=29574;
-UPDATE `creature_template` SET `MinLootGold`=2865,  `MaxLootGold`=3746   WHERE `Entry`=16368;
-UPDATE `creature_template` SET `MinLootGold`=1,     `MaxLootGold`=138065 WHERE `Entry`=16446;
-UPDATE `creature_template` SET `MinLootGold`=4011,  `MaxLootGold`=5242   WHERE `Entry`=30097;
-UPDATE `creature_template` SET `MinLootGold`=1,     `MaxLootGold`=138065 WHERE `Entry`=16448;
-UPDATE `creature_template` SET `MinLootGold`=1,     `MaxLootGold`=10432  WHERE `Entry`=16449;
-UPDATE `creature_template` SET `MinLootGold`=5627,  `MaxLootGold`=7354   WHERE `Entry`=16451;
-UPDATE `creature_template` SET `MinLootGold`=2567,  `MaxLootGold`=3358   WHERE `Entry`=16452;
+UPDATE `creature_template` SET `mingold`=1206,  `maxgold`=1579   WHERE `Entry`=29247;
+UPDATE `creature_template` SET `mingold`=1248,  `maxgold`=1635   WHERE `Entry`=29248;
+UPDATE `creature_template` SET `mingold`=3798,  `maxgold`=4965   WHERE `Entry`=29347;
+UPDATE `creature_template` SET `mingold`=4776,  `maxgold`=6241   WHERE `Entry`=29353;
+UPDATE `creature_template` SET `mingold`=2226,  `maxgold`=2911   WHERE `Entry`=29362;
+UPDATE `creature_template` SET `mingold`=2015,  `maxgold`=2636   WHERE `Entry`=29359;
+UPDATE `creature_template` SET `mingold`=1842,  `maxgold`=2410   WHERE `Entry`=29363;
+UPDATE `creature_template` SET `mingold`=6479,  `maxgold`=8466   WHERE `Entry`=29371;
+UPDATE `creature_template` SET `mingold`=0,     `maxgold`=0      WHERE `Entry`=29852;
+UPDATE `creature_template` SET `mingold`=4138,  `maxgold`=5409   WHERE `Entry`=29824;
+UPDATE `creature_template` SET `mingold`=1163,  `maxgold`=1524   WHERE `Entry`=29831;
+UPDATE `creature_template` SET `mingold`=0,     `maxgold`=0      WHERE `Entry`=29833;
+UPDATE `creature_template` SET `mingold`=0,     `maxgold`=0      WHERE `Entry`=16157;
+UPDATE `creature_template` SET `mingold`=0,     `maxgold`=0      WHERE `Entry`=16158;
+UPDATE `creature_template` SET `mingold`=4776,  `maxgold`=6241   WHERE `Entry`=29842;
+UPDATE `creature_template` SET `mingold`=2481,  `maxgold`=3244   WHERE `Entry`=29825;
+UPDATE `creature_template` SET `mingold`=1801,  `maxgold`=2356   WHERE `Entry`=29828;
+UPDATE `creature_template` SET `mingold`=1673,  `maxgold`=2190   WHERE `Entry`=29835;
+UPDATE `creature_template` SET `mingold`=11151, `maxgold`=14566  WHERE `Entry`=29576;
+UPDATE `creature_template` SET `mingold`=2226,  `maxgold`=2911   WHERE `Entry`=29837;
+UPDATE `creature_template` SET `mingold`=1,     `maxgold`=0      WHERE `Entry`=29898;
+UPDATE `creature_template` SET `mingold`=1,     `maxgold`=0      WHERE `Entry`=29899;
+UPDATE `creature_template` SET `mingold`=1,     `maxgold`=0      WHERE `Entry`=29900;
+UPDATE `creature_template` SET `mingold`=0,     `maxgold`=0      WHERE `Entry`=29574;
+UPDATE `creature_template` SET `mingold`=2865,  `maxgold`=3746   WHERE `Entry`=16368;
+UPDATE `creature_template` SET `mingold`=1,     `maxgold`=138065 WHERE `Entry`=16446;
+UPDATE `creature_template` SET `mingold`=4011,  `maxgold`=5242   WHERE `Entry`=30097;
+UPDATE `creature_template` SET `mingold`=1,     `maxgold`=138065 WHERE `Entry`=16448;
+UPDATE `creature_template` SET `mingold`=1,     `maxgold`=10432  WHERE `Entry`=16449;
+UPDATE `creature_template` SET `mingold`=5627,  `maxgold`=7354   WHERE `Entry`=16451;
+UPDATE `creature_template` SET `mingold`=2567,  `maxgold`=3358   WHERE `Entry`=16452;

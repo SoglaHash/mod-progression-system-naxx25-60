@@ -311,16 +311,16 @@ INSERT INTO `creature_loot_template`
 VALUES
 (@Sapphiron, 34101, 34101, 100, 0, 1, 1, 1, 1, 'Sapphiron (1) - (ReferenceTable)'),
 (@Sapphiron, 34135, 34135, 100, 0, 1, 2, 1, 1, 'Sapphiron (1) - (ReferenceTable)'),
-(@Sapphiron, 23040,     0,   0, 1, 0, 3, 1, 1, 'Sapphiron (1) - Glyph of Deflection'),
-(@Sapphiron, 23041,     0,   0, 1, 0, 3, 1, 1, 'Sapphiron (1) - Slayer\'s Crest'),
-(@Sapphiron, 23043,     0,   0, 1, 0, 3, 1, 1, 'Sapphiron (1) - The Face of Death'),
-(@Sapphiron, 23045,     0,   0, 1, 0, 3, 1, 1, 'Sapphiron (1) - Shroud of Dominion'),
-(@Sapphiron, 23242,     0,   0, 1, 0, 3, 1, 1, 'Sapphiron (1) - Claw of the Frost Wyrm'),
-(@Sapphiron, 23046,     0,   0, 1, 0, 4, 1, 1, 'Sapphiron (1) - The Restrained Essence of Sapphiron'),
-(@Sapphiron, 23047,     0,   0, 1, 0, 4, 1, 1, 'Sapphiron (1) - Eye of the Dead'),
-(@Sapphiron, 23048,     0,   0, 1, 0, 4, 1, 1, 'Sapphiron (1) - Sapphiron\'s Right Eye'),
-(@Sapphiron, 23049,     0,   0, 1, 0, 4, 1, 1, 'Sapphiron (1) - Sapphiron\'s Left Eye'),
-(@Sapphiron, 23050,     0,   0, 1, 0, 4, 1, 1, 'Sapphiron (1) - Cloak of the Necropolis');
+(@Sapphiron, 23040,     0,   0, 1, 1, 3, 1, 1, 'Sapphiron (1) - Glyph of Deflection'),
+(@Sapphiron, 23041,     0,   0, 1, 1, 3, 1, 1, 'Sapphiron (1) - Slayer\'s Crest'),
+(@Sapphiron, 23043,     0,   0, 1, 1, 3, 1, 1, 'Sapphiron (1) - The Face of Death'),
+(@Sapphiron, 23045,     0,   0, 1, 1, 3, 1, 1, 'Sapphiron (1) - Shroud of Dominion'),
+(@Sapphiron, 23242,     0,   0, 1, 1, 3, 1, 1, 'Sapphiron (1) - Claw of the Frost Wyrm'),
+(@Sapphiron, 23046,     0,   0, 1, 1, 4, 1, 1, 'Sapphiron (1) - The Restrained Essence of Sapphiron'),
+(@Sapphiron, 23047,     0,   0, 1, 1, 4, 1, 1, 'Sapphiron (1) - Eye of the Dead'),
+(@Sapphiron, 23048,     0,   0, 1, 1, 4, 1, 1, 'Sapphiron (1) - Sapphiron\'s Right Eye'),
+(@Sapphiron, 23049,     0,   0, 1, 1, 4, 1, 1, 'Sapphiron (1) - Sapphiron\'s Left Eye'),
+(@Sapphiron, 23050,     0,   0, 1, 1, 4, 1, 1, 'Sapphiron (1) - Cloak of the Necropolis');
 DELETE FROM `reference_loot_template` WHERE `Entry` IN (34101, 34135);
 INSERT INTO `reference_loot_template` (`Entry`, `Item`, `Reference`, `Chance`,
 `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`)
@@ -365,17 +365,17 @@ VALUES
 (34136, 23067, 0, 0, 0, 1, 1, 1, 1, 'Ring of the Cryptstakler');
 
 -- Update gold drop values
-UPDATE `creature_template` SET `MinLootGold`=1513636, `MaxLootGold`=1850000 WHERE `Entry`=@Thaddius;
-UPDATE `creature_template` SET `MinLootGold`=1283823, `MaxLootGold`=1569117 WHERE `Entry`=@Grobbulus;
-UPDATE `creature_template` SET `MinLootGold`=1260000, `MaxLootGold`=1540000 WHERE `Entry`=@Gluth;
-UPDATE `creature_template` SET `MinLootGold`=1280454, `MaxLootGold`=1565000 WHERE `Entry`=@Heigan;
-UPDATE `creature_template` SET `MinLootGold`=1274062, `MaxLootGold`=1557187 WHERE `Entry`=@Maexxna;
-UPDATE `creature_template` SET `MinLootGold`=900055,  `MaxLootGold`=1100068 WHERE `Entry`=@Faerlina;
-UPDATE `creature_template` SET `MinLootGold`=1265652, `MaxLootGold`=1546909 WHERE `Entry`=@Noth;
-UPDATE `creature_template` SET `MinLootGold`=1125000, `MaxLootGold`=1375000 WHERE `Entry`=@Anubrekhan;
-UPDATE `creature_template` SET `MinLootGold`=246755,  `MaxLootGold`=322238  WHERE `Entry`=@Sapphiron;
-UPDATE `creature_template` SET `MinLootGold`=1002755, `MaxLootGold`=1457838 WHERE `Entry`=@Kelthuzad;
-UPDATE `creature_template` SET `MinLootGold`=1292142, `MaxLootGold`=1579285 WHERE `Entry`=@Loatheb;
-UPDATE `creature_template` SET `MinLootGold`=1305000, `MaxLootGold`=1595000 WHERE `Entry`=@Patchwerk;
-UPDATE `creature_template` SET `MinLootGold`=733851,  `MaxLootGold`=896929  WHERE `Entry`=@Gothik;
-UPDATE `creature_template` SET `MinLootGold`=1253602, `MaxLootGold`=1532181 WHERE `Entry`=@Razuvious;
+UPDATE `creature_template` SET `mingold`=1513636, `maxgold`=1850000 WHERE `Entry`=@Thaddius;
+UPDATE `creature_template` SET `mingold`=1283823, `maxgold`=1569117 WHERE `Entry`=@Grobbulus;
+UPDATE `creature_template` SET `mingold`=1260000, `maxgold`=1540000 WHERE `Entry`=@Gluth;
+UPDATE `creature_template` SET `mingold`=1280454, `maxgold`=1565000 WHERE `Entry`=@Heigan;
+UPDATE `creature_template` SET `mingold`=1274062, `maxgold`=1557187 WHERE `Entry`=@Maexxna;
+UPDATE `creature_template` SET `mingold`=900055,  `maxgold`=1100068 WHERE `Entry`=@Faerlina;
+UPDATE `creature_template` SET `mingold`=1265652, `maxgold`=1546909 WHERE `Entry`=@Noth;
+UPDATE `creature_template` SET `mingold`=1125000, `maxgold`=1375000 WHERE `Entry`=@Anubrekhan;
+UPDATE `creature_template` SET `mingold`=246755,  `maxgold`=322238  WHERE `Entry`=@Sapphiron;
+UPDATE `creature_template` SET `mingold`=1002755, `maxgold`=1457838 WHERE `Entry`=@Kelthuzad;
+UPDATE `creature_template` SET `mingold`=1292142, `maxgold`=1579285 WHERE `Entry`=@Loatheb;
+UPDATE `creature_template` SET `mingold`=1305000, `maxgold`=1595000 WHERE `Entry`=@Patchwerk;
+UPDATE `creature_template` SET `mingold`=733851,  `maxgold`=896929  WHERE `Entry`=@Gothik;
+UPDATE `creature_template` SET `mingold`=1253602, `maxgold`=1532181 WHERE `Entry`=@Razuvious;
