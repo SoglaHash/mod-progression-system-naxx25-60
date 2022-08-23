@@ -363,3 +363,19 @@ VALUES
 (34136, 23065, 0, 0, 0, 1, 1, 1, 1, 'Ring of the Earthshatterer'),
 (34136, 23066, 0, 0, 0, 1, 1, 1, 1, 'Ring of Redemption'),
 (34136, 23067, 0, 0, 0, 1, 1, 1, 1, 'Ring of the Cryptstakler');
+
+-- Update gold drop values
+UPDATE `creature_template` SET `MinLootGold`=1513636, `MaxLootGold`=1850000 WHERE `Entry`=@Thaddius;
+UPDATE `creature_template` SET `MinLootGold`=1283823, `MaxLootGold`=1569117 WHERE `Entry`=@Grobbulus;
+UPDATE `creature_template` SET `MinLootGold`=1260000, `MaxLootGold`=1540000 WHERE `Entry`=@Gluth;
+UPDATE `creature_template` SET `MinLootGold`=1280454, `MaxLootGold`=1565000 WHERE `Entry`=@Heigan;
+UPDATE `creature_template` SET `MinLootGold`=1274062, `MaxLootGold`=1557187 WHERE `Entry`=@Maexxna;
+UPDATE `creature_template` SET `MinLootGold`=900055,  `MaxLootGold`=1100068 WHERE `Entry`=@Faerlina;
+UPDATE `creature_template` SET `MinLootGold`=1265652, `MaxLootGold`=1546909 WHERE `Entry`=@Noth;
+UPDATE `creature_template` SET `MinLootGold`=1125000, `MaxLootGold`=1375000 WHERE `Entry`=@Anubrekhan;
+UPDATE `creature_template` SET `MinLootGold`=246755,  `MaxLootGold`=322238  WHERE `Entry`=@Sapphiron;
+UPDATE `creature_template` SET `MinLootGold`=1002755, `MaxLootGold`=1457838 WHERE `Entry`=@Kelthuzad;
+UPDATE `creature_template` SET `MinLootGold`=1292142, `MaxLootGold`=1579285 WHERE `Entry`=@Loatheb;
+UPDATE `creature_template` SET `MinLootGold`=1305000, `MaxLootGold`=1595000 WHERE `Entry`=@Patchwerk;
+UPDATE `creature_template` SET `MinLootGold`=733851,  `MaxLootGold`=896929  WHERE `Entry`=@Gothik;
+UPDATE `creature_template` SET `MinLootGold`=1253602, `MaxLootGold`=1532181 WHERE `Entry`=@Razuvious;
