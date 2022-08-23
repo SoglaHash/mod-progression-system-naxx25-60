@@ -40,6 +40,7 @@ INSERT INTO `gossip_menu_option`
 `BoxMoney`, `BoxText`, `BoxBroadcastTextID`, `VerifiedBuild`)
 VALUES
 (@ID,   1, 0, 'Thank you, Omarion. You have taken a fatal blow for the team on this day.', 12281, 1, 1, 0,     0, 0, 0, '', 0, 0),
+(@ID,   2, 0, 'Thank you, Omarion. You have taken a fatal blow for the team on this day.', 12281, 1, 1, 0,     0, 0, 0, '', 0, 0),
 (@ID+1, 1, 0, 'Glacial Cloak.',                                                            12254, 1, 1, @ID+1, 0, 0, 0, '', 0, 0),
 (@ID+1, 2, 0, 'Glacial Gloves.',                                                           12255, 1, 1, @ID+1, 0, 0, 0, '', 0, 0),
 (@ID+1, 3, 0, 'Glacial Wrists.',                                                           12256, 1, 1, @ID+1, 0, 0, 0, '', 0, 0),
@@ -98,7 +99,8 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 (16365, 0, 2, 0, 62, 0, 100, 0, 24402, 4, 0, 0, 0, 72, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Master Craftsman Omarion - On Gossip Option 4 Selected - Close Gossip'),
 (16365, 0, 3, 0, 62, 0, 100, 0, 24403, 7, 0, 0, 0, 72, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Master Craftsman Omarion - On Gossip Option 7 Selected - Close Gossip'),
 (16365, 0, 4, 0, 62, 0, 100, 0, 24404, 4, 0, 0, 0, 72, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Master Craftsman Omarion - On Gossip Option 4 Selected - Close Gossip'),
-(16365, 0, 5, 0, 61, 0, 100, 0, 0, 0, 0, 0, 0, 56, 22719, 1, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Master Craftsman Omarion - On Gossip Option 1 Selected - Add Item \'Omarion\'s Handbook\' 1 Time');
+(16365, 0, 5, 0, 61, 0, 100, 0, 0, 0, 0, 0, 0, 56, 22719, 1, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Master Craftsman Omarion - On Gossip Option 1 Selected - Add Item \'Omarion\'s Handbook\' 1 Time'),
+(16365, 0, 6, 0, 62, 0, 100, 0, 24400, 2, 0, 0, 0, 72, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Master Craftsman Omarion - On Gossip Option 2 Selected - Close Gossip');
 
 -- Condition Craftsman
 -- .setskill 164 225 225
@@ -114,5 +116,7 @@ VALUES
 (15, 24404, 4, 0, 0, 7, 0, 197, 225, 0, 1, 0, 0, '', 'Not Master Tailoring'),
 (15, 24404, 4, 0, 0, 7, 0, 164, 225, 0, 1, 0, 0, '', 'Not Master Blacksmithing');
 
-
-
+DELETE FROM `conditions` WHERE (`SourceTypeOrReferenceId` = 15) AND (`SourceGroup` = 24400) AND (`SourceEntry` IN (1,2)) AND (`SourceId` = 0);
+INSERT INTO `conditions` (`SourceTypeOrReferenceId`, `SourceGroup`, `SourceEntry`, `SourceId`, `ElseGroup`, `ConditionTypeOrReference`, `ConditionTarget`, `ConditionValue1`, `ConditionValue2`, `ConditionValue3`, `NegativeCondition`, `ErrorType`, `ErrorTextId`, `ScriptName`, `Comment`) VALUES
+(15, 24400, 1, 0, 0, 47, 0, 9233, 2|8|64, 0, 1, 0, 0, '', 'Omarion\'s Quest not completed and not in progress'),
+(15, 24400, 2, 0, 0, 47, 0, 9233, 2|8|64, 0, 0, 0, 0, '', 'Omarion\'s Quest completed or in progress');
