@@ -25,9 +25,9 @@ Progress:
 - [x] Make Phylactery quest completable
 - [x] Add frost resistance quests from Crafsman Wilhelm
 - [x] Update Trash Loot to lvl60
-- [ ] Update Trash gold drops to lvl60
+- [x] Update Trash gold drops to lvl60
 - [ ] Add Frozen Rune game objects
-- [ ] Add profession frost resistance recipes learned from Omarion
+- [ ] Add profession frost resistance recipes learned from Omarion (WIP: Missing /spit when not enough reputation/skill)
 - [ ] Add frost resistance anvil (gobject)
 Skipping (for now):
 - [ ] Scourge event
@@ -286,6 +286,31 @@ quest 9233
 craft items + 200-300g
 
 Frost Resistance quests depend on: reputation with AD, class and completion 9033 echoes of war
+
+
+See VMangos implementation of Gossip Omarion script
+https://github.com/vmangos/core/blob/792c3733c1d1a1766fddbf4b654f0de4cac4325d/src/scripts/eastern_kingdoms/eastern_plaguelands/naxxramas/instance_naxxramas.cpp
+
+ingame (private server footage)
+https://www.youtube.com/watch?v=YgI2AMHMYe8
+
+can implement based on 14338
+
+lvl 60 char 
+```
+.tele lightshope
+.mod reputation 529 10000
+```
+CMangos
+16365
+gossip id
+24404
+
+.mod reputation 529 10000
+.setskill 164 225 225
+.setskill 165 225 225
+.setskill 197 225 225
+
 
 ## Trash Loot
 Grab list of IDs wowhead -> check if drop loot
@@ -594,7 +619,7 @@ loot
 (16157, 16158, 16368, 16446, 16448, 16449, 16451, 16452, 29247, 29248, 29347,
 29353, 29362, 29359, 29363, 29371, 29852, 29824, 29831, 29833, 29842, 29825,
 29828, 29835, 29576, 29837, 29898, 29899, 29900, 29574, 30097, 29273, 29274,
-29941, 30075, 30424, 30087)
+30075, 30424, 30087)
 ```
 
 lootids used 100003 and 100004
@@ -740,6 +765,13 @@ custom spells (copy of naxx25 values) and scale those to lvl60
 custom map area
 
 # Loot
+
+## Gold value
+bosses gold value
+```
+select entry, MinLootGold, MaxLootGold  from creature_template where entry in 
+(15931, 15932, 15936, 15953, 15954, 15956, 16011, 16028, 16060, 16061, 15928, 15952, 16064, 16065, 30549, 16063, 15989, 15990);
+```
 ## Trash loot
 LootID in Creature_Template
 
