@@ -1,5 +1,5 @@
 -- Add creature to map
-DELETE FROM `creature` WHERE `guid` = 88811;
+DELETE FROM `creature` WHERE `guid` = 88811 and `id1` = 16365;
 INSERT INTO `creature`
 (`guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, `spawnMask`,
 `phaseMask`, `equipment_id`, `position_x`, `position_y`, `position_z`,
@@ -10,12 +10,12 @@ VALUES
 (88811, 16365, 0, 0, 533, 0, 0, 3, 1, 0, 2853.57, -3251.69, 298.21, 5.19, 3520,
 0.0, 0, 3052, 0, 0, 0, 0, 0, '', 0);
 
--- fix
+-- Handle gossip with cpp script
+UPDATE `creature_template` SET `ScriptName`='npc_omarion_gossip',`gossip_menu_id`=0 WHERE `entry` = 16365;
+
+-- fix to npc_text
 SET @ID:= 24400;
-DELETE FROM `gossip_menu` WHERE (`MenuID` = @ID+4);
-INSERT INTO `gossip_menu` (`MenuID`, `TextID`) VALUES (@ID+4, 8507);
-UPDATE `npc_text` SET `em0_0`=1, `em0_1`=0, `em0_2`=0, `em0_3`=0, `em0_4`=0, `em0_5`=0 WHERE ID=8507;
-UPDATE `creature_template` SET `gossip_menu_id` = @ID+4 WHERE (`entry` = 16365);
+-- Set correct text when gossip tailor/leatherwork/blacksmith option
 DELETE FROM `npc_text` WHERE `ID` in (@ID+1, @ID+2, @ID+3);
 INSERT INTO `npc_text`
 (`ID`, `text0_0`, `text0_1`, `BroadcastTextID0`, `lang0`, `Probability0`, `em0_0`, `em0_1`, `em0_2`, `em0_3`, `em0_4`, `em0_5`, `text1_0`, `text1_1`, `BroadcastTextID1`, `lang1`, `Probability1`, `em1_0`, `em1_1`, `em1_2`, `em1_3`, `em1_4`, `em1_5`, `text2_0`, `text2_1`, `BroadcastTextID2`, `lang2`, `Probability2`, `em2_0`, `em2_1`, `em2_2`, `em2_3`, `em2_4`, `em2_5`, `text3_0`, `text3_1`, `BroadcastTextID3`, `lang3`, `Probability3`, `em3_0`, `em3_1`, `em3_2`, `em3_3`, `em3_4`, `em3_5`, `text4_0`, `text4_1`, `BroadcastTextID4`, `lang4`, `Probability4`, `em4_0`, `em4_1`, `em4_2`, `em4_3`, `em4_4`, `em4_5`, `text5_0`, `text5_1`, `BroadcastTextID5`, `lang5`, `Probability5`, `em5_0`, `em5_1`, `em5_2`, `em5_3`, `em5_4`, `em5_5`, `text6_0`, `text6_1`, `BroadcastTextID6`, `lang6`, `Probability6`, `em6_0`, `em6_1`, `em6_2`, `em6_3`, `em6_4`, `em6_5`, `text7_0`, `text7_1`, `BroadcastTextID7`, `lang7`, `Probability7`, `em7_0`, `em7_1`, `em7_2`, `em7_3`, `em7_4`, `em7_5`, `VerifiedBuild`)
@@ -29,90 +29,7 @@ VALUES
 (@ID+1, @ID+1),
 (@ID+2, @ID+2),
 (@ID+3, @ID+3);
-DELETE FROM `gossip_menu` WHERE (`MenuID` = @ID);
-INSERT INTO `gossip_menu` (`MenuID`, `TextID`) VALUES (@ID, 8516);
-UPDATE npc_text SET `em0_0`=1, `em0_1`=0, `em0_2`=0, `em0_3`=0, `em0_4`=0, `em0_5`=0 WHERE `ID`=8516;
-DELETE FROM `gossip_menu_option` WHERE `MenuID` IN
-(@ID, @ID+1, @ID+2, @ID+3, @ID+4);
-INSERT INTO `gossip_menu_option`
-(`MenuID`, `OptionID`, `OptionIcon`, `OptionText`, `OptionBroadcastTextID`,
-`OptionType`, `OptionNpcFlag`, `ActionMenuID`, `ActionPoiID`, `BoxCoded`,
-`BoxMoney`, `BoxText`, `BoxBroadcastTextID`, `VerifiedBuild`)
-VALUES
-(@ID,   1, 0, 'Thank you, Omarion. You have taken a fatal blow for the team on this day.', 12281, 1, 1, 0,     0, 0, 0, '', 0, 0),
-(@ID,   2, 0, 'Thank you, Omarion. You have taken a fatal blow for the team on this day.', 12281, 1, 1, 0,     0, 0, 0, '', 0, 0),
-(@ID+1, 1, 3, 'Glacial Cloak.',                                                            12254, 1, 1, @ID+1, 0, 0, 0, '', 0, 0),
-(@ID+1, 2, 3, 'Glacial Gloves.',                                                           12255, 1, 1, @ID+1, 0, 0, 0, '', 0, 0),
-(@ID+1, 3, 3, 'Glacial Wrists.',                                                           12256, 1, 1, @ID+1, 0, 0, 0, '', 0, 0),
-(@ID+1, 4, 3, 'Glacial Vest.',                                                             12253, 1, 1, @ID+1, 0, 0, 0, '', 0, 0),
-(@ID+1, 5, 0, 'I need to go. Evil stirs. Die well, Omarion.',                              12270, 1, 1, 0,     0, 0, 0, '', 0, 0),
-(@ID+2, 1, 3, 'Icebane Bracers.',                                                          12268, 1, 1, @ID+2, 0, 0, 0, '', 0, 0),
-(@ID+2, 2, 3, 'Icebane Gauntlets.',                                                        12267, 1, 1, @ID+2, 0, 0, 0, '', 0, 0),
-(@ID+2, 3, 3, 'Icebane Breastplate.',                                                      12266, 1, 1, @ID+2, 0, 0, 0, '', 0, 0),
-(@ID+2, 4, 0, 'I need to go. Evil stirs. Die well, Omarion.',                              12270, 1, 1, 0,     0, 0, 0, '', 0, 0),
-(@ID+3, 1, 3, 'Polar Bracers.',                                                            12264, 1, 1, @ID+3, 0, 0, 0, '', 0, 0),
-(@ID+3, 2, 3, 'Polar Gloves.',                                                             12263, 1, 1, @ID+3, 0, 0, 0, '', 0, 0),
-(@ID+3, 3, 3, 'Polar Tunic.',                                                              12262, 1, 1, @ID+3, 0, 0, 0, '', 0, 0),
-(@ID+3, 4, 3, 'Icy Scale Bracers.',                                                        12261, 1, 1, @ID+3, 0, 0, 0, '', 0, 0),
-(@ID+3, 5, 3, 'Icy Scale Gauntlets.',                                                      12260, 1, 1, @ID+3, 0, 0, 0, '', 0, 0),
-(@ID+3, 6, 3, 'Icy Scale Breastplate.',                                                    12259, 1, 1, @ID+3, 0, 0, 0, '', 0, 0),
-(@ID+3, 7, 0, 'I need to go. Evil stirs. Die well, Omarion.',                              12270, 1, 1, 0,     0, 0, 0, '', 0, 0),
-(@ID+4, 1, 0, 'I am a master leatherworker, Omarion.',                                     12257, 1, 1, @ID+3, 0, 0, 0, '', 0, 0),
-(@ID+4, 2, 0, 'I am a master blacksmith, Omarion.',                                        12269, 1, 1, @ID+2, 0, 0, 0, '', 0, 0),
-(@ID+4, 3, 0, 'I am a master tailor, Omarion.',                                            12251, 1, 1, @ID+1, 0, 0, 0, '', 0, 0),
-(@ID+4, 4, 0, 'Omarion, I am not a craftsman. Can you still help me?',                     12279, 1, 1, @ID,   0, 0, 0, '', 0, 0);
-
--- Add gossip close and add book
-UPDATE `creature_template` SET `AIName` = 'SmartAI' WHERE `entry` = 16365;
-
-DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 16365);
-INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
-(16365, 0, 0, 5, 62, 0, 100, 0, 24400, 1, 0, 0, 0, 72, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Master Craftsman Omarion - On Gossip Option 1 Selected - Close Gossip'),
-(16365, 0, 1, 0, 62, 0, 100, 0, 24401, 5, 0, 0, 0, 72, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Master Craftsman Omarion - On Gossip Option 5 Selected - Close Gossip'),
-(16365, 0, 2, 0, 62, 0, 100, 0, 24402, 4, 0, 0, 0, 72, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Master Craftsman Omarion - On Gossip Option 4 Selected - Close Gossip'),
-(16365, 0, 3, 0, 62, 0, 100, 0, 24403, 7, 0, 0, 0, 72, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Master Craftsman Omarion - On Gossip Option 7 Selected - Close Gossip'),
-(16365, 0, 4, 0, 62, 0, 100, 0, 24404, 4, 0, 0, 0, 72, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Master Craftsman Omarion - On Gossip Option 4 Selected - Close Gossip'),
-(16365, 0, 5, 0, 61, 0, 100, 0, 24400, 1, 0, 0, 0, 56, 22719, 1, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Master Craftsman Omarion - On Gossip Option 1 Selected - Add Item \'Omarion\'s Handbook\' 1 Time'),
-(16365, 0, 6, 0, 62, 0, 100, 0, 24400, 2, 0, 0, 0, 72, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 'Master Craftsman Omarion - On Gossip Option 2 Selected - Close Gossip');
-
--- Condition Craftsman
-SET @TAILORING      := 197;
-SET @LEATHERWORKING := 165;
-SET @BLACKSMITHING  := 164;
-SET @SKILL_MIN      := 225;
-DELETE FROM `conditions` WHERE (`SourceTypeOrReferenceId` = 15) AND (`SourceGroup` = 24404) AND (`SourceEntry` IN (1,2,3,4)) AND (`SourceId` = 0);
-INSERT INTO `conditions` (`SourceTypeOrReferenceId`, `SourceGroup`, `SourceEntry`, `SourceId`, `ElseGroup`, `ConditionTypeOrReference`, `ConditionTarget`, `ConditionValue1`, `ConditionValue2`, `ConditionValue3`, `NegativeCondition`, `ErrorType`, `ErrorTextId`, `ScriptName`, `Comment`)
-VALUES
-(15, @ID+4, 1, 0, 0, 7, 0, @LEATHERWORKING, @SKILL_MIN, 0, 0, 0, 0, '', 'Master Leatherworking'),
-(15, @ID+4, 3, 0, 0, 7, 0, @TAILORING,      @SKILL_MIN, 0, 0, 0, 0, '', 'Master Tailoring'),
-(15, @ID+4, 2, 0, 0, 7, 0, @BLACKSMITHING,  @SKILL_MIN, 0, 0, 0, 0, '', 'Master Blacksmithing'),
-(15, @ID+4, 4, 0, 0, 7, 0, @LEATHERWORKING, @SKILL_MIN, 0, 1, 0, 0, '', 'Not Master Leatherworking'),
-(15, @ID+4, 4, 0, 0, 7, 0, @TAILORING,      @SKILL_MIN, 0, 1, 0, 0, '', 'Not Master Tailoring'),
-(15, @ID+4, 4, 0, 0, 7, 0, @BLACKSMITHING,  @SKILL_MIN, 0, 1, 0, 0, '', 'Not Master Blacksmithing');
-
-DELETE FROM `conditions` WHERE (`SourceTypeOrReferenceId` = 15) AND (`SourceGroup` = 24400) AND (`SourceEntry` IN (1,2)) AND (`SourceId` = 0);
-INSERT INTO `conditions` (`SourceTypeOrReferenceId`, `SourceGroup`, `SourceEntry`, `SourceId`, `ElseGroup`, `ConditionTypeOrReference`, `ConditionTarget`, `ConditionValue1`, `ConditionValue2`, `ConditionValue3`, `NegativeCondition`, `ErrorType`, `ErrorTextId`, `ScriptName`, `Comment`) VALUES
-(15, @ID, 1, 0, 0, 47, 0, 9233, 2|8|64, 0, 1, 0, 0, '', 'Omarion\'s Quest not completed and not in progress'),
-(15, @ID, 2, 0, 0, 47, 0, 9233, 2|8|64, 0, 0, 0, 0, '', 'Omarion\'s Quest completed or in progress');
-
--- Add reputation requirements to crafting
-SET @EXALTED := 128;
-SET @ARGENT_DAWN := 529;
--- 192 = 62 | 128
-SET @REVERED_OR_HIGHER := 192;
-DELETE FROM `conditions` WHERE (`SourceTypeOrReferenceId` = 15) AND (`ConditionTypeOrReference` = 5) AND (`SourceGroup` IN (@ID+1, @ID+2, @ID+3));
-INSERT INTO `conditions` (`SourceTypeOrReferenceId`, `SourceGroup`, `SourceEntry`, `SourceId`, `ElseGroup`, `ConditionTypeOrReference`, `ConditionTarget`, `ConditionValue1`, `ConditionValue2`, `ConditionValue3`, `NegativeCondition`, `ErrorType`, `ErrorTextId`, `ScriptName`, `Comment`) VALUES
-(15, @ID+1, 2, 0, 0, 5, 0, @ARGENT_DAWN, @REVERED_OR_HIGHER, 0, 0, 0, 0, '', 'Argent Dawn - Revered or higher'),
-(15, @ID+1, 3, 0, 0, 5, 0, @ARGENT_DAWN, @REVERED_OR_HIGHER, 0, 0, 0, 0, '', 'Argent Dawn - Revered or higher'),
-(15, @ID+1, 1, 0, 0, 5, 0, @ARGENT_DAWN, @EXALTED,           0, 0, 0, 0, '', 'Argent Dawn - Exalted'),
-(15, @ID+1, 4, 0, 0, 5, 0, @ARGENT_DAWN, @EXALTED,           0, 0, 0, 0, '', 'Argent Dawn - Exalted'),
-(15, @ID+2, 1, 0, 0, 5, 0, @ARGENT_DAWN, @REVERED_OR_HIGHER, 0, 0, 0, 0, '', 'Argent Dawn - Revered or higher'),
-(15, @ID+2, 2, 0, 0, 5, 0, @ARGENT_DAWN, @REVERED_OR_HIGHER, 0, 0, 0, 0, '', 'Argent Dawn - Revered or higher'),
-(15, @ID+2, 3, 0, 0, 5, 0, @ARGENT_DAWN, @EXALTED,           0, 0, 0, 0, '', 'Argent Dawn - Exalted'),
-(15, @ID+3, 1, 0, 0, 5, 0, @ARGENT_DAWN, @REVERED_OR_HIGHER, 0, 0, 0, 0, '', 'Argent Dawn - Revered or higher'),
-(15, @ID+3, 2, 0, 0, 5, 0, @ARGENT_DAWN, @REVERED_OR_HIGHER, 0, 0, 0, 0, '', 'Argent Dawn - Revered or higher'),
-(15, @ID+3, 4, 0, 0, 5, 0, @ARGENT_DAWN, @REVERED_OR_HIGHER, 0, 0, 0, 0, '', 'Argent Dawn - Revered or higher'),
-(15, @ID+3, 5, 0, 0, 5, 0, @ARGENT_DAWN, @REVERED_OR_HIGHER, 0, 0, 0, 0, '', 'Argent Dawn - Revered or higher'),
-(15, @ID+3, 3, 0, 0, 5, 0, @ARGENT_DAWN, @EXALTED,           0, 0, 0, 0, '', 'Argent Dawn - Exalted'),
-(15, @ID+3, 6, 0, 0, 5, 0, @ARGENT_DAWN, @EXALTED,           0, 0, 0, 0, '', 'Argent Dawn - Exalted');
-
+-- Handle emote with cpp script when opening gossip
+UPDATE `npc_text` SET `em0_0`=0, `em0_1`=0, `em0_2`=0, `em0_3`=0, `em0_4`=0, `em0_5`=0 WHERE `ID`=8507;
+-- Handle emote with cpp script when non-craft option is selected
+UPDATE `npc_text` SET `em0_0`=0, `em0_1`=0, `em0_2`=0, `em0_3`=0, `em0_4`=0, `em0_5`=0 WHERE `ID`=8516;

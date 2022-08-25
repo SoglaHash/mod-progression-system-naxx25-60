@@ -253,6 +253,8 @@ Archmage Tarsis Kir-Moldir
 dialogue
 sitting position
 
+## Omarion
+
 NPC Missing 16365
 Master Craftsman Omarion <Brotherhood of the Light>
 Inside cage in DK wing
@@ -287,7 +289,6 @@ craft items + 200-300g
 
 Frost Resistance quests depend on: reputation with AD, class and completion 9033 echoes of war
 
-
 See VMangos implementation of Gossip Omarion script
 https://github.com/vmangos/core/blob/792c3733c1d1a1766fddbf4b654f0de4cac4325d/src/scripts/eastern_kingdoms/eastern_plaguelands/naxxramas/instance_naxxramas.cpp
 
@@ -311,6 +312,14 @@ gossip id
 .setskill 165 225 225
 .setskill 197 225 225
 
+
+implementing menu with DB, gossip menu and SmartAI 
+- [x] giving book to non crafters
+- [x] show master crafter option to master crafters
+- [x] show recipes based on reputation
+- [ ] teaching recipe
+- [ ] /spit and close menu when not high enough skill or rep
+Need to use a cpp script instead as the gossip is too complicated
 
 ## Trash Loot
 Grab list of IDs wowhead -> check if drop loot
