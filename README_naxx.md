@@ -307,10 +307,21 @@ CMangos
 gossip id
 24404
 
-.mod reputation 529 10000
-.setskill 164 225 225
-.setskill 165 225 225
+horde tailor
+.go c 26623
 .setskill 197 225 225
+blacksmith
+.setskill 164 225 225
+.go c 26618
+Leatherwork
+.go c 26626
+.setskill 165 225 225
+
+.mod reputation 529 10000
+
+
+Omarion
+.go c 88811
 
 
 implementing menu with DB, gossip menu and SmartAI 

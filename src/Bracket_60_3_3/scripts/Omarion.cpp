@@ -5,43 +5,41 @@
 
 enum CraftsSpellIds : uint32
 {
-    // TODO: LEARN spellIDs need fixing, wrong IDs. They changed in 3.x
-    // HAS spells seem correct
-    LEARN_GLACIAL_GLOVES        = 28212,
+    // Tailoring
+    LEARN_GLACIAL_GLOVES        = 28261,
     HAS_GLACIAL_GLOVES          = 28205,
-    LEARN_GLACIAL_WRISTS        = 28215,
+    LEARN_GLACIAL_WRISTS        = 28262,
     HAS_GLACIAL_WRISTS          = 28209,
-    LEARN_GLACIAL_VEST          = 28213,
+    LEARN_GLACIAL_VEST          = 28260,
     HAS_GLACIAL_VEST            = 28207,
-    LEARN_GLACIAL_CLOAK         = 28214,
+    LEARN_GLACIAL_CLOAK         = 28263,
     HAS_GLACIAL_CLOAK           = 28208,
 
-    LEARN_POLAR_GLOVES          = 28229,
+    // Leatherworking
+    LEARN_POLAR_GLOVES          = 28255,
     HAS_POLAR_GLOVES            = 28220,
-    LEARN_POLAR_BRACERS         = 28230,
+    LEARN_POLAR_BRACERS         = 28256,
     HAS_POLAR_BRACERS           = 28221,
-    LEARN_POLAR_TUNIC           = 28228,
+    LEARN_POLAR_TUNIC           = 28254,
     HAS_POLAR_TUNIC             = 28219,
-
     LEARN_ICY_SCALE_GAUNTLETS   = 28258,
     HAS_ICY_SCALE_GAUNTLETS     = 28223,
-    LEARN_ICY_SCALE_BRACERS     = 28233,
+    LEARN_ICY_SCALE_BRACERS     = 28259,
     HAS_ICY_SCALE_BRACERS       = 28224,
-    LEARN_ICY_SCALE_BREASTPLATE = 28231,
+    LEARN_ICY_SCALE_BREASTPLATE = 28257,
     HAS_ICY_SCALE_BREASTPLATE   = 28222,
 
-    LEARN_ICEBANE_GAUNTLETS     = 28248,
+    // Blacksmithing
+    LEARN_ICEBANE_GAUNTLETS     = 28253,
     HAS_ICEBANE_GAUNTLETS       = 28243,
-    LEARN_ICEBANE_BRACERS       = 28249,
+    LEARN_ICEBANE_BRACERS       = 28252,
     HAS_ICEBANE_BRACERS         = 28244,
-    LEARN_ICEBANE_BREASTPLATE   = 28245,
+    LEARN_ICEBANE_BREASTPLATE   = 28251,
     HAS_ICEBANE_BREASTPLATE     = 28242,
 };
 
 enum Say
 {
-    EMOTE_SPIT = 1,
-    TEXT_SPIT_ON_GROUND = 5226,
     BROADCAST_TEXT_SPIT_TARGET = 31673,
 };
 
@@ -155,22 +153,18 @@ public:
 
     void CloseGossipEmoteAndSpitOnPlayer(Player* player, Creature* creature)
     {
-        //creature->TextEmote(TEXT_SPIT_ON_GROUND, player);
         CloseGossipMenuFor(player);
         creature->TextEmote(BROADCAST_TEXT_SPIT_TARGET, player);
-        creature->HandleEmoteCommand(EMOTE_ONESHOT_NONE);
+        creature->HandleEmoteCommand(EMOTE_ONESHOT_NONE); // skip animation
         creature->HandleEmoteCommand(EMOTE_ONESHOT_RUDE);
     }
 
     bool OnGossipSelect(Player* player, Creature* creature, uint32 /*sender*/, uint32 action) override
     {
         uint32 argentDawnRep    = player->GetReputationRank(FACTION_ARGENT_DAWN);
-
         uint32 tailorSkill      = player->GetSkillValue(SKILL_TAILORING);
         uint32 blacksmithSkill  = player->GetSkillValue(SKILL_BLACKSMITHING);
         uint32 leatherworkSkill = player->GetSkillValue(SKILL_LEATHERWORKING);
-
-        ClearGossipMenuFor(player);
 
         switch(action)
         {
@@ -178,6 +172,7 @@ public:
                 CloseGossipMenuFor(player);
                 break;
             case MENU_ID_TAILORING:
+                ClearGossipMenuFor(player);
                 if (argentDawnRep < CRAFT1_REQ_RANK || tailorSkill < LEARN_REQ_SKILL)
                 {
                     CloseGossipEmoteAndSpitOnPlayer(player, creature);
@@ -197,6 +192,7 @@ public:
                 SendGossipMenuFor(player, NPC_TEXT_TAILORING, creature->GetGUID());
                 break;
             case MENU_ID_BLACKSMITHING:
+                ClearGossipMenuFor(player);
                 if (argentDawnRep < CRAFT1_REQ_RANK || blacksmithSkill < LEARN_REQ_SKILL)
                 {
                     CloseGossipEmoteAndSpitOnPlayer(player, creature);
@@ -215,6 +211,7 @@ public:
                 SendGossipMenuFor(player, NPC_TEXT_BLACKSMITHING, creature->GetGUID());
                 break;
             case MENU_ID_LEATHERWORKING:
+                ClearGossipMenuFor(player);
                 if (argentDawnRep < CRAFT1_REQ_RANK || leatherworkSkill < LEARN_REQ_SKILL)
                 {
                     CloseGossipEmoteAndSpitOnPlayer(player, creature);
@@ -236,12 +233,13 @@ public:
                 }
                 if (argentDawnRep >= CRAFT2_REQ_RANK)
                 {
-                    AddGossipItemFor(player, GOSSIP_ICON_TRAINER, LEARN_ICY_SCALE_BREASTPLATE, GOSSIP_SENDER_MAIN, LEARN_ICY_SCALE_BREASTPLATE);
+                    AddGossipItemFor(player, MENU_ID_LEATHERWORKING, ITEM_ID_ICY_SCALE_BREASTPLATE, GOSSIP_SENDER_MAIN, LEARN_ICY_SCALE_BREASTPLATE);
                 }
                 AddGossipItemFor(player, MENU_ID_LEATHERWORKING, ITEM_ID_GOODBYE_LEATHERWORKING, GOSSIP_SENDER_MAIN, GOSSIP_CLOSE);
                 SendGossipMenuFor(player, NPC_TEXT_LEATHERWORKING, creature->GetGUID());
                 break;
             case MENU_ID_NO_CRAFTER:
+                ClearGossipMenuFor(player);
                 if (argentDawnRep < BOOK_REQ_RANK)
                 {
                     CloseGossipEmoteAndSpitOnPlayer(player, creature);
@@ -256,44 +254,58 @@ public:
                 break;
             case LEARN_GLACIAL_CLOAK:
                 LearnCraftIfNotAlreadyKnown(LEARN_GLACIAL_CLOAK, HAS_GLACIAL_CLOAK, player);
+                SendGossipMenuFor(player, NPC_TEXT_TAILORING, creature->GetGUID());
                 break;
             case LEARN_GLACIAL_GLOVES:
                 LearnCraftIfNotAlreadyKnown(LEARN_GLACIAL_GLOVES, HAS_GLACIAL_GLOVES, player);
+                SendGossipMenuFor(player, NPC_TEXT_TAILORING, creature->GetGUID());
                 break;
             case LEARN_GLACIAL_WRISTS:
                 LearnCraftIfNotAlreadyKnown(LEARN_GLACIAL_WRISTS, HAS_GLACIAL_WRISTS, player);
+                SendGossipMenuFor(player, NPC_TEXT_TAILORING, creature->GetGUID());
                 break;
             case LEARN_GLACIAL_VEST:
                 LearnCraftIfNotAlreadyKnown(LEARN_GLACIAL_VEST, HAS_GLACIAL_VEST, player);
+                SendGossipMenuFor(player, NPC_TEXT_TAILORING, creature->GetGUID());
                 break;
             case LEARN_ICEBANE_BRACERS:
                 LearnCraftIfNotAlreadyKnown(LEARN_ICEBANE_BRACERS, HAS_ICEBANE_BRACERS, player);
+                SendGossipMenuFor(player, NPC_TEXT_BLACKSMITHING, creature->GetGUID());
                 break;
             case LEARN_ICEBANE_GAUNTLETS:
                 LearnCraftIfNotAlreadyKnown(LEARN_ICEBANE_GAUNTLETS, HAS_ICEBANE_GAUNTLETS, player);
+                SendGossipMenuFor(player, NPC_TEXT_BLACKSMITHING, creature->GetGUID());
                 break;
             case LEARN_ICEBANE_BREASTPLATE:
                 LearnCraftIfNotAlreadyKnown(LEARN_ICEBANE_BREASTPLATE, HAS_ICEBANE_BREASTPLATE, player);
+                SendGossipMenuFor(player, NPC_TEXT_BLACKSMITHING, creature->GetGUID());
                 break;
             case LEARN_POLAR_BRACERS:
                 LearnCraftIfNotAlreadyKnown(LEARN_POLAR_BRACERS, HAS_POLAR_BRACERS, player);
+                SendGossipMenuFor(player, NPC_TEXT_LEATHERWORKING, creature->GetGUID());
                 break;
             case LEARN_POLAR_GLOVES:
                 LearnCraftIfNotAlreadyKnown(LEARN_POLAR_GLOVES, HAS_POLAR_GLOVES, player);
+                SendGossipMenuFor(player, NPC_TEXT_LEATHERWORKING, creature->GetGUID());
                 break;
             case LEARN_POLAR_TUNIC:
                 LearnCraftIfNotAlreadyKnown(LEARN_POLAR_TUNIC, HAS_POLAR_TUNIC, player);
+                SendGossipMenuFor(player, NPC_TEXT_LEATHERWORKING, creature->GetGUID());
                 break;
             case LEARN_ICY_SCALE_BRACERS:
                 LearnCraftIfNotAlreadyKnown(LEARN_ICY_SCALE_BRACERS, HAS_ICY_SCALE_BRACERS, player);
+                SendGossipMenuFor(player, NPC_TEXT_LEATHERWORKING, creature->GetGUID());
                 break;
             case LEARN_ICY_SCALE_GAUNTLETS:
                 LearnCraftIfNotAlreadyKnown(LEARN_ICY_SCALE_GAUNTLETS, HAS_ICY_SCALE_GAUNTLETS, player);
+                SendGossipMenuFor(player, NPC_TEXT_LEATHERWORKING, creature->GetGUID());
                 break;
             case LEARN_ICY_SCALE_BREASTPLATE:
                 LearnCraftIfNotAlreadyKnown(LEARN_ICY_SCALE_BREASTPLATE, HAS_ICY_SCALE_BREASTPLATE, player);
+                SendGossipMenuFor(player, NPC_TEXT_LEATHERWORKING, creature->GetGUID());
                 break;
         }
+
         return true;
     }
 };

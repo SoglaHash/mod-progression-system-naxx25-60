@@ -1,4 +1,4 @@
--- Add creature to map
+-- Add Omarion to the cage in The Military Quarter
 DELETE FROM `creature` WHERE `guid` = 88811 and `id1` = 16365;
 INSERT INTO `creature`
 (`guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, `spawnMask`,
@@ -13,15 +13,7 @@ VALUES
 -- Handle gossip with cpp script
 UPDATE `creature_template` SET `ScriptName`='npc_omarion_gossip',`gossip_menu_id`=0 WHERE `entry` = 16365;
 
--- fix to npc_text
 SET @ID:= 24400;
--- spit emote
-DELETE FROM `creature_text` where `CreatureID` = 16365;
-INSERT INTO `creature_text`
-(`CreatureID`, `GroupID`, `ID`, `Text`, `Type`, `Language`, `Probability`, `Emote`, `Duration`, `Sound`, `BroadcastTextId`, `TextRange`, `comment`)
-VALUES
-(16365, 1, 0, '%s spits on $n.', 16, 0, 100.0, 0, 0, 0, 31673, 0, 'Omarion');
-
 -- Set correct text when gossip tailor/leatherwork/blacksmith option
 DELETE FROM `npc_text` WHERE `ID` in (@ID+1, @ID+2, @ID+3);
 INSERT INTO `npc_text`
@@ -36,14 +28,13 @@ VALUES
 (@ID+1, @ID+1),
 (@ID+2, @ID+2),
 (@ID+3, @ID+3);
--- Emote
--- Handle emote with cpp script when opening gossip
+-- Set Emotes: Laugh = 11, Talk = 1, Question = 6
+-- Menu intro
 UPDATE `npc_text` SET `Probability0`=1, `em0_0`=0, `em0_1`=11, `em0_2`=0, `em0_3`=1, `em0_4`=0, `em0_5`=0 WHERE `ID`=8507;
 UPDATE `broadcast_text` SET `EmoteID1`=11, `EmoteID2`=1, `EmoteID3`=0 WHERE `ID`=12247;
--- Handle emote with cpp script when non-craft option is selected
+-- Non-crafter / book
 UPDATE `npc_text` SET `Probability0`=1, `em0_0`=0, `em0_1`=1, `em0_2`=0, `em0_3`=0, `em0_4`=0, `em0_5`=0 WHERE `ID`=8516;
 UPDATE `broadcast_text` SET `EmoteID1`=1, `EmoteID2`=0, `EmoteID3`=0 WHERE `ID`=12280;
--- Craft select emotes
 -- Tailoring
 UPDATE `npc_text` SET `Probability0`=1, `em0_0`=0, `em0_1`=6, `em0_2`=0, `em0_3`=1, `em0_4`=0, `em0_5`=0 WHERE `ID`=24401;
 UPDATE `broadcast_text` SET `EmoteID1`=6, `EmoteID2`=1, `EmoteID3`=0 WHERE `ID` = 12252;
@@ -53,7 +44,7 @@ UPDATE `broadcast_text` SET `EmoteID1`=1, `EmoteID2`=0, `EmoteID3`=0 WHERE `ID` 
 -- Leatherworking
 UPDATE `npc_text` SET `Probability0`=1, `em0_0`=0, `em0_1`=1, `em0_2`=0, `em0_3`=0, `em0_4`=0, `em0_5`=0 WHERE `ID`=24403;
 UPDATE `broadcast_text` SET `EmoteID1`=1, `EmoteID2`=0, `EmoteID3`=0 WHERE `ID` = 12258;
--- Create menu in DB
+-- Create menus
 DELETE FROM `gossip_menu_option` WHERE `MenuID` IN
 (@ID, @ID+1, @ID+2, @ID+3, @ID+4);
 INSERT INTO `gossip_menu_option`
