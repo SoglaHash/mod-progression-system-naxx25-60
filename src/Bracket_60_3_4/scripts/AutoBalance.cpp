@@ -340,7 +340,7 @@ public:
 };
 
 
-void AddSC_auto_balance_60_4_A()
+void AddSC_auto_balance_60_3_D()
 {
     new AutoBalance_WorldScript();
     new AutoBalance_UnitScript();
