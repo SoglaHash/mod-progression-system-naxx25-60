@@ -28,7 +28,7 @@ class NaxxEntryFlag_AllMapScript : public AllMapScript
         }
 };
 
-void AddSC_naxx_entry_flag_60_3_C()
+void AddSC_naxx_entry_flag_60_4_A()
 {
     new NaxxEntryFlag_AllMapScript();
 }
