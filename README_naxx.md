@@ -28,7 +28,7 @@ Progress:
 - [x] Update Trash gold drops to lvl60
 - [x] Add Omarion (frost resistance trainer) script
 - [x] Add Frozen Rune game objects
-- [ ] Add frost resistance anvil (gobject)
+- [x] Add frost resistance anvil (gobject) BS Craft requirement (already existed)
 Skipping (for now):
 - [ ] Scourge event
 - [ ] Accurate Naxx40 mechanics
@@ -58,6 +58,11 @@ Thaddius loot
 ![loot_thaddius](loot_thaddius.png)
 Frozen runes
 ![frozen_runes](https://user-images.githubusercontent.com/74299960/187781176-7e5dc5f9-da39-473a-8bbc-9e268dea4a3a.png)
+omarion
+https://user-images.githubusercontent.com/74299960/187783939-14d68da6-5254-4d7f-b5cc-8f58ada33969.mp4
+anvil craft
+![craft_requirement](https://user-images.githubusercontent.com/74299960/187784083-9d0249ab-0631-47db-ac5b-f68bc7c28b6c.png)
+
 
 
 ## Naxx Fixes
