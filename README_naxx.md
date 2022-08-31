@@ -29,8 +29,9 @@ Progress:
 - [x] Add Omarion (frost resistance trainer) script
 - [x] Add Frozen Rune game objects
 - [x] Add frost resistance anvil (gobject) BS Craft requirement (already existed)
-Skipping (for now):
 - [ ] Scourge event
+- [ ] Add map edit teleporter to EPL
+- [ ] Add custom map to put NPCs in (seperate map than 533)
 - [ ] Accurate Naxx40 mechanics
 
 floating naxx 25 pathing plaguewood
@@ -95,9 +96,6 @@ I put fixes in fixes-*.sql
 
 Portal/instance/tp fixes in azerothcore/azerothcore-wotlk PR #12696
 
-Fixes for t3 quests and phylacter, no PR yet.
-
-
 ```
 -- .go xyz 3668 -1262 310 (with .gm fly on)
 -- 4 orbs naxx25, naxx orb visible 11:03, tp location to sapphiron 31:40
@@ -107,7 +105,6 @@ Fixes for t3 quests and phylacter, no PR yet.
 -- each wing casts (spellID: 28444) Portal Effect: Deathknight Wing
 -- Portal after each boss portals  should to blue zone and then auto portal to sapphiron
 ```
-
 
 ```
 -- Current: TPs next to portals
@@ -352,17 +349,17 @@ Leatherwork
 
 .mod reputation 529 10000
 
-
 Omarion
 .go c 88811
 
 
-implementing menu with DB, gossip menu and SmartAI 
+implementing menu with SmartAI
 - [x] giving book to non crafters
 - [x] show master crafter option to master crafters
 - [x] show recipes based on reputation
 - [ ] teaching recipe
 - [ ] /spit and close menu when not high enough skill or rep
+
 Need to use a cpp script instead as the gossip is too complicated
 
 ## Trash Loot
