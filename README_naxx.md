@@ -27,7 +27,7 @@ Progress:
 - [x] Update Trash Loot to lvl60
 - [x] Update Trash gold drops to lvl60
 - [x] Add Omarion (frost resistance trainer) script
-- [ ] Add Frozen Rune game objects
+- [x] Add Frozen Rune game objects
 - [ ] Add frost resistance anvil (gobject)
 Skipping (for now):
 - [ ] Scourge event
@@ -56,6 +56,9 @@ Chest loot
 ![loot_4h](loot_4h.png)
 Thaddius loot
 ![loot_thaddius](loot_thaddius.png)
+Frozen runes
+![frozen_runes](https://user-images.githubusercontent.com/74299960/187781176-7e5dc5f9-da39-473a-8bbc-9e268dea4a3a.png)
+
 
 ## Naxx Fixes
 I put fixes in fixes-*.sql
