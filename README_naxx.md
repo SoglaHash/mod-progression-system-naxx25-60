@@ -47,19 +47,44 @@ https://user-images.githubusercontent.com/74299960/184688921-0f3c694e-2826-48ce-
 25man mechanics (using 25man map)
 ![raz](razuvious_25man_mechanics.png)
 Exit portal to EPl
-![exit](exit.png)
+
+
+![exit](https://user-images.githubusercontent.com/74299960/187784768-6f9af068-e450-4ada-ac2a-9e3af3baf986.png)
+
+
 transporter naxx object
-![outside](transporter.png)
+
+![outside](https://user-images.githubusercontent.com/74299960/187784825-cb30aad0-d4f5-4092-a50a-8b8284c05a01.png)
+
+
 transporter naxx object2
-![outside](transporter2.png)
+
+
+![transporter2](https://user-images.githubusercontent.com/74299960/187784874-db0a502f-fc82-446b-aeb1-90bcb8354ba6.png)
+
+
 Chest loot
-![loot_4h](loot_4h.png)
+
+![loot_4h](https://user-images.githubusercontent.com/74299960/187784922-0fe556e1-7c38-49a9-a4d1-7342a83315cf.png)
+
+
 Thaddius loot
-![loot_thaddius](loot_thaddius.png)
+
+
+![loot_thaddius](https://user-images.githubusercontent.com/74299960/187784950-f1d307e2-4661-4389-87f2-f55e50c0a870.png)
+
+trash loot
+
+![trash_loot](https://user-images.githubusercontent.com/74299960/187785550-6cc4e477-cf2d-4ceb-a467-e0144d1a60a8.png)
+
+
 Frozen runes
+
 ![frozen_runes](https://user-images.githubusercontent.com/74299960/187781176-7e5dc5f9-da39-473a-8bbc-9e268dea4a3a.png)
 omarion
+
 https://user-images.githubusercontent.com/74299960/187783939-14d68da6-5254-4d7f-b5cc-8f58ada33969.mp4
+
 anvil craft
 ![craft_requirement](https://user-images.githubusercontent.com/74299960/187784083-9d0249ab-0631-47db-ac5b-f68bc7c28b6c.png)
 
