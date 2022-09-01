@@ -14,17 +14,17 @@ SET @EVENT_ENTRY:= 90;
 DELETE FROM `game_event` WHERE `eventEntry` IN (@EVENT_ENTRY, @EVENT_ENTRY+1, @EVENT_ENTRY+2, @EVENT_ENTRY+3, @EVENT_ENTRY+4, @EVENT_ENTRY+5, @EVENT_ENTRY+6, @EVENT_ENTRY+7, @EVENT_ENTRY+8, @EVENT_ENTRY+9, @EVENT_ENTRY+10, @EVENT_ENTRY+11);
 INSERT INTO `game_event` (`eventEntry`, `start_time`, `end_time`, `occurence`, `length`, `holiday`, `holidayStage`, `description`, `world_event`, `announce`) VALUES
 (@EVENT_ENTRY,    '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 1, 0, 0, 'Scourge Invasion lvl60',                                 0, 2),
-(@EVENT_ENTRY+1,  '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 0, 0, 0, 'Scourge Invasion lvl60 - Boss in instance activation',   0, 2),
-(@EVENT_ENTRY+2,  '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 0, 0, 0, 'Scourge Invasion lvl60 - Attacking Winterspring',        0, 2),
-(@EVENT_ENTRY+3,  '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 0, 0, 0, 'Scourge Invasion lvl60 - Attacking Tanaris',             0, 2),
-(@EVENT_ENTRY+4,  '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 0, 0, 0, 'Scourge Invasion lvl60 - Attacking Azshara',             0, 2),
-(@EVENT_ENTRY+5,  '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 0, 0, 0, 'Scourge Invasion lvl60 - Attacking Blasted Lands',       0, 2),
-(@EVENT_ENTRY+6,  '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 0, 0, 0, 'Scourge Invasion lvl60 - Attacking Eastern Plaguelands', 0, 2),
-(@EVENT_ENTRY+7,  '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 0, 0, 0, 'Scourge Invasion lvl60 - Attacking Burning Steppes',     0, 2),
-(@EVENT_ENTRY+8,  '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 0, 0, 0, 'Scourge Invasion lvl60 - 50 Invasions Done',             0, 2),
-(@EVENT_ENTRY+9,  '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 0, 0, 0, 'Scourge Invasion lvl60 - 100 Invasions Done',            0, 2),
-(@EVENT_ENTRY+10, '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 0, 0, 0, 'Scourge Invasion lvl60 - 150 Invasions Done',            0, 2),
-(@EVENT_ENTRY+11, '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 0, 0, 0, 'Scourge Invasion lvl60 - Invasions Done',                0, 2);
+(@EVENT_ENTRY+1,  '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 1, 0, 0, 'Scourge Invasion lvl60 - Boss in instance activation',   0, 2),
+(@EVENT_ENTRY+2,  '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 1, 0, 0, 'Scourge Invasion lvl60 - Attacking Winterspring',        0, 2),
+(@EVENT_ENTRY+3,  '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 1, 0, 0, 'Scourge Invasion lvl60 - Attacking Tanaris',             0, 2),
+(@EVENT_ENTRY+4,  '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 1, 0, 0, 'Scourge Invasion lvl60 - Attacking Azshara',             0, 2),
+(@EVENT_ENTRY+5,  '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 1, 0, 0, 'Scourge Invasion lvl60 - Attacking Blasted Lands',       0, 2),
+(@EVENT_ENTRY+6,  '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 1, 0, 0, 'Scourge Invasion lvl60 - Attacking Eastern Plaguelands', 0, 2),
+(@EVENT_ENTRY+7,  '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 1, 0, 0, 'Scourge Invasion lvl60 - Attacking Burning Steppes',     0, 2),
+(@EVENT_ENTRY+8,  '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 1, 0, 0, 'Scourge Invasion lvl60 - 50 Invasions Done',             0, 2),
+(@EVENT_ENTRY+9,  '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 1, 0, 0, 'Scourge Invasion lvl60 - 100 Invasions Done',            0, 2),
+(@EVENT_ENTRY+10, '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 1, 0, 0, 'Scourge Invasion lvl60 - 150 Invasions Done',            0, 2),
+(@EVENT_ENTRY+11, '2000-01-01 14:00:00', '2000-01-01 14:00:00', 525600, 1, 0, 0, 'Scourge Invasion lvl60 - Invasions Done',                0, 2);
 
 -- Game objects
 -- Creatures
