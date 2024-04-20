@@ -25,11 +25,11 @@
 
 enum Spells
 {
-    SPELL_POISON_CLOUD                      = 28240,
+    SPELL_POISON_CLOUD                      = 90022,
     SPELL_MUTATING_INJECTION                = 28169,
-    SPELL_MUTATING_EXPLOSION                = 28206,
-    SPELL_SLIME_SPRAY                       = 28157,
-    SPELL_POISON_CLOUD_DAMAGE_AURA          = 28158,
+    SPELL_MUTATING_EXPLOSION                = 90021,
+    SPELL_SLIME_SPRAY                       = 90020,
+    SPELL_POISON_CLOUD_DAMAGE_AURA          = 90023,
     SPELL_BERSERK                           = 26662,
     SPELL_BOMBARD_SLIME                     = 90003
 };
