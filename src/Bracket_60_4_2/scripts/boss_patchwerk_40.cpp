@@ -30,7 +30,7 @@ enum Yells
 
 enum Spells
 {
-    SPELL_HATEFUL_STRIKE            = 28308,
+    SPELL_HATEFUL_STRIKE            = 90015,
     SPELL_FRENZY                    = 28131,
     SPELL_BERSERK                   = 26662,
     SPELL_SLIME_BOLT                = 32309

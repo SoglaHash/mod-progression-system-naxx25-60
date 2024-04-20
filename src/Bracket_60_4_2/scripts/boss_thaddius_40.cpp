@@ -53,7 +53,7 @@ enum Says
 enum Spells
 {
     SPELL_MAGNETIC_PULL                 = 28337,
-    SPELL_TESLA_SHOCK                   = 28099,
+    SPELL_TESLA_SHOCK                   = 90040,
     SPELL_SHOCK_VISUAL                  = 28159,
 
     // Stalagg
@@ -61,23 +61,23 @@ enum Spells
     SPELL_STALAGG_CHAIN                 = 28096,
 
     // Feugen
-    SPELL_STATIC_FIELD                  = 28135,
+    SPELL_STATIC_FIELD                  = 90041,
     SPELL_FEUGEN_CHAIN                  = 28111,
 
     // Thaddius
     SPELL_POLARITY_SHIFT                = 28089,
-    SPELL_BALL_LIGHTNING                = 28299,
-    SPELL_CHAIN_LIGHTNING               = 28167,
+    SPELL_BALL_LIGHTNING                = 90042,
+    SPELL_CHAIN_LIGHTNING               = 90043,
     SPELL_BERSERK                       = 27680,
     SPELL_THADDIUS_VISUAL_LIGHTNING     = 28136,
     SPELL_THADDIUS_SPAWN_STUN           = 28160,
 
-    SPELL_POSITIVE_CHARGE               = 28062,
+    SPELL_POSITIVE_CHARGE               = 90044,
     SPELL_POSITIVE_CHARGE_STACK         = 29659,
-    SPELL_NEGATIVE_CHARGE               = 28085,
+    SPELL_NEGATIVE_CHARGE               = 90045,
     SPELL_NEGATIVE_CHARGE_STACK         = 29660,
-    SPELL_POSITIVE_POLARITY             = 28059,
-    SPELL_NEGATIVE_POLARITY             = 28084
+    SPELL_POSITIVE_POLARITY             = 90046,
+    SPELL_NEGATIVE_POLARITY             = 90047
 };
 
 enum Events
