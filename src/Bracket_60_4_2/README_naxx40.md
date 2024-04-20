@@ -20,6 +20,11 @@ Note that this mod uses an autobalancer so issues with damage may be due to the 
 -[x] Sewage Slime, slime that spawns from Grobulus are lvl 80
 -[x] Horse mounts from trash before Razuvious are lvl 80
 -[ ] Living Poison aka Frogger before Naxx is missing in lvl 60 instance
+-[x] Grobbulus: slime spray damage adjusted
+-[x] Grobbulus: debuff explosion damage adjusted
+-[x] Grobbulus: poison cloud damage, damage reduced by lowering ticktime
+-[ ] (skip) Grobbulus: poison cloud damage reduce damage properly. (requires custom spell+client patch)
+-[x] Gluth: enrage increased, icon not updated (requires custom spell+client patch)
 
 potential upstream/acore fixes:
 -[ ] Bombard Slime spell needs upstream fixes. Position is not random. Pos is pulled form spell_location template. Not present in VMangos/TC/CMangos from what I see
@@ -103,6 +108,21 @@ Change smartAI or cpp to use new custom spellID
 Editing/exporting did not work for me. I used WoW-Spell-Editor instead
 https://github.com/azerothcore/SpellWork
 extract to azerothcore-wotlk/env/dist/data and run .exe
+
+## Spells
+requires client patch?
+detonate is still 10k
+poison cloud damage is 3k
+
+## Custom spell summon entry?
+?? Change entries of MiscValue to summon new entries?
+CastCustomSpell(...)
+
+Effect 0: Id 28 (SPELL_EFFECT_SUMMON)
+BasePoints = 1
+Targets (18, 0) (TARGET_DEST_CASTER, NO_TARGET)
+EffectMiscValueA = 16363
+EffectMiscValueB = 64
 
 
 # V1 Dev notes below regarding data/implementation details
