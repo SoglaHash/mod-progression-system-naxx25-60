@@ -21,6 +21,17 @@ Note that this mod uses an autobalancer so issues with damage may be due to the 
 -[x] Horse mounts from trash before Razuvious are lvl 80
 -[ ] Living Poison aka Frogger before Naxx is missing in lvl 60 instance
 
+potential upstream/acore fixes:
+-[ ] Bombard Slime spell needs upstream fixes. Position is not random. Pos is pulled form spell_location template. Not present in VMangos/TC/CMangos from what I see
+
+Spell fixes:
+Construct quarter
+-[x] Patchwerk
+-[x] Grobullus
+-[x] Gluth
+-[x] Thaddius
+-[ ] Thrash (not done)
+
 ## GM commands to help test
 
 attunement - reputation honored - complete quest
@@ -69,7 +80,7 @@ Naxx cauldron
 # Editing 80 spells / custom spells
 Workflow went like this:
 
-Look in CPP or smartAI with Keira3 https://github.com/azerothcore/Keira3
+ Look in CPP or smartAI with Keira3 https://github.com/azerothcore/Keira3
 what spellIds need changing
 
 https://github.com/stoneharry/WoW-Spell-Editor
@@ -78,13 +89,18 @@ if using default DB. user root, password password, port 3306, db acore_world
 import spells.dbc, create new spell 90000+ i.e. 90004
 Edit attribute, and export. Select SQL and click export dbc
 
+create second folder and open 1.12
+
+create custom spell in 335 and match 1.12 values
+
 Go to ./Export folder and grep `grep 90004 Spell.sql`
 
 copy the query into `progression_60_4_2_naxx_spells.sql`
 
 Change smartAI or cpp to use new custom spellID
 
-## Exploring, comparing DBC Spells. Editing/exporting did not work for me. I used WoW-Spell-Editor instead
+## Exploring, comparing DBC Spells.
+Editing/exporting did not work for me. I used WoW-Spell-Editor instead
 https://github.com/azerothcore/SpellWork
 extract to azerothcore-wotlk/env/dist/data and run .exe
 
