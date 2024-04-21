@@ -10,11 +10,7 @@ IndividualProgression has made some fixes/improvement to these original scripts.
 - [x] Beta entrance in Strat. Must enter once through Strat with attunement quest completed
 
 ## TODO/Issues list
-Shared issues with Zhen's mod-individual-progression.
-
-https://github.com/ZhengPeiRu21/mod-individual-progression/issues/70
-
-Note that this mod uses an autobalancer so issues with damage may be due to the autobalancer.
+Some shared issues with Zhen's mod-individual-progression. https://github.com/ZhengPeiRu21/mod-individual-progression/issues/70 Note that this mod uses an autobalancer so issues with damage may be due to the autobalancer.
 
 -[ ] (see below) Naxx40 spells, boss scripts and encounters are not implemented correctly
 -[x] Sewage Slime, slime that spawns from Grobulus are lvl 80
@@ -25,17 +21,22 @@ Note that this mod uses an autobalancer so issues with damage may be due to the 
 -[x] Grobbulus: poison cloud damage, damage reduced by lowering ticktime
 -[ ] (skip) Grobbulus: poison cloud damage reduce damage properly. (requires custom spell+client patch)
 -[x] Gluth: enrage increased, icon not updated (requires custom spell+client patch)
+-[x] Thaddius: room Tesla shock reduced damage
+-[x] Thaddius: mark damage from 4500 to 2000
+-[x] Thaddius: lightning ball (wipe mechanic) adjusted
+-[x] Feugen: Power burn 500 every 3 seconds. Missing nature visual shock (requires custom spell). Or do hack with 63705 spell, change yards to 300. -500 mana, -2500 dmg
 
-potential upstream/acore fixes:
--[ ] Bombard Slime spell needs upstream fixes. Position is not random. Pos is pulled form spell_location template. Not present in VMangos/TC/CMangos from what I see
-
-Spell fixes:
+Overview Spell fixes:
 Construct quarter
 -[x] Patchwerk
 -[x] Grobullus
 -[x] Gluth
 -[x] Thaddius
 -[ ] Thrash (not done)
+
+potential upstream/acore fixes:
+-[ ] Bombard Slime spell needs upstream fixes. Position is not random. Pos is pulled form spell_location template. Not present in VMangos/TC/CMangos from what I see
+-[ ] Thaddius is stuck in position and does not move
 
 ## GM commands to help test
 
