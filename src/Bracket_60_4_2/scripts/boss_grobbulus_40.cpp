@@ -173,7 +173,7 @@ public:
                 case EVENT_SLIME_SPRAY:
                 {
                     Talk(EMOTE_SLIME);
-                    int32 modifiedSlimeSprayDamage = urand(3199, 4800);
+                    int32 modifiedSlimeSprayDamage = urand(3200, 3400);
                     me->CastCustomSpell(me->GetVictim(), SPELL_SLIME_SPRAY, &modifiedSlimeSprayDamage, 0, 0, false);
                     events.RepeatEvent(20000);
                     break;
@@ -234,7 +234,7 @@ public:
                     me->CastSpell(me, SPELL_POISON_CLOUD_DAMAGE_AURA, false);
                     auraVisualTimer = 0;
                     // TODO: fix to vanilla values
-                    //int32 modifiedPoisonCloudDamage = urand(875, 1125);
+                    //int32 modifiedPoisonCloudDamage = 875;
                     //me->CastCustomSpell(me, SPELL_POISON_CLOUD_DAMAGE_AURA_TRIGGER, &modifiedPoisonCloudDamage, nullptr, nullptr, true, nullptr, nullptr, me->GetGUID());
                 }
             }
@@ -308,7 +308,7 @@ class spell_grobbulus_mutating_injection_40 : public SpellScriptLoader
                         {
                             if (caster->GetMap()->GetDifficulty() == RAID_DIFFICULTY_10MAN_HEROIC)
                             {
-                                int32 modifiedMutatingExplosionDamage = urand(2379, 3220);
+                                int32 modifiedMutatingExplosionDamage = 2379;
                                 caster->CastCustomSpell(GetTarget(), SPELL_MUTATING_EXPLOSION, &modifiedMutatingExplosionDamage, 0, 0, true);
                             }
                             else
