@@ -30,6 +30,7 @@ enum Spells
     SPELL_MUTATING_EXPLOSION                = 28206,
     SPELL_SLIME_SPRAY                       = 28157,
     SPELL_POISON_CLOUD_DAMAGE_AURA          = 28158,
+    SPELL_POISON_CLOUD_DAMAGE_AURA_TRIGGER  = 28241,
     SPELL_BERSERK                           = 26662,
     SPELL_BOMBARD_SLIME                     = 90003 // update summon entry
 };
@@ -228,13 +229,13 @@ public:
             if (auraVisualTimer) // this has to be delayed to be visible
             {
                 auraVisualTimer += diff;
-                if (auraVisualTimer >= 1000)
+                if (auraVisualTimer >= 3000) // Lowered to 3 seconds
                 {
-                    int32 modifiedPoisonCloudDamage = urand(1109, 1290);
                     me->CastSpell(me, SPELL_POISON_CLOUD_DAMAGE_AURA, false);
-                    // Update the periodic trigger effect with custom damage
-                    me->CastCustomSpell(me, 28241, &modifiedPoisonCloudDamage, 0, 0, true, nullptr, nullptr, me->GetGUID());
                     auraVisualTimer = 0;
+                    // TODO: fix to vanilla values
+                    //int32 modifiedPoisonCloudDamage = urand(875, 1125);
+                    //me->CastCustomSpell(me, SPELL_POISON_CLOUD_DAMAGE_AURA_TRIGGER, &modifiedPoisonCloudDamage, nullptr, nullptr, true, nullptr, nullptr, me->GetGUID());
                 }
             }
             sizeTimer += diff; // increase size to 15yd in 60 seconds, 0.00025 is the growth of size in 1ms
