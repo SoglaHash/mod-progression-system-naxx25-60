@@ -5469,3 +5469,23 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 (16452, 0, 3, 0, 0, 0, 90, 0, 11000, 11000, 15000, 15000, 0, 0, 11, 30096, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Necro Knight Guardian - In Combat - Cast \'Arcane Explosion\''),
 (16452, 0, 4, 0, 0, 0, 90, 0, 12000, 12000, 15000, 15000, 0, 0, 11, 28391, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Necro Knight Guardian - In Combat - Cast \'Blink\''),
 (16452, 0, 5, 0, 0, 0, 90, 0, 14000, 14000, 15000, 15000, 0, 0, 11, 30095, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Necro Knight Guardian - In Combat - Cast \'Cone of Cold\'');
+
+-- Military Quarter Trash
+-- Plagued Gargoyle
+-- stealth and invisibility detection
+UPDATE `creature_template_addon` SET `auras` = '18950' WHERE (`entry` = 35107);
+DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 351077);
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(351077, 0, 0, 0, 0, 0, 100, 0, 0, 0, 10000, 1000, 0, 0, 218, 29325, 0, 0, 121, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Plagued Gargoyle - In Combat - Custom Cast Acid Volley'),
+(351077, 0, 1, 0, 2, 0, 75, 0, 0, 50, 30000, 30000, 0, 0, 11, 28995, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Plagued Gargoyle - Between 0-50% Health - Cast \'Stoneskin\'');
+-- Death Knight Captain
+-- Cast whirlwind every 5 seconds
+DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 351048);
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(351048, 0, 0, 0, 0, 0, 100, 0, 1000, 1000, 5000, 5000, 0, 0, 11, 28335, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Deathknight Captain - In Combat - Cast \'Whirlwind\'');
+-- Death Knight Cavalier
+DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 351055);
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(351055, 0, 0, 0, 0, 0, 90, 0, 0, 0, 8000, 8000, 0, 0, 11, 28413, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Deathknight Cavalier - In Combat - Cast \'Aura of Agony\''),
+(351055, 0, 1, 0, 0, 0, 95, 0, 1000, 1000, 4000, 4000, 0, 0, 11, 15284, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Deathknight Cavalier - In Combat - Cast \'Cleave\''),
+(351055, 0, 2, 0, 0, 0, 80, 0, 3000, 3000, 5000, 5000, 0, 0, 11, 28412, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 'Deathknight Cavalier - In Combat - Cast \'Death Coil\'');

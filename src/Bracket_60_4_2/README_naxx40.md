@@ -35,6 +35,10 @@ Construct quarter
 Trash
 Military
 -[x] Horse mounts from trash before Razuvious are lvl 80
+-[ ] Necro Knight, has smartAI (see Necro Knight Guardian)
+-[x] Death Knight Captain, updated smartAI to cast whirlwind/stun
+-[x] Plagued Gargoyle, smartAI
+Plague
 
 Construct
 -[x] Sewage Slime, slime that spawns from Grobulus are lvl 80
@@ -51,11 +55,11 @@ Construct
 -[x] Lightning Totem - lvl62 - Shock damage ~3k to ~2k
 -[x] Stitched Spewer - unchanged, weapon damage instead of raw 2k dmg
 -[x] Toxic Tunnel - unchanged, damage should be 300->200. Triggered spell 28369. Requires custom patch
--[x] Necropolis Acolyte - Casts Shadow Bolt Volley and Arcane Explosion
--[x] Plagued Ghoul - 351078, update smartAI
--[x] Spirit of Naxxramas, update aura
--[x] Deathknight Vindicator, smartAI
--[x] Necro Knight Guardian, smartAI
+-[x] Necropolis Acolyte - add smartAI, Casts Shadow Bolt Volley and Arcane Explosion
+-[x] Plagued Ghoul - 351078, add smartAI
+-[x] Spirit of Naxxramas, add aura
+-[x] Deathknight Vindicator, add smartAI
+-[ ] Necro Knight Guardian, smartAI, similar implementation to Necro Knight might be better?
 
 Issue Patchwerk Trash:
 Creature formations of patchwerk golems. Awkward pathing
