@@ -5389,6 +5389,10 @@ INSERT INTO `creature` (`guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, 
 -- Fix Patchwork Golem: Movement is controlled by leader formation 361329
 UPDATE `creature` SET `wander_distance`=0, `MovementType`=0 WHERE `guid` BETWEEN 361326 and 361328;
 
+-- fix: Bony construct pathing
+-- Remove 2 pathing Bony Construct that have waypoint_data (3612410, 3612450) from creature_formations
+DELETE FROM `creature_formations` WHERE `leaderGUID` = 361423 AND `memberGUID` IN (361241, 361245);
+
 -- Lightning Totem, summoned by Living Monstrosity
 DELETE FROM `creature_template` WHERE (`entry` = 351091);
 INSERT INTO `creature_template` (`entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, `KillCredit1`, `KillCredit2`, `modelid1`, `modelid2`, `modelid3`, `modelid4`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild`) VALUES
@@ -5446,11 +5450,9 @@ UPDATE `creature_template` SET `AIName` = 'SmartAI' WHERE `entry` = 16448;
 DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 16448);
 INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
 (16448, 0, 0, 0, 0, 0, 100, 0, 6000, 12000, 9000, 16000, 0, 0, 11, 30121, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Plagued Deathhound - In Combat - Cast \'Forceful Howl\'');
-
 -- Spirit of Naxxramas
 -- stealth and invisibility detection
 UPDATE `creature_template_addon` SET `auras` = '18950' WHERE (`entry` = 16449);
-
 -- Deathknight Vindicator
 UPDATE `creature_template` SET `AIName` = 'SmartAI' WHERE `entry` = 16451;
 DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 16451);
@@ -5470,6 +5472,28 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 (16452, 0, 4, 0, 0, 0, 90, 0, 12000, 12000, 15000, 15000, 0, 0, 11, 28391, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Necro Knight Guardian - In Combat - Cast \'Blink\''),
 (16452, 0, 5, 0, 0, 0, 90, 0, 14000, 14000, 15000, 15000, 0, 0, 11, 30095, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Necro Knight Guardian - In Combat - Cast \'Cone of Cold\'');
 
+-- Update Bile Retcher 351022  - 27807 Bile Vomit - ~5k instant, ~1200 dot to ~1500 instant, 250 dot
+DELETE FROM `smart_scripts` WHERE (`entryorguid` = 351022) AND (`source_type` = 0) AND (`id` IN (0));
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`,
+ `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(351022, 0, 0, 0, 0, 0, 100, 0, 3600, 6800, 13700, 19700, 0, 0, 218, 27807, 0, 1374, 249, 26, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Bile Retcher - In combat - Cast Bile Vomit (Naxx 40)');
+-- 351023 - Mad Scientist - Heal, reduced from ~20% hp to ~10% hp. Vanilla is raw ~3k
+-- 351023 - Mad Scientist - Mana Burn ~3.5k to ~1.5k
+DELETE FROM `smart_scripts` WHERE (`entryorguid` = 351023) AND (`source_type` = 0) AND (`id` IN (0, 2));
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(351023, 0, 0, 0, 0, 0, 100, 0, 7600, 17300, 6000, 13300, 0, 0, 218, 28301, 0, 1062, 0, 0, 0, 5, 0, 0, 1, 0, 0, 0, 0, 0, 'Mad Scientist - In combat - Cast Mana Burn (Naxx 40)'),
+(351023, 0, 2, 0, 2, 0, 100, 0, 0, 30, 18000, 21000, 0, 0, 218, 28306, 0, 10, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Mad Scientist - At 30% HP - Cast Great Heal (Naxx 40)');
+-- 351025 - Surgical Assistant - Mind Flay damage from 1.5k to 600 per tick
+DELETE FROM `smart_scripts` WHERE (`entryorguid` = 351025) AND (`source_type` = 0) AND (`id` IN (0));
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(351025, 0, 0, 0, 0, 0, 100, 0, 1600, 2800, 7700, 11900, 0, 0, 218, 28310, 0, 554, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 'Surgical Assistant - In combat - Cast Mind Flay (Naxx 40)');
+-- 351024 - Living Monstrosity - Chain Lightning damage from ~4k to ~1k. (Chain Lightning should 3 to 10. Range 45 to 30, requires custom script)
+DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 351024);
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(351024, 0, 0, 0, 0, 0, 100, 0, 7100, 12500, 18100, 20900, 0, 0, 218, 28293, 0, 599, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 'Living Monstrosity - In combat - Cast Chain Lightning (Naxx 40)'),
+(351024, 0, 1, 0, 0, 0, 100, 0, 6400, 10000, 16900, 18500, 0, 0, 11, 90005, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Living Monstrosity - In combat - Cast Lightning Totem (Naxx 40)');
+
+-- Trash military quarter
 -- Military Quarter Trash
 -- Plagued Gargoyle
 -- stealth and invisibility detection
@@ -5489,3 +5513,28 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 (351055, 0, 0, 0, 0, 0, 90, 0, 0, 0, 8000, 8000, 0, 0, 11, 28413, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Deathknight Cavalier - In Combat - Cast \'Aura of Agony\''),
 (351055, 0, 1, 0, 0, 0, 95, 0, 1000, 1000, 4000, 4000, 0, 0, 11, 15284, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Deathknight Cavalier - In Combat - Cast \'Cleave\''),
 (351055, 0, 2, 0, 0, 0, 80, 0, 3000, 3000, 5000, 5000, 0, 0, 11, 28412, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 'Deathknight Cavalier - In Combat - Cast \'Death Coil\'');
+-- Death Lord
+UPDATE `creature_template` SET `AIName` = 'SmartAI' WHERE `entry` = 16861;
+DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 16861);
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(16861, 0, 0, 0, 0, 0, 90, 0, 0, 0, 8000, 8000, 0, 0, 11, 28413, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Death Lord - In Combat - Cast \'Aura of Agony\''),
+(16861, 0, 1, 0, 0, 0, 95, 0, 1000, 1000, 4000, 0, 0, 0, 11, 15284, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Death Lord - In Combat - Cast \'Cleave\''),
+(16861, 0, 2, 0, 0, 0, 80, 0, 3000, 3000, 5000, 5000, 0, 0, 11, 28412, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 'Death Lord - In Combat - Cast \'Death Coil\'');
+-- Deathknight
+DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 351049);
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(351049, 0, 0, 0, 0, 0, 100, 0, 0, 0, 8000, 8000, 0, 0, 11, 19134, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 'Deathknight - In Combat - Cast \'Frightening Shout\''),
+(351049, 0, 1, 0, 0, 0, 100, 0, 0, 0, 7000, 7000, 0, 0, 11, 28350, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Deathknight - In Combat - Cast \'Veil of Darkness\'');
+-- Set Doom/Death Touched Warrior immune to disorient (1), charm (2)
+UPDATE `creature_template` SET `mechanic_immune_mask` = `mechanic_immune_mask` | 3 WHERE (`entry` IN (351054, 16158));
+-- Bony Construct
+DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 351058);
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(351058, 0, 0, 0, 0, 0, 100, 0, 3000, 3000, 4000, 4000, 0, 0, 11, 19632, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Bony Construct - In Combat - Cast \'Cleave\''),
+(351058, 0, 1, 0, 0, 0, 100, 0, 0, 0, 7000, 7000, 0, 0, 11, 25322, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Bony Construct - In Combat - Cast \'Sweeping Slam\'');
+-- Skeletal Smith
+DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 351060);
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(351060, 0, 0, 0, 0, 0, 100, 0, 1000, 1000, 2000, 2000, 0, 0, 11, 24317, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Skeletal Smith - In Combat - Cast \'Sunder Armor\''),
+(351060, 0, 1, 0, 0, 0, 85, 0, 0, 0, 6000, 6000, 0, 0, 11, 6713, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Skeletal Smith - In Combat - Cast \'Disarm\''),
+(351060, 0, 2, 0, 0, 0, 90, 0, 2000, 2000, 10000, 10000, 0, 0, 11, 23931, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Skeletal Smith - In Combat - Cast \'Thunderclap\'');
