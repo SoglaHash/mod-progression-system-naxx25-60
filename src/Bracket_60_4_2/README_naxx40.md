@@ -54,7 +54,7 @@ Military Quarter
 
 Construct Quarter
 -[x] Sewage Slime, slime that spawns from Grobulus are lvl 80
--[ ] Pathwerk Trash (see below): awkward pathing with formations?
+-[x] Pathwerk Trash (see below): awkward pathing with formations?
 -[ ] Sewage Slime, disease cloud 28153. Ticks for 600 instead of 300. Trigger spell requires spellscript HandleDamage
 -[x] Bile Retcher 351022  - 27807 Bile Vomit - ~5k instant, ~1200 dot to ~1500 instant, 250 dot
 -[x] Patchwork Golem - cleave based on weapon damage instead of raw damage in classic. Requires custom patch
@@ -81,7 +81,7 @@ VMangos/CMangos show 5 points. No waypoints. 3 mobs wander with 15yd, 2 path
 https://youtu.be/4UTQFrMRk5c?si=ye3fIhp7pg88f03C&t=5222 classic shows 4+2 pathing
 ACore 25 shows 4+2 pathing
 
--[ ] Issue Patchwerk Trash:
+-[x] Issue Patchwerk Trash:
 Creature formations of patchwork golems. Awkward pathing
 Removed wandering from non-leader, but does not look correct
 (361229, 361227, 10.8064, 306.6246666000065, 515, 0, 0),
