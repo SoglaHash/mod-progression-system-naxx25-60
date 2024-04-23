@@ -5655,3 +5655,7 @@ VALUES(29350, 'spell_heigan_plague_cloud_40');
 DELETE FROM `spell_script_names` WHERE `spell_id` = 29371;
 INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`)
 VALUES(29371, 'spell_heigan_eruption_40');
+-- Grobullus, Poison cast by Poison Cloud
+DELETE FROM `spell_script_names` WHERE `spell_id` = 28158;
+INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`)
+VALUES(28158, 'spell_grobbulus_poison_cloud_poison_40');

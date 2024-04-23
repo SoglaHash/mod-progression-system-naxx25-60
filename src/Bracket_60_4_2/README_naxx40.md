@@ -23,7 +23,8 @@ Construct
 -[x] Living Poison aka Frogger before Naxx is missing in lvl 60 instance
 -[x] Grobbulus: slime spray damage adjusted
 -[x] Grobbulus: debuff explosion damage adjusted
--[x] Grobbulus: poison cloud damage, damage reduced by lowering ticktime
+~~-[x] Grobbulus: poison cloud damage, damage reduced by lowering ticktime~~
+-[x] Grobbulus: poison cloud damage, use lvl 80 entry what only casts a modified AoE ~3k to ~1.2k
 -[ ] (skip) Grobbulus: poison cloud damage reduce damage properly. (requires custom spell+client patch)
 -[x] Gluth: enrage increased, icon not updated (requires custom spell+client patch)
 -[x] Thaddius: room Tesla shock reduced damage
