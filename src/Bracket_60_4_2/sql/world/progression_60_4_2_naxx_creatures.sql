@@ -1914,11 +1914,9 @@ INSERT INTO `creature` (`guid`, `id1`, `id2`, `id3`, `map`, `spawnMask`, `positi
 (361238, 351048, 0, 0, 533, 4, 2879.33, -3244.43, 298.33, 4.73, 7200, 0.0, 0),
 (361239, 351056, 0, 0, 533, 4, 2847.2, -3263.39, 298.27, 5.43, 7200, 0.0, 0),
 (361240, 351056, 0, 0, 533, 4, 2837.08, -3273.82, 298.27, 5.57, 7200, 0.0, 0),
-(361241, 351058, 0, 0, 533, 4, 2843.76, -3333.93, 298.5, 0.62, 7200, 0.0, 2),
-(361242, 351058, 0, 0, 533, 4, 2837.3, -3333.04, 300.45, 2.96, 7200, 15.0, 1),
-(361243, 351058, 0, 0, 533, 4, 2829.71, -3322.54, 300.01, 2.2, 7200, 15.0, 1),
-(361244, 351058, 0, 0, 533, 4, 2829.27, -3314.37, 299.31, 1.52, 7200, 15.0, 1),
-(361245, 351058, 0, 0, 533, 4, 2835.91, -3307.22, 298.33, 0.53, 7200, 0.0, 2),
+
+
+
 (361246, 351049, 0, 0, 533, 4, 2881.58, -3314.07, 298.32, 0.58, 7200, 0.0, 0),
 (361247, 351048, 0, 0, 533, 4, 2889.75, -3260.82, 298.146, 3.99846, 7200, 0.0, 0),
 (361248, 351048, 0, 0, 533, 4, 2886.46, -3257.89, 298.146, 3.98276, 7200, 0.0, 2),
@@ -5389,10 +5387,6 @@ INSERT INTO `creature` (`guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, 
 -- Fix Patchwork Golem: Movement is controlled by leader formation 361329
 UPDATE `creature` SET `wander_distance`=0, `MovementType`=0 WHERE `guid` BETWEEN 361326 and 361328;
 
--- fix: Bony construct pathing
--- Remove 2 pathing Bony Construct that have waypoint_data (3612410, 3612450) from creature_formations
-DELETE FROM `creature_formations` WHERE `leaderGUID` = 361423 AND `memberGUID` IN (361241, 361245);
-
 -- Lightning Totem, summoned by Living Monstrosity
 DELETE FROM `creature_template` WHERE (`entry` = 351091);
 INSERT INTO `creature_template` (`entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, `KillCredit1`, `KillCredit2`, `modelid1`, `modelid2`, `modelid3`, `modelid4`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild`) VALUES
@@ -5538,3 +5532,34 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 (351060, 0, 0, 0, 0, 0, 100, 0, 1000, 1000, 2000, 2000, 0, 0, 11, 24317, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Skeletal Smith - In Combat - Cast \'Sunder Armor\''),
 (351060, 0, 1, 0, 0, 0, 85, 0, 0, 0, 6000, 6000, 0, 0, 11, 6713, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Skeletal Smith - In Combat - Cast \'Disarm\''),
 (351060, 0, 2, 0, 0, 0, 90, 0, 2000, 2000, 10000, 10000, 0, 0, 11, 23931, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Skeletal Smith - In Combat - Cast \'Thunderclap\'');
+
+-- fix: Bony Construct pathing
+DELETE FROM `creature_formations` WHERE `leaderGUID` = 361243;
+DELETE FROM `creature` WHERE `guid` BETWEEN 362060 AND 362065;
+INSERT INTO `creature` (`guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `wander_distance`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`, `ScriptName`, `VerifiedBuild`, `CreateObject`, `Comment`) VALUES
+(362060, 351058, 0, 0, 533, 0, 0, 4, 1, 0, 2845.06, -3296.36, 298.124, 5.63452, 3600, 0.0, 0, 65165, 0, 2, 0, 0, 0, '', 0, 0, NULL),
+(362061, 351058, 0, 0, 533, 0, 0, 4, 1, 0, 2839.23, -3337.89, 300.911, 0.349066, 3600, 0.0, 0, 65165, 0, 0, 0, 0, 0, '', 0, 0, NULL),
+(362062, 351058, 0, 0, 533, 0, 0, 4, 1, 0, 2832.53, -3295.22, 298.121, 3.05074, 3600, 5.0, 0, 65165, 0, 1, 0, 0, 0, '', 0, 0, NULL),
+(362063, 351058, 0, 0, 533, 0, 0, 4, 1, 0, 2835.76, -3331.32, 299.364, 4.84961, 3600, 0.0, 0, 65165, 0, 2, 0, 0, 0, '', 0, 0, NULL),
+(362064, 351058, 0, 0, 533, 0, 0, 4, 1, 0, 2831.77, -3307.42, 298.659, 0.087266, 3600, 0.0, 0, 65165, 0, 0, 0, 0, 0, '', 0, 0, NULL),
+(362065, 351058, 0, 0, 533, 0, 0, 4, 1, 0, 2827.68, -3314.67, 300.318, 0.383972, 3600, 0.0, 0, 65165, 0, 0, 0, 0, 0, '', 0, 0, NULL);
+DELETE FROM `waypoint_data` WHERE `id` IN (3620600, 3620630);
+INSERT INTO `waypoint_data` (`id`, `point`, `position_x`, `position_y`, `position_z`, `orientation`, `delay`, `move_type`, `action`, `action_chance`, `wpguid`) VALUES
+(3620600, 1, 2847.82, -3308.78, 298.147, NULL, 0, 0, 0, 100, 0),
+(3620600, 2, 2838.80, -3321.94, 298.152, NULL, 0, 0, 0, 100, 0),
+(3620600, 3, 2847.82, -3308.78, 298.147, NULL, 0, 0, 0, 100, 0),
+(3620600, 4, 2845.06, -3296.36, 298.124, NULL, 0, 0, 0, 100, 0),
+(3620600, 5, 2832.53, -3295.22, 298.150, NULL, 0, 0, 0, 100, 0),
+(3620600, 6, 2845.06, -3296.36, 298.124, NULL, 0, 0, 0, 100, 0),
+(3620630, 1, 2830.41, -3329.09, 304.837, NULL, 0, 0, 0, 100, 0),
+(3620630, 2, 2835.76, -3331.32, 299.364, NULL, 0, 0, 0, 100, 0),
+(3620630, 3, 2842.91, -3323.56, 298.155, NULL, 0, 0, 0, 100, 0),
+(3620630, 4, 2852.52, -3333.61, 298.146, NULL, 0, 0, 0, 100, 0),
+(3620630, 5, 2854.87, -3350.62, 298.146, NULL, 0, 0, 0, 100, 0),
+(3620630, 6, 2852.52, -3333.61, 298.146, NULL, 0, 0, 0, 100, 0),
+(3620630, 7, 2842.91, -3323.56, 298.155, NULL, 0, 0, 0, 100, 0),
+(3620630, 8, 2835.76, -3331.32, 299.364, NULL, 0, 0, 0, 100, 0);
+DELETE FROM `creature_addon` WHERE (`guid` IN (362060, 362063));
+INSERT INTO `creature_addon` (`guid`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras`) VALUES
+(362060, 3620600, 0, 0, 1, 0, 0, ''),
+(362063, 3620630, 0, 0, 1, 0, 0, '');
