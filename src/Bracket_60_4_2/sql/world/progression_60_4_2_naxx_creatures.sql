@@ -5382,8 +5382,9 @@ INSERT INTO `creature` (`guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, 
 (362058, 351090, 0, 0, 533, 0, 0, 4, 1, 0, 2770.1, -3782.59, 274.983, 1.02974, 3600, 0, 0, 13033, 0, 0, 0, 0, 0, '', 0, 0, NULL),
 (362059, 351090, 0, 0, 533, 0, 0, 4, 1, 0, 2846.52, -3789.07, 274.983, 2.23402, 3600, 0, 0, 13033, 0, 0, 0, 0, 0, '', 0, 0, NULL);
 
--- Fix Patchwork Golem: Movement is controlled by leader formation 361329
-UPDATE `creature` SET `wander_distance`=0, `MovementType`=0 WHERE `guid` BETWEEN 361326 and 361328;
+-- Fix Patchwork Golem 4man group: Delete creature_formation, set wander_distance to 1, and set MovementType to 1
+UPDATE `creature` SET `wander_distance`=1, `MovementType`=1 WHERE `guid` BETWEEN 361326 and 361329;
+DELETE FROM `creature_formations` WHERE `leaderGUID` = 361329;
 
 -- Lightning Totem, summoned by Living Monstrosity
 DELETE FROM `creature_template` WHERE (`entry` = 351091);
