@@ -44,7 +44,10 @@ Plague Quarter
 -[x] Heigan: Poison Cloud, (AoE when he teleports), damage reduced to 500
 -[x] Heigan: Reduce damage from eruption
 -[ ] Heigan: Adjust Eruption calc so it no longer uses SetHitDamage(damage) which ignores defensive CDs?
--[ ] Loatheb
+-[ ] Loatheb: Deathbloom -> Poison Aura. needs custom patch
+-[x] Loatheb: Deathbloom damage reduced to 33dps for 6 sec instead of 200dps
+-[ ] Loatheb: Deathbloom needs to do 200 dps after 6 seconds, patch needed
+-[x] Loatheb: Spores +50% to +60% caster crit
 
 Trash
 Plague Quarter
@@ -55,7 +58,11 @@ Plague Quarter
 -[x] Frenzied Bat, update frenzy id
 -[x] Plagued Bat, update IC timings
 -[x] Plague Beast, smartAI trample
-
+-[x] Eye Stalk, smartAI reduce damage, movement speed reduction is less
+-[x] Eye Stalk, smartAI missing OOC rp and birth animation
+-[ ] (skip, do below instead) Eye Stalk, 36y-90y evade smartAI. Stuck in combat, not evading
+-[ ] Eye Stalk/Heigan room adds should all despawn after defeating Heigan
+https://github.com/cmangos/mangos-wotlk/blob/a3a647a0da14f9b6de483f99149e09b6ff6e7c8a/src/game/AI/ScriptDevAI/scripts/northrend/naxxramas/naxxramas.cpp#L419
 
 
 Military Quarter
@@ -119,6 +126,8 @@ potential upstream/acore fixes:
 -[ ] Thaddius is stuck in position and does not move
 -[ ] Lightning Totem does not aggro properly?
 -[ ] Razuvious' Death Knight Understudy should switch between AttackReady (333) and Attack (36), out of combat RP missing
+-[ ] Relinquery of Souls / Eye Stalk use OOC submerge spell // 28819 - Submerge Visual
+implemented in TrinityCore: https://github.com/search?q=repo%3ATrinityCore%2FTrinityCore%20spell_reliquary_of_souls_submerge&type=code
 
 ## GM commands to help test
 
