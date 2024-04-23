@@ -30,8 +30,22 @@ Construct
 -[x] Thaddius: mark damage from 4500 to 2000
 -[x] Thaddius: lightning ball (wipe mechanic) adjusted
 -[x] Feugen: Power burn 500 every 3 seconds. Missing nature visual shock (requires custom spell). Or do hack with 63705 spell, change yards to 300. -500 mana, -2500 dmg
+Military Quarter
+-[x] Razuvious: remove throwing knife mechaniac
+-[x] Razuvious: reduce damage, range (45yd) of shout. Does not drain mana and ignores LoS. Needs client patch
+-[ ] Gothik, waiting for upstream changes
+-[ ] 4H, needs client patch for mograine mark
+Plague Quarter
+-[x] Noth: curse range adjusted, number of curses, faster curses
+-[x] Noth: curse damage reduced, range increased
 
 Trash
+Plague Quarter
+-[x] Infectious Ghoul: damage unchanged, updated rend, update frenzy
+-[ ] Infectious Ghoul: missing low hp text
+-[x] Plague Slime: unchanged
+-[x]
+
 Military Quarter
 -[x] Horse mounts from trash before Razuvious are lvl 80
 -[ ] Necro Knight, has smartAI (see Necro Knight Guardian)
