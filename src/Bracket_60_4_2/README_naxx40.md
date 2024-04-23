@@ -72,6 +72,9 @@ Construct Quarter
 -[ ] Plagued Ghoul - missing smartAI say texts
 -[x] Deathknight Vindicator, add smartAI
 -[ ] Necro Knight Guardian, smartAI, similar implementation to Necro Knight might be better?
+-[x] Razuvious, removed knife throw mechanic, disrupting shout adjusted to 45yd and less damage. No power burn without client patch or remove animation
+-[ ] (waiting for upstream changes) Gothik adjust the spells
+-[ ] 4, needs to be revisted, naxx40 spells do similar damage to naxx40
 
 -[x] Issue Bony Construct patrol/creature_formation guid 3612410
 VMangos/CMangos show 5 points. No waypoints. 3 mobs wander with 15yd, 2 path
@@ -89,7 +92,7 @@ potential upstream/acore fixes:
 -[ ] Bombard Slime spell position is not random. Pos is pulled form spell_location template. Not present in VMangos/TC/CMangos from what I see
 -[ ] Thaddius is stuck in position and does not move
 -[ ] Lightning Totem does not aggro properly?
--[ ] Razuvious' Death Knight Understudy should switch between AttackReady (333) and Attack (36)
+-[ ] Razuvious' Death Knight Understudy should switch between AttackReady (333) and Attack (36), out of combat RP missing
 
 ## GM commands to help test
 
