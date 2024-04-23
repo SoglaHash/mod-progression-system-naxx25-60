@@ -5584,4 +5584,16 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 (351041, 0, 0, 0, 9, 0, 100, 0, 2000, 2000, 20000, 25000, 8, 25, 11, 27577, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Skeletal Steed - Within 8-25 Range - Cast \'Intercept\' (Naxx 40)'),
 (351041, 0, 1, 0, 0, 0, 90, 0, 2000, 2000, 5000, 5000, 0, 0, 11, 5568, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Skeletal Steed - In Combat - Cast Trample (Naxx 40)');
 
+-- Razuvious
+-- Deathknight Understudy
+-- Set attacking emote, add see invisibility and increase damage aura
+DELETE FROM `creature_template_addon` WHERE (`entry` = 351084);
+INSERT INTO `creature_template_addon` (`entry`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras`) VALUES
+(351084, 0, 0, 0, 1, 333, 3, '18950 29068');
+-- Add spells, taunt and bone barrier
+DELETE FROM `creature_template_spell` WHERE (`CreatureID` = 351084);
+INSERT INTO `creature_template_spell` (`CreatureID`, `Index`, `Spell`, `VerifiedBuild`) VALUES
+(351084, 3, 29060, 12340),
+(351084, 4, 29061, 12340);
+
 

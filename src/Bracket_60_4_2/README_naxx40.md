@@ -89,6 +89,7 @@ potential upstream/acore fixes:
 -[ ] Bombard Slime spell position is not random. Pos is pulled form spell_location template. Not present in VMangos/TC/CMangos from what I see
 -[ ] Thaddius is stuck in position and does not move
 -[ ] Lightning Totem does not aggro properly?
+-[ ] Razuvious' Death Knight Understudy should switch between AttackReady (333) and Attack (36)
 
 ## GM commands to help test
 
