@@ -4652,8 +4652,6 @@ INSERT INTO `creature_addon` (`guid`, `path_id`, `mount`, `bytes1`, `bytes2`, `e
 (361230, 3612300, 0, 0, 0, 0, NULL),
 (361233, 3612330, 0, 0, 0, 0, NULL),
 (361234, 3612340, 0, 0, 0, 0, NULL),
-(361241, 3612410, 0, 0, 0, 0, NULL),
-(361245, 3612450, 0, 0, 0, 0, NULL),
 (361248, 3612480, 0, 0, 0, 0, NULL),
 (361253, 3612530, 0, 0, 0, 0, NULL),
 (361257, 3612570, 0, 0, 0, 0, NULL),
@@ -5390,7 +5388,7 @@ UPDATE `creature` SET `wander_distance`=0, `MovementType`=0 WHERE `guid` BETWEEN
 -- Lightning Totem, summoned by Living Monstrosity
 DELETE FROM `creature_template` WHERE (`entry` = 351091);
 INSERT INTO `creature_template` (`entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, `KillCredit1`, `KillCredit2`, `modelid1`, `modelid2`, `modelid3`, `modelid4`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild`) VALUES
-(351091, 29360, 0, 0, 0, 0, 4590, 0, 0, 0, 'Lightning Totem', '', '', 0, 62, 62, 2, 21, 0, 1.0, 1.0, 1.0, 1.0, 18.0, 1.0, 0, 0, 1.0, 2000, 2000, 1.0, 1.0, 1, 4, 2048, 8, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 'SmartAI', 1, 1.0, 0.2, 1.0, 1.0, 1.0, 0, 0, 1, 0, 0, 0, '', 12340);
+(351091, 0, 0, 0, 0, 0, 4590, 0, 0, 0, 'Lightning Totem', '', '', 0, 62, 62, 2, 21, 0, 1.0, 1.0, 1.0, 1.0, 18.0, 1.0, 0, 0, 1.0, 2000, 2000, 1.0, 1.0, 1, 4, 2048, 8, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 'SmartAI', 1, 1.0, 0.2, 1.0, 1.0, 1.0, 0, 0, 1, 0, 0, 0, '', 12340);
 UPDATE `creature_template` SET `AIName` = 'SmartAI' WHERE `entry` = 351091;
 DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 351091);
 INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
@@ -5494,7 +5492,7 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 UPDATE `creature_template_addon` SET `auras` = '18950' WHERE (`entry` = 35107);
 DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 351077);
 INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
-(351077, 0, 0, 0, 0, 0, 100, 0, 0, 0, 10000, 1000, 0, 0, 218, 29325, 0, 0, 121, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Plagued Gargoyle - In Combat - Custom Cast Acid Volley'),
+(351077, 0, 0, 0, 0, 0, 100, 0, 0, 0, 10000, 10000, 0, 0, 218, 29325, 0, 0, 121, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Plagued Gargoyle - In Combat - Custom Cast Acid Volley'),
 (351077, 0, 1, 0, 2, 0, 75, 0, 0, 50, 30000, 30000, 0, 0, 11, 28995, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Plagued Gargoyle - Between 0-50% Health - Cast \'Stoneskin\'');
 -- Death Knight Captain
 -- Cast whirlwind every 5 seconds
@@ -5511,9 +5509,9 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 UPDATE `creature_template` SET `AIName` = 'SmartAI' WHERE `entry` = 16861;
 DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 16861);
 INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
-(16861, 0, 0, 0, 0, 0, 90, 0, 0, 0, 8000, 8000, 0, 0, 11, 28413, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Death Lord - In Combat - Cast \'Aura of Agony\''),
-(16861, 0, 1, 0, 0, 0, 95, 0, 1000, 1000, 4000, 0, 0, 0, 11, 15284, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Death Lord - In Combat - Cast \'Cleave\''),
-(16861, 0, 2, 0, 0, 0, 80, 0, 3000, 3000, 5000, 5000, 0, 0, 11, 28412, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 'Death Lord - In Combat - Cast \'Death Coil\'');
+(16861, 0, 0, 0, 0, 0, 90, 0, 0, 0, 8000, 8000, 0, 0, 11, 28413, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Death Lord - In Combat - Cast \'Aura of Agony\' (Naxx40)'),
+(16861, 0, 1, 0, 0, 0, 95, 0, 1000, 1000, 4000, 4000, 0, 0, 11, 15284, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Death Lord - In Combat - Cast \'Cleave\' (Naxx40)'),
+(16861, 0, 2, 0, 0, 0, 80, 0, 3000, 3000, 5000, 5000, 0, 0, 11, 28412, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 'Death Lord - In Combat - Cast \'Death Coil\' (Naxx40)');
 -- Deathknight
 DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 351049);
 INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
@@ -5532,7 +5530,6 @@ INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_
 (351060, 0, 0, 0, 0, 0, 100, 0, 1000, 1000, 2000, 2000, 0, 0, 11, 24317, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Skeletal Smith - In Combat - Cast \'Sunder Armor\''),
 (351060, 0, 1, 0, 0, 0, 85, 0, 0, 0, 6000, 6000, 0, 0, 11, 6713, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Skeletal Smith - In Combat - Cast \'Disarm\''),
 (351060, 0, 2, 0, 0, 0, 90, 0, 2000, 2000, 10000, 10000, 0, 0, 11, 23931, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Skeletal Smith - In Combat - Cast \'Thunderclap\'');
-
 -- fix: Bony Construct pathing
 DELETE FROM `creature_formations` WHERE `leaderGUID` = 361243;
 DELETE FROM `creature` WHERE `guid` BETWEEN 362060 AND 362065;
@@ -5563,3 +5560,27 @@ DELETE FROM `creature_addon` WHERE (`guid` IN (362060, 362063));
 INSERT INTO `creature_addon` (`guid`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras`) VALUES
 (362060, 3620600, 0, 0, 1, 0, 0, ''),
 (362063, 3620630, 0, 0, 1, 0, 0, '');
+-- Shade of Naxxramas
+-- Shadow Bolt Volley bp0 to 1849
+DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 351056);
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(351056, 0, 0, 0, 0, 0, 100, 0, 2800, 5100, 4500, 12000, 0, 0, 218, 28407, 0, 1849, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Shade of Naxxramas - In Combat - Custom Cast Shadow Bolt Volley (Naxx40)'),
+(351056, 0, 1, 0, 0, 0, 100, 0, 4100, 8700, 60000, 60000, 0, 0, 11, 90004, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Shade of Naxxramas - In Combat - Cast \'Portal of Shadows (Naxx40)\''),
+(351056, 0, 2, 0, 25, 0, 100, 512, 0, 0, 0, 0, 0, 0, 41, 500, 0, 0, 0, 0, 0, 19, 351092, 0, 0, 0, 0, 0, 0, 0, 'Shade of Naxxramas - On Reset - Despawn In 500 ms (Naxx40)');
+-- Ghost of Naxxramas, summoned by custom Portal of Shadows (90004)
+DELETE FROM `creature_template` WHERE (`entry` = 351092);
+INSERT INTO `creature_template` (`entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, `KillCredit1`, `KillCredit2`, `modelid1`, `modelid2`, `modelid3`, `modelid4`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `speed_swim`, `speed_flight`, `detection_range`, `scale`, `rank`, `dmgschool`, `DamageModifier`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `HoverHeight`, `HealthModifier`, `ManaModifier`, `ArmorModifier`, `ExperienceModifier`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `spell_school_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild`) VALUES
+(351092, 0, 0, 0, 0, 0, 14368, 0, 0, 0, 'Ghost of Naxxramas', NULL, NULL, 0, 60, 60, 2, 21, 0, 1.11111, 0.71429, 1, 1, 20, 1, 1, 0, 7.5, 2000, 2000, 1, 1, 1, 33587264, 2048, 0, 0, 0, 0, 0, 0, 7, 8, 0, 0, 0, 0, 0, 0, 0, 'SmartAI', 0, 1, 1, 1, 1, 1, 0, 88, 1, 0, 0, 0, '', 12340);
+UPDATE `creature_template` SET `AIName` = 'SmartAI' WHERE `entry` = 351092;
+DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 351092);
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(351092, 0, 0, 0, 54, 0, 100, 512, 0, 0, 0, 0, 0, 0, 38, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Ghost of Naxxramas - On spawn - Set in combat with zone (Naxx40)'),
+(351092, 0, 1, 0, 1, 0, 100, 512, 100, 100, 0, 0, 0, 0, 41, 500, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Ghost of Naxxramas - On OOC - Despawn if OOC (Naxx40)');
+-- Skeletal Steed
+-- Add trample, intercept
+DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 351041);
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(351041, 0, 0, 0, 9, 0, 100, 0, 2000, 2000, 20000, 25000, 8, 25, 11, 27577, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Skeletal Steed - Within 8-25 Range - Cast \'Intercept\' (Naxx 40)'),
+(351041, 0, 1, 0, 0, 0, 90, 0, 2000, 2000, 5000, 5000, 0, 0, 11, 5568, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Skeletal Steed - In Combat - Cast Trample (Naxx 40)');
+
+
