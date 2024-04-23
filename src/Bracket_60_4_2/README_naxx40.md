@@ -38,6 +38,12 @@ Military Quarter
 Plague Quarter
 -[x] Noth: curse range adjusted, number of curses, faster curses
 -[x] Noth: curse damage reduced, range increased
+-[ ] Heigan: disruption should be power burn, 29310, client side patch needed
+-[x] Heigan: fever dot 3k -> 500
+-[x] Heigan: Poison Cloud, (AoE when he teleports), damage reduced to 500
+-[x] Heigan: Reduce damage from eruption
+-[ ] Heigan: Adjust Eruption calc so it no longer uses SetHitDamage(damage) which ignores defensive CDs?
+-[ ] Loatheb
 
 Trash
 Plague Quarter
