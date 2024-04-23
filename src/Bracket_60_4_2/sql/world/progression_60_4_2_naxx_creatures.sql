@@ -5623,3 +5623,27 @@ DELETE FROM `spell_script_names` WHERE `spell_id` = 29213;
 INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`)
 VALUES(29213, 'spell_gothik_curse_of_the_plaguebringer_40');
 
+-- Mutaged Grub
+-- Reduce damage Slime Burst - AoE ~450 to ~200
+DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 351068);
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(351068, 0, 0, 0, 0, 0, 100, 0, 2000, 5000, 6000, 8000, 0, 0, 218, 30109, 0, 462, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Mutated Grub - In Combat - Custom Cast Slime Burst (Naxx40)');
+
+-- Frenzied Bat
+-- Update Frenzied Dive Id
+DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 351031);
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(351031, 0, 0, 0, 0, 0, 100, 0, 1000, 1000, 11000, 17000, 0, 0, 11, 30112, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 'Frenzied Bat - In Combat - Cast Frenzied Dive (Naxx 40)');
+
+-- Plagued Bat
+-- Adjust IC timings
+DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 351032);
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(351032, 0, 0, 0, 0, 0, 85, 0, 9000, 9000, 40000, 40000, 0, 0, 11, 30113, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 'Plagued Bat - In Combat - Cast \'Putrid Bite\' (Naxx40)');
+
+-- Plague Beast
+-- trample
+DELETE FROM `smart_scripts` WHERE (`source_type` = 0 AND `entryorguid` = 351030);
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(351030, 0, 0, 0, 0, 0, 100, 0, 0, 0, 3000, 3000, 0, 0, 11, 5568, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'Plague Beast - In Combat - Cast \'Trample\' (Naxx40)');
+

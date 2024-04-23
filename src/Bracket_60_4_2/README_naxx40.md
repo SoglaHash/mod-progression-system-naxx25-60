@@ -44,7 +44,12 @@ Plague Quarter
 -[x] Infectious Ghoul: damage unchanged, updated rend, update frenzy
 -[ ] Infectious Ghoul: missing low hp text
 -[x] Plague Slime: unchanged
--[x]
+-[x] Mutaged Grub, reduce aoe dmg ~400 -> ~200
+-[x] Frenzied Bat, update frenzy id
+-[x] Plagued Bat, update IC timings
+-[x] Plague Beast, smartAI trample
+
+
 
 Military Quarter
 -[x] Horse mounts from trash before Razuvious are lvl 80
