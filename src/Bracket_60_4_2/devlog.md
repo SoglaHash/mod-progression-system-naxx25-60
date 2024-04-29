@@ -43,6 +43,7 @@ Client side patch:
 - [ ] Heigan: disruption should be power burn, 29310, client side patch needed
 - [ ] Loatheb: Deathbloom -> Poison Aura. needs custom patch
 - [ ] Loatheb: Deathbloom needs to do 200 dps after 6 seconds, patch needed
+- [ ] Sapphiron: amplitude frost aura reduced to 2s->1s and half damage (dps is same as naxx10)
 
 Bosses
 Construct
@@ -72,6 +73,11 @@ Plague Quarter
 - [x] Heigan: Reduce damage from eruption
 - [x] Loatheb: Deathbloom damage reduced to 33dps for 6 sec instead of 200dps
 - [x] Loatheb: Spores +50% to +60% caster crit
+Frost Wing
+- [ ] Sapphiron: Frost Aura tick timer reduced 2s->1s and damage reduced by half, needs custom patch
+- [x] Sapphiron: Life Drain damage reduced from ~2.5k to ~2k
+- [x] Sapphiron: (unchanged)Tail Swipe similar damage
+- [x] Sapphiron: Cast Custom Chill, less damage and more speed reduction, 4k to 3.5k, increased speed reduction -50 to -66
 
 Trash
 Plague Quarter
@@ -187,6 +193,11 @@ attunement - reputation honored - complete quest
 teleport to naxx entrance inside strat
 ```
 .go xyz 3960 -3392 121 329
+```
+
+tp Sapphiron
+```
+.go c 361338
 ```
 
 reset instance
