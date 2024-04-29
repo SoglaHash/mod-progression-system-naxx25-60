@@ -36,6 +36,7 @@ https://github.com/cmangos/mangos-wotlk/blob/a3a647a0da14f9b6de483f99149e09b6ff6
 - [x] Tomb Horror: Pointy Spike, Spike Volley
 - [x] Naxxramas Acolyte: Shadow Bolt, Arcane Explosion
 - [x] Naxxramas Cultist: Shadow Burst
+- [x] Archmage sits mid-air. .die .respawn fixes him..
 
 Client side patch:
 - [ ] 4H, needs client patch for mograine mark
