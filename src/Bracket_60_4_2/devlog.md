@@ -76,8 +76,12 @@ Plague Quarter
 Frost Wing
 - [ ] Sapphiron: Frost Aura tick timer reduced 2s->1s and damage reduced by half, needs custom patch
 - [x] Sapphiron: Life Drain damage reduced from ~2.5k to ~2k
-- [x] Sapphiron: (unchanged)Tail Swipe similar damage
+- [x] Sapphiron: (unchanged) Tail Swipe similar damage
 - [x] Sapphiron: Cast Custom Chill, less damage and more speed reduction, 4k to 3.5k, increased speed reduction -50 to -66
+- [x] Kel'Thuzad: (unchanged) Abomination, same %healing reduction, damage is similar
+- [x] Kel'Thuzad: (unchanged) Soul Weaver, same damage
+- [x] Kel'Thuzad: Skeleton/Soldier, reduced damage Dark Blast ~3.5k to ~2k
+- [x] Kel'Thuzad: (unchanged) Guardian, damage similar
 
 Trash
 Plague Quarter
