@@ -40,3 +40,9 @@ INSERT INTO `spell_dbc` (`ID`,`Category`,`DispelType`,`Mechanic`,`Attributes`,`A
 DELETE FROM `spell_script_names` WHERE `spell_id` = 28785;
 INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`)
 VALUES(28785, 'spell_anub_locust_swarm_40');
+
+-- Kel'Thuzad
+-- Dark Blast: Reduce damage ~3.5k to ~2k
+DELETE FROM `spell_script_names` WHERE `spell_id` = 28457;
+INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`)
+VALUES(28457, 'spell_kelthuzad_dark_blast');
