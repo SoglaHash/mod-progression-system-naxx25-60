@@ -3,12 +3,9 @@ Some shared issues https://github.com/ZhengPeiRu21/mod-individual-progression/is
 
 - [ ] (see below) Naxx40 spells, boss scripts and encounters are not implemented correctly
 
-- [x] 4horsemen, spell damage adjusted
-
 More todo:
 - [ ] (skip) Grobbulus: poison cloud damage reduce damage properly. (requires custom spell+client patch)
 - [ ] (waiting upstream) Gothik, waiting for upstream changes
-- [ ] (waiting upstream) Blaumeux: Void Zone casts Consumption (28865). Should do 4k damage, radius 2 -> 3
 - [ ] Blaumeux+Zeliek: move
 - [ ] Horsemen: no pathing on pull
 - [ ] Blaumeux+Zeliek: Remove Punish spells for not being in range
@@ -44,6 +41,8 @@ Client side patch:
 - [ ] Loatheb: Deathbloom -> Poison Aura. needs custom patch
 - [ ] Loatheb: Deathbloom needs to do 200 dps after 6 seconds, patch needed
 - [ ] Sapphiron: amplitude frost aura reduced to 2s->1s and half damage (dps is same as naxx10)
+- [ ] Blaumeux: void zone range 2yd -> 3yd
+- [ ] Achievements
 
 Bosses
 Construct
@@ -60,11 +59,13 @@ Construct
 - [x] Thaddius: room Tesla shock reduced damage
 - [x] Thaddius: mark damage from 4500 to 2000
 - [x] Thaddius: lightning ball (wipe mechanic) adjusted
-- [x] Feugen: Power burn 500 every 3 seconds. Missing nature visual shock (requires custom spell). Or do hack with 63705 spell, change yards to 300. -500 mana, -2500 dmg
+- [x] Feugen: Power burn 500 every 3 seconds.
+- [ ] Feugen: Power burn is missing nature visual effect, requires custom spell
 Military Quarter
 - [x] Razuvious: remove throwing knife mechaniac
 - [x] Razuvious: reduce damage, range (45yd) of shout. Does not drain mana and ignores LoS. Needs client patch
-This is incorrectly fixed in ACore. It uses a spellscript `spell_four_horsemen_consumption` to hardcode 4250 if not 10man normal. Should do proper scaling but 25man damage matches Naxx40. so skip for now
+- [x] Horsemen: damage adjusted
+- [x] Blaumeux: Void Zone casts Consumption (28865). Should do 4k damage. Range 2-3 requires custom patch
 Plague Quarter
 - [x] Noth: curse range adjusted, number of curses, faster curses
 - [x] Noth: curse damage reduced, range increased
@@ -190,13 +191,18 @@ https://github.com/TrinityCore/TrinityCore/blob/e0e1b6a4098badb6f48ba1d5cb1cc173
 attunement - reputation honored - complete quest
 ```
 .mod reputation 529 10000
-.quest complete 9121
 .go creature 54192
+.quest complete 9121
 ```
 
 teleport to naxx entrance inside strat
 ```
 .go xyz 3960 -3392 121 329
+```
+
+tp to teleporter
+```
+.go gameobject 45907
 ```
 
 tp Sapphiron
